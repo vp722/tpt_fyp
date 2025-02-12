@@ -1,0 +1,60 @@
+---------------------------------
+Date: 2025-02-12 14:52:22
+Host: kea06
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 1 of 2
+---------------------------------
+Events Per Second: 85.13
+Total Time: 30.0080s 
+Total Events: 2555
+Min Latency: 11.69 
+Avg Latency: 11.74 
+Max Latency: 19.05 
+95th Percentile Latency: 11.65 
+---------------------------------
+---------------------------------
+Date: 2025-02-12 14:52:22
+Host: kea06
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 2 of 2
+---------------------------------
+Events Per Second: 85.14
+Total Time: 30.0053s 
+Total Events: 2555
+Min Latency: 11.69 
+Avg Latency: 11.74 
+Max Latency: 17.11 
+95th Percentile Latency: 11.65 
+---------------------------------
+---------------------------------
+Date: 2025-02-12 14:56:58
+Host: kea06
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 1 of 2
+---------------------------------
+Events Per Second: 85.13
+Total Time: 30.0085s 
+Total Events: 2555
+Min Latency: 11.72 
+Avg Latency: 11.74 
+Max Latency: 18.76 
+95th Percentile Latency: 11.65 
+---------------------------------
+---------------------------------
+Date: 2025-02-12 14:56:58
+Host: kea06
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 2 of 2
+---------------------------------
+Events Per Second: 85.68
+Total Time: 30.0036s 
+Total Events: 2571
+Min Latency: 11.57 
+Avg Latency: 11.67 
+Max Latency: 17.58 
+95th Percentile Latency: 11.65 
+---------------------------------
