@@ -2,9 +2,9 @@
 
 #Fill in the following:
 #Current user
-USER=$(whoami)
+USER=$(USER)
 #Dir where ubuntu image is at
-SOURCE_DIR=/home/vp722/virt/qcow_images
+SOURCE_DIR=$(dirname "$0")
 #Guest kernel dir
 GUEST_DIR=/home/vp722/TPT/guest_kernel
 
@@ -80,7 +80,7 @@ NUM_CPUS_MAX_STR="-$(( $NUM_CPUS - 1 ))"
 sudo numactl --physcpubind 0${NUM_CPUS_MAX_STR} --membind 0 \
 qemu-system-x86_64 -s -name debug-threads=on \
 -serial stdio -m ${MEM_SIZE}G \
--drive file=$SOURCE_DIR/pc.qcow2,if=virtio,format=qcow2 \
+-drive file=$SOURCE_DIR/ubuntu.img,if=virtio,format=qcow2 \
 -machine pc,${DEVIRT_MACHINE} \
 -enable-kvm -cpu host,migratable=no,+tsc,+tsc-deadline,+rdtscp,+invtsc,+monitor \
 $MEMORY \
