@@ -7,8 +7,8 @@ if ! command -v sysbench &> /dev/null; then
 fi
 
 # Define loop count and other parameters
-LOOPS=${1:-2}        # Number of loops to run (default: 1)
-MEMORY_BLOCK_SIZE=4G # Memory block size for test
+LOOPS=${1:-30}        # Number of loops to run (default: 1)
+MEMORY_BLOCK_SIZE=8G # Memory block size for test
 MEMORY_OPER=read      # Memory operation type (read/write)
 MEMORY_ACCESS_MODE=rnd # Memory access mode (seq/rnd)
 HOSTNAME=$(hostname) # Get system hostname

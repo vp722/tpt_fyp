@@ -58,3 +58,18 @@ Avg Latency: 11.67
 Max Latency: 17.58 
 95th Percentile Latency: 11.65 
 ---------------------------------
+---------------------------------
+Date: 2025-02-24 11:29:40
+Host: kea06
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 1 of 1
+---------------------------------
+Events Per Second: 85.13
+Total Time: 30.0076s 
+Total Events: 2555
+Min Latency: 11.69 
+Avg Latency: 11.74 
+Max Latency: 18.92 
+95th Percentile Latency: 11.65 
+---------------------------------
