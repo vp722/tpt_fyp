@@ -73,3 +73,1053 @@ Avg Latency: 11.74
 Max Latency: 18.92 
 95th Percentile Latency: 11.65 
 ---------------------------------
+---------------------------------
+Date: 2025-02-27 12:38:10
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 1 of 5
+---------------------------------
+Events Per Second: 89.77
+Total Time: 30.0039s 
+Total Events: 2694
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.33 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:38:10
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 2 of 5
+---------------------------------
+Events Per Second: 89.81
+Total Time: 30.0026s 
+Total Events: 2695
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 14.39 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:38:10
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 3 of 5
+---------------------------------
+Events Per Second: 89.79
+Total Time: 30.0083s 
+Total Events: 2695
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 15.32 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:38:10
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 4 of 5
+---------------------------------
+Events Per Second: 89.80
+Total Time: 30.0061s 
+Total Events: 2695
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 15.93 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:38:10
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 5 of 5
+---------------------------------
+Events Per Second: 89.81
+Total Time: 30.0044s 
+Total Events: 2695
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 17.26 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:42:23
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 1 of 5
+---------------------------------
+Events Per Second: 89.51
+Total Time: 30.0109s 
+Total Events: 2687
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 17.04 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:42:23
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 2 of 5
+---------------------------------
+Events Per Second: 89.51
+Total Time: 30.0112s 
+Total Events: 2687
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 16.27 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:42:23
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 3 of 5
+---------------------------------
+Events Per Second: 89.53
+Total Time: 30.0059s 
+Total Events: 2687
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.67 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:42:23
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 4 of 5
+---------------------------------
+Events Per Second: 89.52
+Total Time: 30.0089s 
+Total Events: 2687
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.50 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-02-27 12:42:23
+Host: pc
+CPU Max Prime: 50000
+Run Time: 30 seconds
+Loop: 5 of 5
+---------------------------------
+Events Per Second: 89.51
+Total Time: 30.0002s 
+Total Events: 2686
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.00 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 1 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0030s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 18.01 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 2 of 30
+---------------------------------
+Events Per Second: 89.39
+Total Time: 10.0063s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.18 
+Max Latency: 18.44 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 3 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0012s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 16.12 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 4 of 30
+---------------------------------
+Events Per Second: 89.36
+Total Time: 10.0086s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.18 
+Max Latency: 16.03 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 5 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0030s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.73 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 6 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0105s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.50 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 7 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0006s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 17.33 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 8 of 30
+---------------------------------
+Events Per Second: 89.39
+Total Time: 10.0049s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.18 
+Max Latency: 16.03 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 9 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0110s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.10 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 10 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0023s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 18.54 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 11 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0025s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.79 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 12 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0112s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.62 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 13 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0106s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 16.10 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 14 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0010s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 17.20 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 15 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0106s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.73 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 16 of 30
+---------------------------------
+Events Per Second: 89.38
+Total Time: 10.0063s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.18 
+Max Latency: 14.94 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 17 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0022s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 17.12 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 18 of 30
+---------------------------------
+Events Per Second: 89.42
+Total Time: 10.0016s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.85 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 19 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0111s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.61 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 20 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0112s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.82 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 21 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0023s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.95 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 22 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0105s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.65 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 23 of 30
+---------------------------------
+Events Per Second: 89.45
+Total Time: 10.0097s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.11 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 24 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0003s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.77 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 25 of 30
+---------------------------------
+Events Per Second: 89.44
+Total Time: 10.0101s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 15.11 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 26 of 30
+---------------------------------
+Events Per Second: 89.42
+Total Time: 10.0015s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 17.02 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 27 of 30
+---------------------------------
+Events Per Second: 89.45
+Total Time: 10.0098s 
+Total Events: 896
+Min Latency: 11.15 
+Avg Latency: 11.17 
+Max Latency: 14.48 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 28 of 30
+---------------------------------
+Events Per Second: 89.38
+Total Time: 10.0055s 
+Total Events: 895
+Min Latency: 11.15 
+Avg Latency: 11.18 
+Max Latency: 16.13 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 29 of 30
+---------------------------------
+Events Per Second: 89.41
+Total Time: 10.0023s 
+Total Events: 895
+Min Latency: 11.14 
+Avg Latency: 11.17 
+Max Latency: 15.57 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:30:18
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 30 of 30
+---------------------------------
+Events Per Second: 89.43
+Total Time: 10.0008s 
+Total Events: 895
+Min Latency: 11.14 
+Avg Latency: 11.17 
+Max Latency: 14.70 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 1 of 30
+---------------------------------
+Events Per Second: 89.75
+Total Time: 10.0013s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.73 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 2 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0035s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.25 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 3 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0030s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 17.31 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 4 of 30
+---------------------------------
+Events Per Second: 89.72
+Total Time: 10.0038s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.61 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 5 of 30
+---------------------------------
+Events Per Second: 89.76
+Total Time: 10.0111s 
+Total Events: 899
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 14.64 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 6 of 30
+---------------------------------
+Events Per Second: 89.72
+Total Time: 10.0038s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.07 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 7 of 30
+---------------------------------
+Events Per Second: 89.72
+Total Time: 10.0048s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 18.75 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 8 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0026s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 12.54 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 9 of 30
+---------------------------------
+Events Per Second: 89.74
+Total Time: 10.0017s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.21 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 10 of 30
+---------------------------------
+Events Per Second: 89.71
+Total Time: 10.0052s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.54 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 11 of 30
+---------------------------------
+Events Per Second: 89.76
+Total Time: 10.0006s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 13.77 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 12 of 30
+---------------------------------
+Events Per Second: 89.75
+Total Time: 10.0005s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.28 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 13 of 30
+---------------------------------
+Events Per Second: 89.74
+Total Time: 10.0022s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.55 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 14 of 30
+---------------------------------
+Events Per Second: 89.76
+Total Time: 10.0104s 
+Total Events: 899
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 12.44 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 15 of 30
+---------------------------------
+Events Per Second: 89.71
+Total Time: 10.0052s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.91 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 16 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0026s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 14.95 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 17 of 30
+---------------------------------
+Events Per Second: 89.70
+Total Time: 10.0067s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.44 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 18 of 30
+---------------------------------
+Events Per Second: 89.74
+Total Time: 10.0018s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.38 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 19 of 30
+---------------------------------
+Events Per Second: 89.75
+Total Time: 10.0010s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.88 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 20 of 30
+---------------------------------
+Events Per Second: 89.65
+Total Time: 10.0010s 
+Total Events: 897
+Min Latency: 11.12 
+Avg Latency: 11.15 
+Max Latency: 16.93 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 21 of 30
+---------------------------------
+Events Per Second: 89.75
+Total Time: 10.0012s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 12.98 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 22 of 30
+---------------------------------
+Events Per Second: 89.76
+Total Time: 10.0111s 
+Total Events: 899
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 13.71 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 23 of 30
+---------------------------------
+Events Per Second: 89.74
+Total Time: 10.0021s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 15.49 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 24 of 30
+---------------------------------
+Events Per Second: 89.76
+Total Time: 10.0001s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 14.70 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 25 of 30
+---------------------------------
+Events Per Second: 89.72
+Total Time: 10.0037s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 16.47 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 26 of 30
+---------------------------------
+Events Per Second: 89.78
+Total Time: 10.0088s 
+Total Events: 899
+Min Latency: 11.12 
+Avg Latency: 11.13 
+Max Latency: 11.75 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 27 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0032s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 17.04 
+95th Percentile Latency: 11.04 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 28 of 30
+---------------------------------
+Events Per Second: 89.74
+Total Time: 10.0017s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 14.78 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 29 of 30
+---------------------------------
+Events Per Second: 89.70
+Total Time: 10.0059s 
+Total Events: 898
+Min Latency: 11.12 
+Avg Latency: 11.14 
+Max Latency: 17.10 
+95th Percentile Latency: 11.24 
+---------------------------------
+---------------------------------
+Date: 2025-03-04 23:40:30
+Host: pc
+CPU Max Prime: 50000
+Run Time: 10 seconds
+Loop: 30 of 30
+---------------------------------
+Events Per Second: 89.73
+Total Time: 10.0030s 
+Total Events: 898
+Min Latency: 11.13 
+Avg Latency: 11.14 
+Max Latency: 14.44 
+95th Percentile Latency: 11.24 
+---------------------------------

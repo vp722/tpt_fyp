@@ -7,9 +7,9 @@ if ! command -v sysbench &> /dev/null; then
 fi
 
 # Define loop count and other parameters
-LOOPS=${1:-1}        # Number of loops to run (default: 1)
+LOOPS=${1:-30}        # Number of loops to run (default: 1)
 CPU_MAX_PRIME=50000  # Prime number limit for CPU test
-RUN_TIME=30          # Time duration for each run (30 seconds)
+RUN_TIME=10          # Time duration for each run (30 seconds)
 HOSTNAME=$(hostname) # Get system hostname
 DATE=$(date "+%Y-%m-%d %H:%M:%S")  # Get current date and time
 
