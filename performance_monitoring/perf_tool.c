@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
+#include <errno.h>  // Added missing header
 
 struct perf_counter {
     int fd;
@@ -28,7 +29,7 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.size = sizeof(counter->attr);
     counter->attr.config = config;
     counter->attr.disabled = 1;
-    counter->attr.inherit = 1;  // Track child processes
+    counter->attr.inherit = 1;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, -1, 0);
     if (counter->fd < 0) {
@@ -40,49 +41,69 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 
 void run_benchmark(const char *program, char *const argv[]) {
     int pipefd[2];
-    pipe(pipefd);
+    if (pipe(pipefd) < 0) {
+        perror("pipe creation failed");
+        exit(EXIT_FAILURE);
+    }
     
     struct perf_counter counters[3];
     pid_t pid = fork();
     
     if (pid == 0) { // Child process
-        close(pipefd[1]); // Close write end
+        close(pipefd[1]);
         
-        // Wait for parent to set up counters
+        // Wait for parent's ready signal
         char dummy;
-        read(pipefd[0], &dummy, 1);
+        ssize_t bytes_read = read(pipefd[0], &dummy, 1);
         close(pipefd[0]);
+        
+        if (bytes_read != 1) {
+            fprintf(stderr, "Child failed to receive ready signal\n");
+            exit(EXIT_FAILURE);
+        }
 
         execvp(program, argv);
         perror("execvp");
         exit(EXIT_FAILURE);
     } else if (pid > 0) { // Parent process
-        close(pipefd[0]); // Close read end
+        close(pipefd[0]);
         
-        // Initialize counters to monitor child process
+        // Initialize counters
         init_counter(&counters[0], PERF_TYPE_HARDWARE, 
-                    PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
+                     PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
         init_counter(&counters[1], PERF_TYPE_HARDWARE,
-                    PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
+                     PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
         init_counter(&counters[2], PERF_TYPE_SOFTWARE,
-                    PERF_COUNT_SW_PAGE_FAULTS, "page-faults", pid);
+                     PERF_COUNT_SW_PAGE_FAULTS, "page-faults", pid);
 
-        // Start counters
-        for (int i = 0; i < 3; i++)
-            ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0);
+        // Enable counters
+        for (int i = 0; i < 3; i++) {
+            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+                fprintf(stderr, "Failed to enable %s: %s\n", 
+                       counters[i].name, strerror(errno));
+            }
+        }
 
-        // Signal child to proceed
-        write(pipefd[1], "G", 1);
+        // Signal child to start
+        ssize_t bytes_written = write(pipefd[1], "G", 1);
         close(pipefd[1]);
+        if (bytes_written != 1) {
+            fprintf(stderr, "Failed to signal child process\n");
+        }
 
         // Wait for benchmark completion
         int status;
         waitpid(pid, &status, 0);
 
-        // Stop and read counters
+        // Read and disable counters
         for (int i = 0; i < 3; i++) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
-            read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
+            ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
+            if (bytes_read != sizeof(uint64_t)) {
+                fprintf(stderr, "Failed to read %s: %s\n",
+                       counters[i].name, strerror(errno));
+                counters[i].value = 0;
+            }
             close(counters[i].fd);
         }
 
