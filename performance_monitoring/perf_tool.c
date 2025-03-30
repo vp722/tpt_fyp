@@ -1,117 +1,108 @@
-
+#include <linux/perf_event.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
 #include <string.h>
-#include <errno.h>
-#include <linux/perf_event.h>
+#include <sys/ioctl.h>
 #include <sys/syscall.h>
-#include <stdint.h>
+#include <sys/wait.h>
+#include <time.h>
+#include <unistd.h>
 
-
-// System call wrapper for perf_event_open
-static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
-    int cpu, int group_fd, unsigned long flags) {
-    return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
-}
-
-// Basic counter structure
 struct perf_counter {
     int fd;
-    uint64_t id;
+    struct perf_event_attr attr;
     const char *name;
     uint64_t value;
 };
 
-// Initialize a performance counter
-int init_counter(struct perf_counter *counter, 
-    uint32_t type, uint64_t config, const char *name) {
-    struct perf_event_attr attr = {
-        .type = type,
-        .size = sizeof(struct perf_event_attr),
-        .config = config,
-        .disabled = 1,
-        .exclude_kernel = 1,
-        .exclude_hv = 1
-    };
-
-    counter->fd = perf_event_open(&attr, 0, -1, -1, 0);
-    if (counter->fd < 0) {
-        fprintf(stderr, "Error creating counter %s: %s\n",
-        name, strerror(errno));
-        return -1;
-    }
-
-    counter->name = name;
-    return 0;
+static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
+                          int cpu, int group_fd, unsigned long flags) {
+    return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
 }
 
-void run_and_measure(const char *filename) {
-    // This function should run the program and measure its performance
+void init_counter(struct perf_counter *counter, uint32_t type,
+                 uint64_t config, const char *name, pid_t pid) {
+    memset(&counter->attr, 0, sizeof(counter->attr));
+    counter->attr.type = type;
+    counter->attr.size = sizeof(counter->attr);
+    counter->attr.config = config;
+    counter->attr.disabled = 1;
+    counter->attr.inherit = 1;  // Track child processes
+
+    counter->fd = perf_event_open(&counter->attr, pid, -1, -1, 0);
+    if (counter->fd < 0) {
+        fprintf(stderr, "Error creating %s: %s\n", name, strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+    counter->name = name;
+}
+
+void run_benchmark(const char *program, char *const argv[]) {
+    int pipefd[2];
+    pipe(pipefd);
+    
+    struct perf_counter counters[3];
     pid_t pid = fork();
-    if (pid == 0) {
-        // Child process
-        char *args[] = {filename, NULL};
-        execv(filename, args);
-        perror("execv failed");
-        exit(EXIT_FAILURE);
-    } else if (pid < 0) {
-        // Fork failed
-        perror("fork failed");
-        exit(EXIT_FAILURE);
-    } else {
-
-        // Parent process
+    
+    if (pid == 0) { // Child process
+        close(pipefd[1]); // Close write end
         
-        printf("Measuring performance for %s...\n", filename);
+        // Wait for parent to set up counters
+        char dummy;
+        read(pipefd[0], &dummy, 1);
+        close(pipefd[0]);
 
-        struct perf_counter counters[2];
+        execvp(program, argv);
+        perror("execvp");
+        exit(EXIT_FAILURE);
+    } else if (pid > 0) { // Parent process
+        close(pipefd[0]); // Close read end
+        
+        // Initialize counters to monitor child process
+        init_counter(&counters[0], PERF_TYPE_HARDWARE, 
+                    PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
+        init_counter(&counters[1], PERF_TYPE_HARDWARE,
+                    PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
+        init_counter(&counters[2], PERF_TYPE_SOFTWARE,
+                    PERF_COUNT_SW_PAGE_FAULTS, "page-faults", pid);
 
-        if (init_counter(&counters[0], PERF_TYPE_HARDWARE, 
-            PERF_COUNT_HW_CPU_CYCLES, "CPU Cycles") < 0) {
-            exit(EXIT_FAILURE);
-        }
-        if (init_counter(&counters[1], PERF_TYPE_HARDWARE, 
-            PERF_COUNT_HW_INSTRUCTIONS, "Instructions") < 0) {
-            exit(EXIT_FAILURE);
-        }
-
-        // Start the counters
-        for (int i = 0; i < 2; i++) {
-            ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+        // Start counters
+        for (int i = 0; i < 3; i++)
             ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0);
-        }
-        // Wait for the child process to finish 
+
+        // Signal child to proceed
+        write(pipefd[1], "G", 1);
+        close(pipefd[1]);
+
+        // Wait for benchmark completion
         int status;
         waitpid(pid, &status, 0);
-        // Stop the counters
-        for (int i = 0; i < 2; i++) {
+
+        // Stop and read counters
+        for (int i = 0; i < 3; i++) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
             read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
-            printf("%s: %llu\n", counters[i].name, counters[i].value);
-            // Close the file descriptor
             close(counters[i].fd);
         }
+
+        // Print results
+        printf("\nPerformance counters for '%s':\n", program);
+        printf("%-20s: %'lu\n", "CPU Cycles", counters[0].value);
+        printf("%-20s: %'lu\n", "Instructions", counters[1].value);
+        printf("%-20s: %'lu\n", "Page Faults", counters[2].value);
+    } else {
+        perror("fork");
+        exit(EXIT_FAILURE);
     }
 }
 
-
-
-int main(int argc, char *argv[])   
-{
-    
+int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <program> [args...]\n", argv[0]);
         return EXIT_FAILURE;
     }
 
-    // the file is a program to run -> run it in another function 
-    // and pass the filename to it
-
-    run_and_measure(argv[1]);
-
-
+    run_benchmark(argv[1], &argv[1]);
     return EXIT_SUCCESS;
 }
