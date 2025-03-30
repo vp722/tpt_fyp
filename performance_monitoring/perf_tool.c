@@ -8,15 +8,18 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
-#include <errno.h>  // Added missing header
+#include <errno.h>  
 
+// info about the counter
+// each instance of this struct represents a single perforamnce counter 
 struct perf_counter {
     int fd;
-    struct perf_event_attr attr;
+    struct perf_event_attr attr; // config for the counter
     const char *name;
-    uint64_t value;
+    uint64_t value; // measured value 
 };
 
+// syscall to setup a performance monitoring event
 static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
                           int cpu, int group_fd, unsigned long flags) {
     return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
@@ -91,7 +94,7 @@ void run_benchmark(const char *program, char *const argv[]) {
             fprintf(stderr, "Failed to signal child process\n");
         }
 
-        // Wait for benchmark completion
+        // Wait for program completion
         int status;
         waitpid(pid, &status, 0);
 
