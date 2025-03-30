@@ -1,2 +1,2 @@
-perf_tool: performance_monitoring/perf_tool.c
-	gcc -O2 -Wall performance_monitoring/perf_tool.c -o performance_monitoring/perf_tool
+perf_tool: perf_tool.c
+	gcc -O2 -Wall perf_tool.c -o perf_tool
