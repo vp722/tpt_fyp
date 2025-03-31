@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define COUNTER_COUNT 3
+#define COUNTER_COUNT 5
 
 struct perf_counter {
     int fd;
@@ -44,7 +44,12 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 void init_counters(struct perf_counter counters[], pid_t pid) {
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
-    init_counter(&counters[2], PERF_TYPE_SOFTWARE, PERF_COUNT_SW_PAGE_FAULTS, "page_faults", pid);
+    // Data TLB load miss walk duration (Intel specific code)
+    init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid);
+    // Data TLB store miss walk duration (Intel specific code)
+    init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid);
+    // Instruction TLB walk duration (Intel specific code)
+    init_counter(&counters[4], PERF_TYPE_RAW, 0x1085, "itlb_misses_walk_duration", pid);
 }
 
 void run_benchmark(const char *program, char *const argv[]) {
@@ -101,10 +106,23 @@ void run_benchmark(const char *program, char *const argv[]) {
             close(counters[i].fd);
         }
 
+        uint64_t total_page_walk_cycles = counters[2].value + counters[3].value + counters[4].value;   
+
         printf("\nPerformance counters for '%s':\n", program);
         printf("%-20s: %'lu\n", "CPU Cycles", counters[0].value);
         printf("%-20s: %'lu\n", "Instructions", counters[1].value);
-        printf("%-20s: %'lu\n", "Page Faults", counters[2].value);
+        printf("\nPage Walk Analysis:\n");
+        printf("%-20s: %'lu\n", "DTLB Load Walk Cycles", counters[2].value);
+        printf("%-20s: %'lu\n", "DTLB Store Walk Cycles", counters[3].value);
+        printf("%-20s: %'lu\n", "ITLB Walk Cycles", counters[4].value);
+        printf("%-20s: %'lu\n", "Total Page Walk Cycles", total_page_walk_cycles);
+
+        // calculating the percentage of cycles spent on page walk 
+        if (counters[0].value > 0) {
+            double walk_percent = (double)total_page_walk_cycles / counters[0].value * 100;
+            printf("%-20s: %.2f%%\n", "Page Walk %", walk_percent);
+        }
+
     } else {
         perror("fork");
         exit(EXIT_FAILURE);
