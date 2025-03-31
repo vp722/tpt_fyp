@@ -117,11 +117,6 @@ void run_benchmark(const char *program, char *const argv[]) {
         printf("%-20s: %'lu\n", "ITLB Walk Cycles", counters[4].value);
         printf("%-20s: %'lu\n", "Total Page Walk Cycles", total_page_walk_cycles);
 
-        // calculating the percentage of cycles spent on page walk 
-        if (counters[0].value > 0) {
-            double walk_percent = (double)total_page_walk_cycles / counters[0].value * 100;
-            printf("%-20s: %.2f%%\n", "Page Walk %", walk_percent);
-        }
 
     } else {
         perror("fork");

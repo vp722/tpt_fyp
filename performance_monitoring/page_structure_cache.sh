@@ -14,7 +14,7 @@ if [[ ! -x "$PERF_MONITOR" ]]; then
 fi
 
 for MEMORY_BLOCK_SIZE in "${BLOCK_SIZES[@]}"; do
-    echo "\nRunning sysbench with block size: $MEMORY_BLOCK_SIZE"
+    echo "Running sysbench with block size: $MEMORY_BLOCK_SIZE"
     SYSBENCH_CMD=(sysbench memory \
         --memory-block-size="$MEMORY_BLOCK_SIZE" \
         --memory-total-size="$MEMORY_TOTAL_SIZE" \
