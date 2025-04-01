@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define COUNTER_COUNT 5
+#define COUNTER_COUNT 11
 
 struct perf_counter {
     int fd;
@@ -44,12 +44,15 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 void init_counters(struct perf_counter counters[], pid_t pid) {
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
-    // Data TLB load miss walk duration (Intel specific code)
     init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid);
-    // Data TLB store miss walk duration (Intel specific code)
     init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid);
-    // Instruction TLB walk duration (Intel specific code)
     init_counter(&counters[4], PERF_TYPE_RAW, 0x1085, "itlb_misses_walk_duration", pid);
+    init_counter(&counters[5], PERF_TYPE_RAW, 0x108, "dtlb_load_misses.miss_causes_a_walk", pid);
+    init_counter(&counters[6], PERF_TYPE_RAW, 0xe08, "dtlb_load_misses.walk_completed", pid); 
+    init_counter(&counters[7], PERF_TYPE_RAW, 0x149, "dtlb_store_misses.miss_causes_a_walk", pid);
+    init_counter(&counters[8], PERF_TYPE_RAW, 0xe49, "dtlb_store_misses.walk_completed", pid); 
+    init_counter(&counters[9], PERF_TYPE_RAW, 0x185, "itlb_misses.miss_causes_a_walk", pid);
+    init_counter(&counters[10], PERF_TYPE_RAW, 0xe85, "itlb_misses.walk_completed", pid);
 }
 
 void run_benchmark(const char *program, char *const argv[]) {
@@ -116,6 +119,17 @@ void run_benchmark(const char *program, char *const argv[]) {
         printf("%-20s: %'lu\n", "DTLB Store Walk Cycles", counters[3].value);
         printf("%-20s: %'lu\n", "ITLB Walk Cycles", counters[4].value);
         printf("%-20s: %'lu\n", "Total Page Walk Cycles", total_page_walk_cycles);
+
+        printf("\nDTLB Load Misses:\n");
+        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[5].value);
+        printf("%-20s: %'lu\n", "Walk Completed", counters[6].value);
+        printf("\nDTLB Store Misses:\n");
+        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[7].value);
+        printf("%-20s: %'lu\n", "Walk Completed", counters[8].value);
+        printf("\nITLB Misses:\n");
+        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[9].value);
+        printf("%-20s: %'lu\n", "Walk Completed", counters[10].value);
+        printf("\n");
 
 
     } else {
