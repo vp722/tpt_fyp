@@ -1,63 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
+#include <time.h>
 #include <unistd.h>
 
 #define SIZE_1GB (1UL << 30)  // 1GB
-#define PAGE_SIZE 4096         // 4KB page
-#define NUM_ACCESSES 100000    // Adjust for sufficient stress
+#define PAGE_SIZE 4096         // 4KB
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <num_1gb_regions>\n", argv[0]);
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <buffer_size_GB> <num_accesses>\n", argv[0]);
         return 1;
     }
 
-    int num_regions = atoi(argv[1]);
-    if (num_regions <= 0) {
-        fprintf(stderr, "Invalid number of regions: %d\n", num_regions);
+    size_t buffer_size_gb = atoi(argv[1]);
+    size_t buffer_size = buffer_size_gb * SIZE_1GB;
+    size_t num_accesses = atoi(argv[2]);
+
+    // Allocate a large buffer
+    char *buffer = mmap(
+        NULL,
+        buffer_size,
+        PROT_READ | PROT_WRITE,
+        MAP_PRIVATE | MAP_ANONYMOUS,
+        -1, 0
+    );
+
+    if (buffer == MAP_FAILED) {
+        perror("mmap");
         return 1;
     }
 
-    // Allocate N separate 1GB regions
-    char **regions = malloc(num_regions * sizeof(char *));
-    if (!regions) {
-        perror("malloc");
-        return 1;
+    // Pre-touch all pages to populate page tables (optional but reduces noise)
+    printf("Pre-touching memory...\n");
+    for (size_t i = 0; i < buffer_size; i += PAGE_SIZE) {
+        buffer[i] = 0;
     }
 
-    // Map 1GB regions and touch one page in each
-    for (int i = 0; i < num_regions; i++) {
-        regions[i] = mmap(
-            NULL,
-            SIZE_1GB,
-            PROT_READ | PROT_WRITE,
-            MAP_PRIVATE | MAP_ANONYMOUS,
-            -1, 0
-        );
-
-        if (regions[i] == MAP_FAILED) {
-            perror("mmap");
-            return 1;
-        }
-
-        // Touch the first page to commit memory
-        regions[i][0] = 0;
-    }
-
-    // Stress PDPTE cache with controlled accesses
+    // Generate random offsets across 1GB regions
+    srand(time(NULL));
     volatile char dummy;
-    for (int iter = 0; iter < NUM_ACCESSES; iter++) {
-        for (int i = 0; i < num_regions; i++) {
-            dummy = regions[i][0];  // Read to force PDPTE access
-        }
+    printf("Stressing PDPTE cache with %zu GB buffer and %zu accesses...\n", buffer_size_gb, num_accesses);
+
+    for (size_t i = 0; i < num_accesses; i++) {
+        // Randomly select a 1GB "region" within the buffer
+        size_t region = (size_t)rand() % buffer_size_gb;
+        // Random offset within the selected 1GB region
+        size_t offset = region * SIZE_1GB + (rand() % SIZE_1GB);
+        dummy = buffer[offset];  // Access the memory
     }
 
     // Cleanup
-    for (int i = 0; i < num_regions; i++) {
-        munmap(regions[i], SIZE_1GB);
-    }
-    free(regions);
-
+    munmap(buffer, buffer_size);
     return 0;
 }
