@@ -32,6 +32,7 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.config = config;
     counter->attr.disabled = 1;
     counter->attr.inherit = 1;
+    counter->attr.exclude_kernel = 1;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, -1, 0);
     if (counter->fd < 0) {
