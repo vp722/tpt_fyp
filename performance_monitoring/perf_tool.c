@@ -53,7 +53,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 //     init_counter(&counters[8], PERF_TYPE_RAW, 0xe49, "dtlb_store_misses.walk_completed", pid); 
 //     init_counter(&counters[9], PERF_TYPE_RAW, 0x185, "itlb_misses.miss_causes_a_walk", pid);
 //     init_counter(&counters[10], PERF_TYPE_RAW, 0xe85, "itlb_misses.walk_completed", pid);
-// }
+}
 
 void run_benchmark(const char *program, char *const argv[]) {
     int pipefd[2];
