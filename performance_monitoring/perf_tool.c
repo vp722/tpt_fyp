@@ -25,30 +25,33 @@ static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
 }
 
 void init_counter(struct perf_counter *counter, uint32_t type,
-                  uint64_t config, const char *name, pid_t pid) {
-    memset(&counter->attr, 0, sizeof(counter->attr));
-    counter->attr.type = type;
-    counter->attr.size = sizeof(counter->attr);
-    counter->attr.config = config;
-    counter->attr.disabled = 1;
-    counter->attr.inherit = 1;
+    uint64_t config, const char *name, pid_t pid, int group_fd) {
+memset(&counter->attr, 0, sizeof(counter->attr));
+counter->attr.type = type;
+counter->attr.size = sizeof(counter->attr);
+counter->attr.config = config;
+counter->attr.disabled = 1;
+counter->attr.inherit = 1;
+counter->attr.exclude_kernel = 1;  // Exclude kernel events
 
-    counter->fd = perf_event_open(&counter->attr, pid, -1, -1, 0);
-    if (counter->fd < 0) {
-        fprintf(stderr, "Error creating %s: %s\n", name, strerror(errno));
-        exit(EXIT_FAILURE);
-    }
-    counter->name = name;
+// Attach to the group leader
+counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
+if (counter->fd < 0) {
+fprintf(stderr, "Error creating %s: %s\n", name, strerror(errno));
+exit(EXIT_FAILURE);
+}
+counter->name = name;
 }
 
 void init_counters(struct perf_counter counters[], pid_t pid) {
-    init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid);
-    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid);
+    init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
+    int group_fd = counters[0].fd;
+    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, group_fd);
     // init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid);
     // init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid);
     // init_counter(&counters[4], PERF_TYPE_RAW, 0x1085, "itlb_misses_walk_duration", pid);
     // init_counter(&counters[5], PERF_TYPE_RAW, 0x108, "dtlb_load_misses.miss_causes_a_walk", pid);
-    init_counter(&counters[2], PERF_TYPE_RAW, 0xe08, "dtlb_load_misses.walk_completed", pid); 
+    init_counter(&counters[2], PERF_TYPE_RAW, 0xe08, "dtlb_load_misses.walk_completed", pid, -1); 
     // init_counter(&counters[7], PERF_TYPE_RAW, 0x149, "dtlb_store_misses.miss_causes_a_walk", pid);
 //     init_counter(&counters[8], PERF_TYPE_RAW, 0xe49, "dtlb_store_misses.walk_completed", pid); 
 //     init_counter(&counters[9], PERF_TYPE_RAW, 0x185, "itlb_misses.miss_causes_a_walk", pid);
