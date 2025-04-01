@@ -32,7 +32,6 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.config = config;
     counter->attr.disabled = 1;
     counter->attr.inherit = 1;
-    counter->attr.exclude_kernel = 1;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, -1, 0);
     if (counter->fd < 0) {
@@ -86,13 +85,15 @@ void run_benchmark(const char *program, char *const argv[]) {
         close(pipefd[0]);
         
         init_counters(counters, pid);
-        
+
+        // enable perforamnce counters
         for (int i = 0; i < COUNTER_COUNT; i++) {
             if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
                 fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
             }
         }
 
+        // signal the child process to start
         ssize_t bytes_written = write(pipefd[1], "G", 1);
         close(pipefd[1]);
         if (bytes_written != 1) {
@@ -117,7 +118,7 @@ void run_benchmark(const char *program, char *const argv[]) {
             close(counters[i].fd);
         }
 
-        uint64_t total_page_walk_cycles = counters[2].value + counters[3].value + counters[4].value;   
+        // uint64_t total_page_walk_cycles = counters[2].value + counters[3].value + counters[4].value;   
 
         printf("\nPerformance counters for '%s':\n", program);
         printf("%-20s: %'lu\n", "CPU Cycles", counters[0].value);
@@ -130,7 +131,7 @@ void run_benchmark(const char *program, char *const argv[]) {
 
         printf("\nDTLB Load Misses:\n");
         // printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[5].value);
-        printf("%-20s: %'lu\n", "Walk Completed", counters[3].value);
+        printf("%-20s: %'lu\n", "Walk Completed", counters[2].value);
         // printf("\nDTLB Store Misses:\n");
         // printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[7].value);
         // printf("%-20s: %'lu\n", "Walk Completed", counters[8].value);
