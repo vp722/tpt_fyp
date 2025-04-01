@@ -76,9 +76,11 @@ void run_benchmark(const char *program, char *const argv[]) {
             exit(EXIT_FAILURE);
         }
 
-        execvp(program, argv);
-        perror("execvp");
-        exit(EXIT_FAILURE);
+        if (execvp(program, argv) == -1) {
+            perror("execvp");
+            exit(EXIT_FAILURE);  // Ensure the child exits immediately
+        }
+        
     } else if (pid > 0) {
         close(pipefd[0]);
         
@@ -98,6 +100,11 @@ void run_benchmark(const char *program, char *const argv[]) {
 
         int status;
         waitpid(pid, &status, 0);
+        
+        if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
+            fprintf(stderr, "Program execution failed. Discarding performance results.\n");
+            return;
+        }
 
         for (int i = 0; i < COUNTER_COUNT; i++) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
@@ -130,6 +137,7 @@ void run_benchmark(const char *program, char *const argv[]) {
         printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[9].value);
         printf("%-20s: %'lu\n", "Walk Completed", counters[10].value);
         printf("\n");
+
 
 
     } else {
