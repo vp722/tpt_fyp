@@ -101,10 +101,10 @@ void run_benchmark(const char *program, char *const argv[]) {
         int status;
         waitpid(pid, &status, 0);
 
-        // if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-        //     fprintf(stderr, "Program execution failed. Discarding performance results.\n");
-        //     return;
-        // }
+        if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
+            fprintf(stderr, "Program execution failed. Discarding performance results.\n");
+            return;
+        }
 
         for (int i = 0; i < COUNTER_COUNT; i++) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
