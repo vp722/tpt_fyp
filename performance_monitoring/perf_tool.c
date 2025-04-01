@@ -121,22 +121,22 @@ void run_benchmark(const char *program, char *const argv[]) {
         printf("\nPerformance counters for '%s':\n", program);
         printf("%-20s: %'lu\n", "CPU Cycles", counters[0].value);
         printf("%-20s: %'lu\n", "Instructions", counters[1].value);
-        printf("\nPage Walk Analysis:\n");
-        printf("%-20s: %'lu\n", "DTLB Load Walk Cycles", counters[2].value);
-        printf("%-20s: %'lu\n", "DTLB Store Walk Cycles", counters[3].value);
-        printf("%-20s: %'lu\n", "ITLB Walk Cycles", counters[4].value);
-        printf("%-20s: %'lu\n", "Total Page Walk Cycles", total_page_walk_cycles);
+        // printf("\nPage Walk Analysis:\n");
+        // printf("%-20s: %'lu\n", "DTLB Load Walk Cycles", counters[2].value);
+        // printf("%-20s: %'lu\n", "DTLB Store Walk Cycles", counters[3].value);
+        // printf("%-20s: %'lu\n", "ITLB Walk Cycles", counters[4].value);
+        // printf("%-20s: %'lu\n", "Total Page Walk Cycles", total_page_walk_cycles);
 
         printf("\nDTLB Load Misses:\n");
-        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[5].value);
-        printf("%-20s: %'lu\n", "Walk Completed", counters[6].value);
-        printf("\nDTLB Store Misses:\n");
-        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[7].value);
-        printf("%-20s: %'lu\n", "Walk Completed", counters[8].value);
-        printf("\nITLB Misses:\n");
-        printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[9].value);
-        printf("%-20s: %'lu\n", "Walk Completed", counters[10].value);
-        printf("\n");
+        // printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[5].value);
+        printf("%-20s: %'lu\n", "Walk Completed", counters[3].value);
+        // printf("\nDTLB Store Misses:\n");
+        // printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[7].value);
+        // printf("%-20s: %'lu\n", "Walk Completed", counters[8].value);
+        // printf("\nITLB Misses:\n");
+        // printf("%-20s: %'lu\n", "Miss Causes a Walk", counters[9].value);
+        // printf("%-20s: %'lu\n", "Walk Completed", counters[10].value);
+        // printf("\n");
 
 
 
