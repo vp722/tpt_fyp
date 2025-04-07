@@ -1,0 +1,131 @@
+Using CPUID GenuineIntel-6-4F-1
+intel_pt default config: tsc,pt,branch
+dtlb_load_misses.miss_causes_a_walk -> cpu/umask=0x1,(null)=0x186a3,event=0x8/
+dtlb_load_misses.walk_completed -> cpu/umask=0xe,(null)=0x186a3,event=0x8/
+dtlb_store_misses.miss_causes_a_walk -> cpu/umask=0x1,(null)=0x186a3,event=0x49/
+dtlb_store_misses.walk_completed -> cpu/umask=0xe,(null)=0x186a3,event=0x49/
+itlb_misses.miss_causes_a_walk -> cpu/umask=0x1,(null)=0x186a3,event=0x85/
+itlb_misses.walk_completed -> cpu/umask=0xe,(null)=0x186a3,event=0x85/
+ept.walk_cycles -> cpu/umask=0x10,(null)=0x1e8483,event=0x4f/
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0x108
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 3
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0xe08
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 4
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0x149
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 5
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0xe49
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 7
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0x185
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 8
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0xe85
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 9
+------------------------------------------------------------
+perf_event_attr:
+  type                             4
+  size                             112
+  config                           0x104f
+  sample_type                      IDENTIFIER
+  read_format                      TOTAL_TIME_ENABLED|TOTAL_TIME_RUNNING
+  disabled                         1
+  inherit                          1
+  enable_on_exec                   1
+  exclude_guest                    1
+------------------------------------------------------------
+sys_perf_event_open: pid 1197208  cpu -1  group_fd -1  flags 0x8 = 10
+dtlb_load_misses.miss_causes_a_walk: 0: 844 866574 534952
+dtlb_load_misses.miss_causes_a_walk: 1367 866574 534952
+dtlb_load_misses.walk_completed: 0: 671 866574 866574
+dtlb_load_misses.walk_completed: 671 866574 866574
+dtlb_store_misses.miss_causes_a_walk: 0: 140 866574 866574
+dtlb_store_misses.miss_causes_a_walk: 140 866574 866574
+dtlb_store_misses.walk_completed: 0: 102 866574 866574
+dtlb_store_misses.walk_completed: 102 866574 866574
+itlb_misses.miss_causes_a_walk: 0: 202 866574 331622
+itlb_misses.miss_causes_a_walk: 527 866574 331622
+itlb_misses.walk_completed: 0: 0 866574 0
+itlb_misses.walk_completed: 0 866574 0
+ept.walk_cycles: 0: 0 866574 0
+ept.walk_cycles: 0 866574 0
+
+ Performance counter stats for 'sleep 1':
+
+             1,367      dtlb_load_misses.miss_causes_a_walk                                     (61.73%)
+               671      dtlb_load_misses.walk_completed                                   
+               140      dtlb_store_misses.miss_causes_a_walk                                   
+               102      dtlb_store_misses.walk_completed                                   
+               527      itlb_misses.miss_causes_a_walk                                     (38.27%)
+     <not counted>      itlb_misses.walk_completed                                     (0.00%)
+     <not counted>      ept.walk_cycles                                               (0.00%)
+
+       1.001455003 seconds time elapsed
+
+       0.001483000 seconds user
+       0.000000000 seconds sys
+
+

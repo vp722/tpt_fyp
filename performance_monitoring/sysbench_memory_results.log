@@ -1,0 +1,47 @@
+Starting sysbench memory benchmark...
+---------------------------------
+Date: 2025-03-31 10:52:20
+Host: kea06
+Total Size: 100G
+Block Size: 4G
+Operation: read
+Access Mode: rnd
+Loop: 1 of 1
+---------------------------------
+sysbench 1.0.18 (using system LuaJIT 2.1.0-beta3)
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from current time
+
+
+Running memory speed test with the following options:
+  block size: 4194304KiB
+  total size: 102400MiB
+  operation: read
+  scope: global
+
+Initializing worker threads...
+
+Threads started!
+
+Total operations: 1 (    0.08 per second)
+
+4096.00 MiB transferred (319.17 MiB/sec)
+
+
+General statistics:
+    total time:                          12.8281s
+    total number of events:              1
+
+Latency (ms):
+         min:                                12827.92
+         avg:                                12827.92
+         max:                                12827.92
+         95th percentile:                    12838.21
+         sum:                                12827.92
+
+Threads fairness:
+    events (avg/stddev):           1.0000/0.00
+    execution time (avg/stddev):   12.8279/0.00
+---------------------------------
