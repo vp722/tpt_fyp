@@ -1,5 +1,9 @@
 #!/bin/bash
 
+PERF_PATH=$(find /usr/lib/linux-tools/*/perf | head -1)
+echo "Using perf at: $PERF_PATH"
+
+
 # Check if at least one argument is passed (the command to run)
 if [ "$#" -lt 1 ]; then
     echo "Usage: $0 <command> [args...]"
@@ -36,4 +40,4 @@ EVENTS=(
 EVENT_LIST=$(IFS=, ; echo "${EVENTS[*]}")
 
 # Run perf stat with the events and no multiplexing
-perf stat --no-multiplex -e "$EVENT_LIST" -- "$@"
+$PERF_PATH stat --no-multiplex -e "$EVENT_LIST" -- "$@"
