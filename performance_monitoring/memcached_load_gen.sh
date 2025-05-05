@@ -26,5 +26,5 @@ echo "Step 2: Running random access test..."
   --connections="$CONNECTIONS" \
   --keysize="$KEYSIZE" \
   --valuesize="$VALUESIZE" \
-  --distribution="$DISTRIBUTION" \
+  --iadist="$DISTRIBUTION" \
   --qps=0 
