@@ -3,6 +3,8 @@
 PERF_PATH=$(find /usr/lib/linux-tools/*/perf | head -1)
 echo "Using perf at: $PERF_PATH"
 
+result_line="\"$@\""
+
 # Check if at least one argument is passed (the command to run)
 if [ "$#" -lt 1 ]; then
     echo "Usage: $0 <command> [args...]"
@@ -55,8 +57,6 @@ for event in "${EVENTS[@]}"; do
         # Run perf and capture the output, redirect errors to capture them too
         output=$( $PERF_PATH stat -e "$(IFS=, ; echo "${group[*]}")" -- "$@" 2>&1 )
 
-        # Prepare the first column for the command (as the identifier)
-        result_line="\"$@\""
         
         # Extract the values for each event in this group
         for event in "${group[@]}"; do
@@ -64,9 +64,6 @@ for event in "${EVENTS[@]}"; do
             value=$(echo "$output" | grep "$event" | awk '{print $1}')
             result_line+=",$value"
         done
-
-        # Write the result as a single line into the CSV
-        echo "$result_line" >> output.csv
         
         # Reset for the next group
         group=()
@@ -79,16 +76,14 @@ done
 if [ "${#group[@]}" -gt 0 ]; then
     echo -e "\n>>> Running event group $group_id: ${group[*]}"
     output=$( $PERF_PATH stat -e "$(IFS=, ; echo "${group[*]}")" -- "$@" 2>&1 )
-
-    result_line="\"$@\""
     
     for event in "${group[@]}"; do
         value=$(echo "$output" | grep "$event" | awk '{print $1}')
         result_line+=",$value"
     done
-
-    echo "$result_line" >> output.csv
 fi
+
+echo "$result_line" >> output.csv
 
 echo -e "\n>>> All event groups completed."
 echo "Results saved to output.csv"
