@@ -91,7 +91,7 @@ void sample_counters(struct perf_counter counters[]) {
             fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
             counters[i].value = 0;
         }
-	printf("%s: %lu\n", counters[i].name, counters[i].value);
+//	printf("%s: %lu\n", counters[i].name, counters[i].value);
 //	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
@@ -105,14 +105,23 @@ int should_enable_tpt(struct perf_counter counters[]) {
     uint64_t dtlb_stores = counters[5].value;
     uint64_t ept_walk_cycles = counters[6].value;
 
-    uint64_t tlb_load_miss_ratio = dtlb_load_misses / dtlb_loads;
-    uint64_t tlb_store_miss_ratio = dtlb_store_misses / dtlb_stores;
-    uint64_t ept_walk_ratio = ept_walk_cycles / cycles;
+    double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
+    double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
+    double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
+
+
+    printf("ept_walk_cycles: %lu, dtlb_load_misses: %lu, dtlb_store_misses: %lu\n", ept_walk_cycles, dtlb_load_misses, dtlb_store_misses);
+    printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
+    printf("dtlb_loads: %lu, dtlb_stores: %lu\n", dtlb_loads, dtlb_stores);
+
+     printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
     // simple threshold based decision (following a simple heuristic)
     if (ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
         return 1; // enable TPT
     }
+
+    return 0; 
 }
 
 void run_executable(const char *program, char *const argv[]) {
