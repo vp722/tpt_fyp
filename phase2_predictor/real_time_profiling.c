@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define COUNTER_COUNT 2
+#define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
 #define CPI_THRESHOLD 1.0 
 
@@ -53,6 +53,33 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 void init_counters(struct perf_counter counters[], pid_t pid) {
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
+    
+    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
+        PERF_COUNT_HW_CACHE_DTLB | 
+        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+        "dtlb_load_misses", pid, -1);
+    
+    init_counter(&counters[3], PERF_TYPE_HW_CACHE,
+        PERF_COUNT_HW_CACHE_DTLB |
+        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+        "dtlb_store_misses", pid, -1);
+    
+    init_counter(&counters[4], PERF_TYPE_HW_CACHE,
+        PERF_COUNT_HW_CACHE_DTLB |
+        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
+        "dtlb_loads", pid, -1);
+    
+    init_counter(&counters[5], PERF_TYPE_HW_CACHE,
+        PERF_COUNT_HW_CACHE_DTLB |
+        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
+        "dtlb_stores", pid, -1);
+    
+    init_counter(&counters[6], PERF_TYPE_RAW, 0x01f2, "ept_walk_cycles", pid, -1);
+
 }
 
 void sample_counters(struct perf_counter counters[]) {
@@ -62,7 +89,8 @@ void sample_counters(struct perf_counter counters[]) {
             fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
             counters[i].value = 0;
         }
-	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+	printf("%s: %lu\n", counters[i].name, counters[i].value);
+//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
 
