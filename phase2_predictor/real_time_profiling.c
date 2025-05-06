@@ -78,7 +78,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
         "dtlb_stores", pid, -1);
     
-    init_counter(&counters[6], PERF_TYPE_RAW, 0x01f2, "ept_walk_cycles", pid, -1);
+    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
 
 }
 
