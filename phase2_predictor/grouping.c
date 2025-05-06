@@ -13,10 +13,13 @@
 #include <time.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdbool.h>
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define CPI_THRESHOLD 1.0 
+#define CPI_THRESHOLD 1.0
+#define MAX_COUNTERS_PER_GROUP 4 
+#define MAX_GROUPS 10
 
 struct perf_counter {
     int fd;
@@ -24,6 +27,18 @@ struct perf_counter {
     const char *name;
     uint64_t value;
 };
+
+struct counter_group {
+    struct perf_counter counters[MAX_COUNTERS_PER_GROUP];
+    int num_counters;
+    uint64_t last_values[MAX_COUNTERS_PER_GROUP];
+    bool complted; 
+}; 
+
+// global state 
+static struct counter_group groups[MAX_GROUPS];
+static int current_group = 0;
+static int total_groups = 0;
 
 static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
                            int cpu, int group_fd, unsigned long flags) {
@@ -50,41 +65,64 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->name = name;
 }
 
-void init_counters(struct perf_counter counters[], pid_t pid) {
-    // Set cycles as group leader
-    init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
-
-    int group_fd = counters[0].fd;
-
-    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, group_fd);
-
-    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
+void init_counters(pid_t pid) {
+    // set total groups 
+    total_groups = 2; 
+    groups[0].num_counters = 4;
+    groups[1].num_counters = 3;
+    init_counter(&groups[0].counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
+    init_counter(&groups[0].counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
+    init_counter(&groups[0].counters[2], PERF_TYPE_HW_CACHE, 
         PERF_COUNT_HW_CACHE_DTLB | 
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_load_misses", pid, group_fd);
+        "dtlb_load_misses", pid, -1);
     
-    init_counter(&counters[3], PERF_TYPE_HW_CACHE,
+    init_counter(&groups[0].counters[3], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_store_misses", pid, group_fd);
+        "dtlb_store_misses", pid, -1);
     
-    init_counter(&counters[4], PERF_TYPE_HW_CACHE,
+    init_counter(&groups[1].counters[0], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_loads", pid, group_fd);
+        "dtlb_loads", pid, -1);
     
-    init_counter(&counters[5], PERF_TYPE_HW_CACHE,
+    init_counter(&groups[1].counters[1], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_stores", pid, group_fd);
+        "dtlb_stores", pid, -1);
     
-    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, group_fd);
+    init_counter(&groups[1].counters[2], PERF_TYPE_RAW, 0x01f2, "ept_walk_cycles", pid, -1);
+
+    // initize that the group is not completed
+    for (int i = 0; i < total_groups; i++) {
+        groups[i].complted = false;
+    }
+
 }
 
+void rotate_counter_groups() {
+    // Disable previous group
+    if (groups[current_group].complted) {
+        for (int i = 0; i < groups[current_group].num_counters; i++) {
+            ioctl(groups[current_group].counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
+        }
+        groups[current_group].complted = false;
+    }
+
+    // Move to next group
+    current_group = (current_group + 1) % total_groups;
+
+    // Enable new group
+    for (int i = 0; i < groups[current_group].num_counters; i++) {
+        ioctl(groups[current_group].counters[i].fd, PERF_EVENT_IOC_ENABLE, 0);
+    }
+    groups[current_group].complted = true;
+}
 
 void sample_counters(struct perf_counter counters[]) {
     for (int i = 0; i < COUNTER_COUNT; i++) {
@@ -93,8 +131,28 @@ void sample_counters(struct perf_counter counters[]) {
             fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
             counters[i].value = 0;
         }
-	printf("%s: %lu\n", counters[i].name, counters[i].value);
-//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+	// ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0); // need to reset counters or not. 
+    }
+}
+
+
+void sample_active_group() {
+    struct counter_group *active = &groups[current_group];
+    
+    for (int i = 0; i < active->num_counters; i++) {
+        uint64_t new_value;
+        read(active->counters[i].fd, &new_value, sizeof(uint64_t));
+        
+        // Calculate delta since last sample of this group
+        uint64_t delta = new_value - active->last_values[i];
+        active->last_values[i] = new_value;
+        
+        // Store/process deltas
+        printf("[Group %d] %s: %lu (+%lu)\n", 
+              current_group, 
+              active->counters[i].name,
+              new_value,
+              delta);
     }
 }
 
@@ -134,7 +192,7 @@ void run_executable(const char *program, char *const argv[]) {
     } else if (pid > 0) {
         close(pipefd[0]);
 
-        init_counters(counters, pid);
+        init_counters(pid);
 
         for (int i = 0; i < COUNTER_COUNT; i++) {
             if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
@@ -151,11 +209,16 @@ void run_executable(const char *program, char *const argv[]) {
         while (waitpid(pid, &status, WNOHANG) == 0) {
             time_t current_time = time(NULL);
             if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
-                sample_counters(counters);
+                rotate_counter_groups();
+                sample_active_group();
+                // sample_counters(counters);
 
-                if (should_enable_tpt(counters)) {
-                    printf("=========== ACTION : ENABLE TPT ===========\n");
+                if (current_group == total_groups - 1) {
+                    if (should_enable_tpt(counters)) {
+                        printf("=========== ACTION : ENABLE TPT ===========\n");
+                    }
                 }
+
                 last_sample_time = current_time;
             }
 
