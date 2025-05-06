@@ -99,15 +99,20 @@ void sample_counters(struct perf_counter counters[]) {
 int should_enable_tpt(struct perf_counter counters[]) {
     uint64_t cycles = counters[0].value;
     uint64_t instructions = counters[1].value;
+    uint64_t dtlb_load_misses = counters[2].value;
+    uint64_t dtlb_store_misses = counters[3].value;
+    uint64_t dtlb_loads = counters[4].value;
+    uint64_t dtlb_stores = counters[5].value;
+    uint64_t ept_walk_cycles = counters[6].value;
 
-    printf("Cycles: %lu, Instructions: %lu\n", cycles, instructions);
+    uint64_t tlb_load_miss_ratio = dtlb_load_misses / dtlb_loads;
+    uint64_t tlb_store_miss_ratio = dtlb_store_misses / dtlb_stores;
+    uint64_t ept_walk_ratio = ept_walk_cycles / cycles;
 
-    if (instructions == 0) return 0;
-
-    double cycles_per_instruction = (double)cycles / instructions;
-    printf("Cycles per Instruction: %.2f\n", cycles_per_instruction);
-
-    return cycles_per_instruction > CPI_THRESHOLD;
+    // simple threshold based decision (following a simple heuristic)
+    if (ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
+        return 1; // enable TPT
+    }
 }
 
 void run_executable(const char *program, char *const argv[]) {
