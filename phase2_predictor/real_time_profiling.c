@@ -38,6 +38,9 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.config = config;
     counter->attr.disabled = 1;
     counter->attr.inherit = 1;
+    counter->attr.exclude_kernel = 1;
+    counter->attr.exclude_hv = 1;
+    counter->attr.exclude_idle = 1;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
     if (counter->fd < 0) {
@@ -59,12 +62,15 @@ void sample_counters(struct perf_counter counters[]) {
             fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
             counters[i].value = 0;
         }
+	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
 
 int should_enable_tpt(struct perf_counter counters[]) {
     uint64_t cycles = counters[0].value;
     uint64_t instructions = counters[1].value;
+
+    printf("Cycles: %lu, Instructions: %lu\n", cycles, instructions);
 
     if (instructions == 0) return 0;
 
