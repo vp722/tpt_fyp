@@ -2,143 +2,184 @@
 // and makes a decision to enable TPT (one way) for the rest of the execution
 // this is a sampling based profiling tool extention for perf
 
-#define _GNU_SOURCE
+#include <linux/perf_event.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <sys/ioctl.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <dirent.h>
 #include <sys/syscall.h>
-#include <linux/perf_event.h>
+#include <sys/wait.h>
 #include <time.h>
+#include <unistd.h>
+#include <errno.h>
 
-#define SAMPLE_INTERVAL 100000  // 100 ms
-#define IPC_THRESHOLD 0.5       // Instruction per cycle threshold
-#define MAX_SAMPLES 1000
+#define COUNTER_COUNT 2
+#define SAMPLING_INTERVAL_SEC 1 // Set to 1 second (or modify as needed)
+#define TPT_THRESHOLD 1000 // Example threshold for enabling TPT
 
-typedef struct {
-    uint64_t cycles;
-    uint64_t instructions;
-    long rss_kb;
-} Sample;
+struct perf_counter {
+    int fd;
+    struct perf_event_attr attr;
+    const char *name;
+    uint64_t value;
+};
 
-Sample samples[MAX_SAMPLES];
-int sample_index = 0;
-
-int perf_event_open(struct perf_event_attr *hw_event, pid_t pid,
-                    int cpu, int group_fd, unsigned long flags) {
-    return syscall(__NR_perf_event_open, hw_event, pid, cpu, group_fd, flags);
+static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
+                           int cpu, int group_fd, unsigned long flags) {
+    return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
 }
 
-int open_perf_counter(uint64_t config, pid_t pid) {
-    struct perf_event_attr pe = {
-        .type = PERF_TYPE_HARDWARE,
-        .size = sizeof(struct perf_event_attr),
-        .config = config,
-        .disabled = 0,
-        .exclude_kernel = 0,
-        .exclude_hv = 0,
-    };
-    return perf_event_open(&pe, pid, -1, -1, 0);
+void init_counter(struct perf_counter *counter, uint32_t type, 
+                uint64_t config, const char *name, pid_t pid, int group_fd) {
+    memset(&counter->attr, 0, sizeof(counter->attr));
+    counter->attr.type = type;
+    counter->attr.size = sizeof(counter->attr);
+    counter->attr.config = config;
+    counter->attr.disabled = 1;
+    counter->attr.inherit = 1;
+
+    // Attach to the group leader
+    counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
+    if (counter->fd < 0) {
+        fprintf(stderr, "Error creating %s: %s\n", name, strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+    counter->name = name;
 }
 
-long get_rss_kb(pid_t pid) {
-    char path[64];
-    snprintf(path, sizeof(path), "/proc/%d/status", pid);
-    FILE *fp = fopen(path, "r");
-    if (!fp) return -1;
+void init_counters(struct perf_counter counters[], pid_t pid) {
+    init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
+    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
+}
 
-    char line[256];
-    long rss = -1;
-    while (fgets(line, sizeof(line), fp)) {
-        if (strncmp(line, "VmRSS:", 6) == 0) {
-            sscanf(line + 6, "%ld", &rss);
-            break;
+void sample_counters(struct perf_counter counters[]) {
+    for (int i = 0; i < COUNTER_COUNT; i++) {
+        ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
+        if (bytes_read != sizeof(uint64_t)) {
+            fprintf(stderr, "Failed to read %s: %s\n", counters[i].name, strerror(errno));
+            counters[i].value = 0;
         }
     }
-    fclose(fp);
-    return rss;
 }
 
+int should_enable_tpt(struct perf_counter counters[]) {
+    uint64_t cycles = counters[0].value;
+    uint64_t instructions = counters[1].value;
 
-void enable_tpt() {
-    // Placeholder: implement the actual TPT enabling mechanism here
-    printf("=== [ACTION] Required to enable TPT ===\n");
-}
-
-void collect_sample(pid_t pid, int fd_cycles, int fd_instr) {
-    Sample s;
-
-    ioctl(fd_cycles, PERF_EVENT_IOC_RESET, 0);
-    ioctl(fd_instr, PERF_EVENT_IOC_RESET, 0);
-
-    usleep(SAMPLE_INTERVAL);
-
-    read(fd_cycles, &s.cycles, sizeof(uint64_t));
-    read(fd_instr, &s.instructions, sizeof(uint64_t));
-
-    s.rss_kb = get_rss_kb(pid);
-
-    samples[sample_index % MAX_SAMPLES] = s;
-
-    printf("Sample %d: cycles=%lu, instr=%lu, rss=%ld KB",
-        sample_index, s.cycles, s.instructions, s.rss_kb);
-
-    // Decision logic for enabling TPT
-    if (s.cycles > 0) {
-        double ipc = (double) s.instructions / s.cycles;
-        if (ipc < IPC_THRESHOLD) {
-            enable_tpt();
-        }
-    }
-    sample_index++;
-}
-
-void profile_child(pid_t pid) {
-    int fd_cycles = open_perf_counter(PERF_COUNT_HW_CPU_CYCLES, pid);
-    int fd_instr  = open_perf_counter(PERF_COUNT_HW_INSTRUCTIONS, pid);
-
-    if (fd_cycles < 0 || fd_instr < 0) {
-        perror("perf_event_open");
-        exit(1);
+    if (instructions == 0) {
+        return 0; // Avoid division by zero
     }
 
-    collect_sample(pid, fd_cycles, fd_instr);
-    
+    // Example decision logic: if the CPU cycles to instructions ratio is too high, enable TPT
+    double cycles_to_instructions_ratio = (double)cycles / instructions;
+    printf("Cycles to Instructions Ratio: %.2f\n", cycles_to_instructions_ratio);
 
-    close(fd_cycles);
-    close(fd_instr);
-}
-
-int main(int argc, char **argv) {
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <target_executable> [args...]\n", argv[0]);
-        return EXIT_FAILURE;
+    // If the ratio exceeds a threshold, decide to enable TPT
+    if (cycles_to_instructions_ratio > TPT_THRESHOLD) {
+        return 1; // Enable TPT
     }
 
+    return 0; // Do not enable TPT
+}
+
+void run_executable(const char *program, char *const argv[]){
+    int pipefd[2];
+    if (pipe(pipefd) < 0) {
+        perror("pipe creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    struct perf_counter counters[COUNTER_COUNT];
     pid_t pid = fork();
 
     if (pid == 0) {
-        // Child process
-        execvp(argv[1], &argv[1]);
-        perror("execvp failed");
-        exit(EXIT_FAILURE);
+        close(pipefd[1]);
+        char dummy;
+        ssize_t bytes_read = read(pipefd[0], &dummy, 1);
+        close(pipefd[0]);
+
+        if (bytes_read != 1) {
+            fprintf(stderr, "Child failed to receive ready signal\n");
+            exit(EXIT_FAILURE);
+        }
+
+        if (execvp(program, argv) == -1) {
+            perror("execvp");
+            exit(EXIT_FAILURE);  // Ensure the child exits immediately
+        }
+        
     } else if (pid > 0) {
-        // Parent process
-        printf("Started child process PID: %d\n", pid);
-        profile_child(pid);
+        close(pipefd[0]);
+        
+        init_counters(counters, pid);
+
+        // Enable performance counters
+        for (int i = 0; i < COUNTER_COUNT; i++) {
+            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+                fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
+            }
+        }
+
+        // Signal the child process to start
+        ssize_t bytes_written = write(pipefd[1], "G", 1);
+        close(pipefd[1]);
+        if (bytes_written != 1) {
+            fprintf(stderr, "Failed to signal child process\n");
+        }
+
         int status;
-        waitpid(pid, &status, 0);
-        printf("Child exited with status %d\n", status);
-    } else {
-        perror("fork failed");
+        time_t last_sample_time = time(NULL);
+        while (waitpid(pid, &status, WNOHANG) == 0) {
+            // Periodic sampling
+            time_t current_time = time(NULL);
+            if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
+                sample_counters(counters);
+
+                // Make decision whether to enable TPT based on the sampled data
+                if (should_enable_tpt(counters)) {
+                    printf("=========== ACTION : ENABLE TPT ===========\n");
+
+                last_sample_time = current_time;
+            }
+            usleep(1000); 
+        }
+
+        // Wait for the child process to finish
+        if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
+            fprintf(stderr, "Program execution failed. Discarding performance results.\n");
+            return;
+        }
+
+        // Disable performance counters and print results
+        for (int i = 0; i < COUNTER_COUNT; i++) {
+            ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
+            ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
+            if (bytes_read != sizeof(uint64_t)) {
+                fprintf(stderr, "Failed to read %s: %s\n", counters[i].name, strerror(errno));
+                counters[i].value = 0;
+            }
+            close(counters[i].fd);
+        }
+
+        printf("\nPerformance counters for '%s':\n", program);
+        printf("%-20s: %'lu\n", "CPU Cycles", counters[0].value);
+        printf("%-20s: %'lu\n", "Instructions", counters[1].value);
+        
+        } 
+    }
+    else {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <program> [args...]\n", argv[0]);
         return EXIT_FAILURE;
     }
+
+    run_executable(argv[1], &argv[1]);
     return EXIT_SUCCESS;
 }
