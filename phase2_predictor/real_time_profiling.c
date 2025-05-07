@@ -1,7 +1,3 @@
-// this is a real time profiling tool - that collects metrics during the execution of the program
-// and makes a decision to enable TPT (one way) for the rest of the execution
-// this is a sampling based profiling tool extention for perf
-
 #include <linux/perf_event.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -13,11 +9,9 @@
 #include <time.h>
 #include <unistd.h>
 #include <errno.h>
-#include <unistd.h>
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define CPI_THRESHOLD 1.0 
 
 struct perf_counter {
     int fd;
@@ -26,13 +20,11 @@ struct perf_counter {
     uint64_t value;
 };
 
-static int perf_event_open(struct perf_event_attr *attr, pid_t pid,
-                           int cpu, int group_fd, unsigned long flags) {
+static int perf_event_open(struct perf_event_attr *attr, pid_t pid, int cpu, int group_fd, unsigned long flags) {
     return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
 }
 
-void init_counter(struct perf_counter *counter, uint32_t type, 
-                uint64_t config, const char *name, pid_t pid, int group_fd) {
+void init_counter(struct perf_counter *counter, uint32_t type, uint64_t config, const char *name, pid_t pid, int group_fd) {
     memset(&counter->attr, 0, sizeof(counter->attr));
     counter->attr.type = type;
     counter->attr.size = sizeof(counter->attr);
@@ -42,6 +34,7 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.exclude_kernel = 1;
     counter->attr.exclude_hv = 1;
     counter->attr.exclude_idle = 1;
+    counter->attr.read_format = PERF_FORMAT_GROUP;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
     if (counter->fd < 0) {
@@ -52,38 +45,33 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 }
 
 void init_counters(struct perf_counter counters[], pid_t pid) {
-    // Set cycles as group leader
+    // Group leader
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
+    int group_fd = counters[0].fd;
 
-    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
-
-    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
-        PERF_COUNT_HW_CACHE_DTLB | 
+    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, group_fd);
+    init_counter(&counters[2], PERF_TYPE_HW_CACHE,
+        PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_load_misses", pid, -1);
-    
+        "dtlb_load_misses", pid, group_fd);
     init_counter(&counters[3], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_store_misses", pid, -1);
-    
+        "dtlb_store_misses", pid, group_fd);
     init_counter(&counters[4], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_loads", pid, -1);
-    
+        "dtlb_loads", pid, group_fd);
     init_counter(&counters[5], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_stores", pid, -1);
-    
-    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
+        "dtlb_stores", pid, group_fd);
+    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, group_fd);
 }
-
 
 uint64_t get_rss_in_bytes(pid_t pid) {
     char filename[256];
@@ -101,19 +89,20 @@ uint64_t get_rss_in_bytes(pid_t pid) {
         return 0;
     }
     fclose(file);
-    // Convert pages to bytes   
     return rss_value * getpagesize();
 }
 
 void sample_counters(struct perf_counter counters[]) {
+    uint64_t values[COUNTER_COUNT + 1]; // First is nr, then values
+    ssize_t bytes_read = read(counters[0].fd, values, sizeof(values));
+    if (bytes_read < (ssize_t)(sizeof(uint64_t) * (COUNTER_COUNT + 1))) {
+        fprintf(stderr, "Failed to read counters: %s\n", strerror(errno));
+        for (int i = 0; i < COUNTER_COUNT; i++) counters[i].value = 0;
+        return;
+    }
+
     for (int i = 0; i < COUNTER_COUNT; i++) {
-        ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
-        if (bytes_read != sizeof(uint64_t)) {
-            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
-            counters[i].value = 0;
-        }
-//	printf("%s: %lu\n", counters[i].name, counters[i].value);
-//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+        counters[i].value = values[i + 1]; // Skip count at index 0
     }
 }
 
@@ -127,25 +116,22 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t ept_walk_cycles = counters[6].value;
 
     uint64_t rss = get_rss_in_bytes(pid);
-    double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
+    double rss_in_gb = (double)rss / (1024 * 1024 * 1024);
 
     double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
     double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
     double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
 
-
     printf("ept_walk_cycles: %lu, dtlb_load_misses: %lu, dtlb_store_misses: %lu\n", ept_walk_cycles, dtlb_load_misses, dtlb_store_misses);
     printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
     printf("dtlb_loads: %lu, dtlb_stores: %lu\n", dtlb_loads, dtlb_stores);
+    printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
-     printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
-
-    // simple threshold based decision (following a simple heuristic)
     if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
-        return 1; // enable TPT
+        return 1;
     }
 
-    return 0; 
+    return 0;
 }
 
 void run_executable(const char *program, char *const argv[]) {
@@ -167,15 +153,12 @@ void run_executable(const char *program, char *const argv[]) {
         execvp(program, argv);
         perror("execvp");
         exit(EXIT_FAILURE);
-    } else if (pid > 0) { // parent process; child pid 
+    } else if (pid > 0) {
         close(pipefd[0]);
-
         init_counters(counters, pid);
 
-        for (int i = 0; i < COUNTER_COUNT; i++) {
-            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
-                fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
-            }
+        if (ioctl(counters[0].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+            fprintf(stderr, "Failed to enable counter group: %s\n", strerror(errno));
         }
 
         write(pipefd[1], "G", 1);
@@ -188,7 +171,6 @@ void run_executable(const char *program, char *const argv[]) {
             time_t current_time = time(NULL);
             if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
                 sample_counters(counters);
-
                 if (should_enable_tpt(counters, pid)) {
                     printf("=========== ACTION : ENABLE TPT ===========\n");
                 }
@@ -199,7 +181,6 @@ void run_executable(const char *program, char *const argv[]) {
             nanosleep(&sleep_time, NULL);
         }
 
-        // Cleanup counters
         for (int i = 0; i < COUNTER_COUNT; i++) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
             close(counters[i].fd);
