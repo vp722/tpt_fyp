@@ -54,35 +54,35 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 void init_counters(struct perf_counter counters[], pid_t pid) {
     // Set cycles as group leader
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
-    int group_fd = counters[0].fd;
+//    int group_fd = counters[0].fd;
 
-    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, group_fd);
+    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
     init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
         PERF_COUNT_HW_CACHE_DTLB | 
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_load_misses", pid, group_fd);
+        "dtlb_load_misses", pid, -1);
     
     init_counter(&counters[3], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_store_misses", pid, group_fd);
+        "dtlb_store_misses", pid, -1);
     
     init_counter(&counters[4], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_READ << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_loads", pid, group_fd);
+        "dtlb_loads", pid, -1);
     
     init_counter(&counters[5], PERF_TYPE_HW_CACHE,
         PERF_COUNT_HW_CACHE_DTLB |
         (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
         (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_stores", pid, group_fd);
+        "dtlb_stores", pid, -1);
     
-    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, group_fd);
+    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
 }
 
 
