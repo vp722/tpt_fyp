@@ -13,6 +13,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
@@ -84,6 +85,26 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 }
 
 
+uint64_t get_rss_in_bytes(pid_t pid) {
+    char filename[256];
+    snprintf(filename, sizeof(filename), "/proc/%d/statm", pid);
+    FILE *file = fopen(filename, "r");
+    if (!file) {
+        perror("fopen");
+        return 0;
+    }
+
+    uint64_t rss_value;
+    if (fscanf(file, "%*s %lu", &rss_value) != 1) {
+        perror("fscanf");
+        fclose(file);
+        return 0;
+    }
+    fclose(file);
+    // Convert pages to bytes   
+    return rss_value * getpagesize();
+}
+
 void sample_counters(struct perf_counter counters[]) {
     for (int i = 0; i < COUNTER_COUNT; i++) {
         ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
@@ -96,7 +117,7 @@ void sample_counters(struct perf_counter counters[]) {
     }
 }
 
-int should_enable_tpt(struct perf_counter counters[]) {
+int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t cycles = counters[0].value;
     uint64_t instructions = counters[1].value;
     uint64_t dtlb_load_misses = counters[2].value;
@@ -104,6 +125,9 @@ int should_enable_tpt(struct perf_counter counters[]) {
     uint64_t dtlb_loads = counters[4].value;
     uint64_t dtlb_stores = counters[5].value;
     uint64_t ept_walk_cycles = counters[6].value;
+
+    uint64_t rss = get_rss_in_bytes(pid);
+    double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
     double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
     double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
@@ -117,7 +141,7 @@ int should_enable_tpt(struct perf_counter counters[]) {
      printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
     // simple threshold based decision (following a simple heuristic)
-    if (ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
+    if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
         return 1; // enable TPT
     }
 
@@ -143,7 +167,7 @@ void run_executable(const char *program, char *const argv[]) {
         execvp(program, argv);
         perror("execvp");
         exit(EXIT_FAILURE);
-    } else if (pid > 0) {
+    } else if (pid > 0) { // parent process; child pid 
         close(pipefd[0]);
 
         init_counters(counters, pid);
@@ -165,7 +189,7 @@ void run_executable(const char *program, char *const argv[]) {
             if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
                 sample_counters(counters);
 
-                if (should_enable_tpt(counters)) {
+                if (should_enable_tpt(counters, pid)) {
                     printf("=========== ACTION : ENABLE TPT ===========\n");
                 }
                 last_sample_time = current_time;
