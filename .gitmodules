@@ -1,0 +1,15 @@
+[submodule "application_benchmarks/XSBench"]
+	path = application_benchmarks/XSBench
+	url = https://github.com/ANL-CESAR/XSBench.git
+[submodule "application_benchmarks/gapbs"]
+	path = application_benchmarks/gapbs
+	url = https://github.com/gapbs/gapbs.git
+[submodule "application_benchmarks/hpcc"]
+	path = application_benchmarks/hpcc
+	url = https://github.com/icl-utk-edu/hpcc.git
+[submodule "application_benchmarks/parsec-benchmark"]
+	path = application_benchmarks/parsec-benchmark
+	url = https://github.com/parsec-project/parsec-benchmark.git
+[submodule "application_benchmarks/mutilate"]
+	path = application_benchmarks/mutilate
+	url = https://github.com/leverich/mutilate.git
