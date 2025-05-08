@@ -114,7 +114,7 @@ void sample_counters(struct perf_counter counters[]) {
             counters[i].value = 0;
         }
 //	printf("%s: %lu\n", counters[i].name, counters[i].value);
-//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
 
