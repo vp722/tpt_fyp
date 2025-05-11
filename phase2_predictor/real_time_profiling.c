@@ -58,29 +58,34 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
-    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
-        PERF_COUNT_HW_CACHE_DTLB | 
-        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_load_misses", pid, -1);
+    init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
+    init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
+    init_counter(&counters[4], PERF_TYPE_RAW, 0xe08, "dtlb_load_misses.walk_completed", pid, -1); 
+    init_counter(&counters[8], PERF_TYPE_RAW, 0xe49, "dtlb_store_misses.walk_completed", pid, -1); 
+
+    // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
+    //     PERF_COUNT_HW_CACHE_DTLB | 
+    //     (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+    //     "dtlb_load_misses", pid, -1);
     
-    init_counter(&counters[3], PERF_TYPE_HW_CACHE,
-        PERF_COUNT_HW_CACHE_DTLB |
-        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_store_misses", pid, -1);
+    // init_counter(&counters[3], PERF_TYPE_HW_CACHE,
+    //     PERF_COUNT_HW_CACHE_DTLB |
+    //     (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+    //     "dtlb_store_misses", pid, -1);
     
-    init_counter(&counters[4], PERF_TYPE_HW_CACHE,
-        PERF_COUNT_HW_CACHE_DTLB |
-        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_loads", pid, -1);
+    // init_counter(&counters[4], PERF_TYPE_HW_CACHE,
+    //     PERF_COUNT_HW_CACHE_DTLB |
+    //     (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
+    //     "dtlb_loads", pid, -1);
     
-    init_counter(&counters[5], PERF_TYPE_HW_CACHE,
-        PERF_COUNT_HW_CACHE_DTLB |
-        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
-        "dtlb_stores", pid, -1);
+    // init_counter(&counters[5], PERF_TYPE_HW_CACHE,
+    //     PERF_COUNT_HW_CACHE_DTLB |
+    //     (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
+    //     "dtlb_stores", pid, -1);
     
     init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
 }
@@ -121,29 +126,32 @@ void sample_counters(struct perf_counter counters[]) {
 int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t cycles = counters[0].value;
     uint64_t instructions = counters[1].value;
-    uint64_t dtlb_load_misses = counters[2].value;
-    uint64_t dtlb_store_misses = counters[3].value;
-    uint64_t dtlb_loads = counters[4].value;
-    uint64_t dtlb_stores = counters[5].value;
+    uint64_t load_misses_walk_duration= counters[2].value;
+    uint64_t store_misses_walk_duration = counters[3].value;
+    uint64_t load_misses_walk_completed = counters[4].value;
+    uint64_t store_misses_walk_completed = counters[5].value;
     uint64_t ept_walk_cycles = counters[6].value;
 
     uint64_t rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
-    double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
-    double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
-    double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
+    // double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
+    // double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
+    // double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
 
 
-    printf("ept_walk_cycles: %lu, dtlb_load_misses: %lu, dtlb_store_misses: %lu\n", ept_walk_cycles, dtlb_load_misses, dtlb_store_misses);
-    printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
-    printf("dtlb_loads: %lu, dtlb_stores: %lu\n", dtlb_loads, dtlb_stores);
+    // printf("ept_walk_cycles: %lu, dtlb_load_misses: %lu, dtlb_store_misses: %lu\n", ept_walk_cycles, dtlb_load_misses, dtlb_store_misses);
+    // printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
+    // printf("dtlb_loads: %lu, dtlb_stores: %lu\n", dtlb_loads, dtlb_stores);
 
     //  printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
-    uint64_t total_tlb_misses = dtlb_load_misses + dtlb_store_misses;
-    double avg_ept_walk_cycles = (double)ept_walk_cycles / total_tlb_misses;
+    uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration;
+    uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
+    double avg_ept_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
+    prinf("total_walk_cycles: %lu, ept_walk_cycles: %lu\n", total_walk_cycles, ept_walk_cycles);
+
 
     if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
