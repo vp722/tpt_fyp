@@ -17,7 +17,7 @@
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-
+#define AVG_WALK_CYCLES 1200 // no of cycles (assuming ~ 300 cycles for each dram access)
 
 struct perf_counter {
     int fd;
@@ -139,12 +139,21 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
     printf("dtlb_loads: %lu, dtlb_stores: %lu\n", dtlb_loads, dtlb_stores);
 
-     printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
+    //  printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
+
+    uint64_t total_tlb_misses = dtlb_load_misses + dtlb_store_misses;
+    double avg_ept_walk_cycles = (double)ept_walk_cycles / total_tlb_misses;
+    printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
+
+    if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
+        return 1;  // enable TPT
+    }
+
 
     // simple threshold based decision (following a simple heuristic)
-    if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
-        return 1; // enable TPT
-    }
+    // if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
+    //     return 1; // enable TPT
+    // }
 
     return 0; // disable TPT
 }
