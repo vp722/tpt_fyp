@@ -153,7 +153,7 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
     //  printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
-    uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration;
+    uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration + ept_walk_cycles;
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
     double avg_ept_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
