@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <unistd.h>
 
-#define COUNTER_COUNT 7
+#define COUNTER_COUNT 6
 #define SAMPLING_INTERVAL_SEC 1
 #define AVG_WALK_CYCLES 1200 // no of cycles (assuming ~ 300 cycles for each dram access)
 
@@ -60,8 +60,8 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 
     init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
     init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
-    init_counter(&counters[4], PERF_TYPE_RAW, 0xe08, "dtlb_load_misses.walk_completed", pid, -1); 
-    init_counter(&counters[8], PERF_TYPE_RAW, 0xe49, "dtlb_store_misses.walk_completed", pid, -1); 
+    init_counter(&counters[4], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
+    init_counter(&counters[5], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
 
     // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
     //     PERF_COUNT_HW_CACHE_DTLB | 
@@ -87,7 +87,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
     //     (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
     //     "dtlb_stores", pid, -1);
     
-    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
+//    init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
 }
 
 
@@ -119,7 +119,7 @@ void sample_counters(struct perf_counter counters[]) {
             counters[i].value = 0;
         }
 //	printf("%s: %lu\n", counters[i].name, counters[i].value);
-	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
 
@@ -150,7 +150,7 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
     double avg_ept_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
-    prinf("total_walk_cycles: %lu, ept_walk_cycles: %lu\n", total_walk_cycles, ept_walk_cycles);
+  //  printf("total_walk_cycles: %lu, ept_walk_cycles: %lu\n", total_walk_cycles, ept_walk_cycles);
 
 
     if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
