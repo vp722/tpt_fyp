@@ -14,10 +14,11 @@
 #include <unistd.h>
 #include <errno.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define AVG_WALK_CYCLES 80 // no of cycles (assuming ~ 300 cycles for each dram access)
+#define AVG_WALK_CYCLES 10 // 10 cycles
 
 struct perf_counter {
     int fd;
@@ -51,6 +52,9 @@ void init_counter(struct perf_counter *counter, uint32_t type,
         exit(EXIT_FAILURE);
     }
     counter->name = name;
+    counter->value = 0;
+    counter->prev_value = 0;
+    counter->delta = 0;
 }
 
 void init_counters(struct perf_counter counters[], pid_t pid) {
@@ -118,16 +122,15 @@ void sample_counters(struct perf_counter counters[]) {
         counters[i].prev_value = counters[i].value;
         ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
         if (bytes_read != sizeof(uint64_t)) {
-            fprintf(stderr, "Failed to read %s: %s\n", counters[i].name, strerror(errno));
-            counters[i].value = counters[i].prev_value;  // fallback
+            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
+            counters[i].value = 0;
         }
 
-        // Calculate delta with underflow protection
-        if (counters[i].value >= counters[i].prev_value) {
-            counters[i].delta = counters[i].value - counters[i].prev_value;
-        } else {
-            counters[i].delta = 0;
-        }
+        // Calculate delta
+        counters[i].delta = counters[i].value - counters[i].prev_value;
+
+//	printf("%s: %lu\n", counters[i].name, counters[i].value);
+//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
 }
 
@@ -155,11 +158,13 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     //  printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
     uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration + ept_walk_cycles;
+
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
-    double avg_ept_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
-    printf("cycles: %lu \n", cycles);
+    double avg_total_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
+    double avg_ept_walk_cycles = (double)ept_walk_cycles / (walks_completed ? walks_completed : 1);
+    printf("ept_walk_cycles: %lu \n", ept_walk_cycles);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
-    printf("total_walk_cycles: %lu, ept_walk_cycles: %lu\n", total_walk_cycles, ept_walk_cycles);
+    printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
 
 
     if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
@@ -210,15 +215,17 @@ void run_executable(const char *program, char *const argv[]) {
 
         int status;
         time_t last_sample_time = time(NULL);
+        bool enabled_tpt = false;
 
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
             time_t current_time = time(NULL);
-            if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
+            if (!enabled_tpt && (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC)) {
                 sample_counters(counters);
 
                 if (should_enable_tpt(counters, pid)) {
                     printf("=========== ACTION : ENABLE TPT ===========\n");
+                    enabled_tpt = true;
                 }
                 last_sample_time = current_time;
             }
