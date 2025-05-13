@@ -18,7 +18,7 @@
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define AVG_WALK_CYCLES 10 // 10 cycles
+#define AVG_WALK_CYCLES 25 // 20 cycles
 
 struct perf_counter {
     int fd;
@@ -166,8 +166,13 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
     printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
 
+    double error_margin = 0.05;
+    double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
+    double upper_bound = AVG_WALK_CYCLES * (1.0 + error_margin);
 
-    if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
+    bool in_range = avg_ept_walk_cycles > lower_bound; // 5% margin on lower bound
+
+    if (rss_in_gb >= 1.0 && in_range) {
         return 1;  // enable TPT
     }
 
