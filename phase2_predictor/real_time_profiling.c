@@ -118,15 +118,16 @@ void sample_counters(struct perf_counter counters[]) {
         counters[i].prev_value = counters[i].value;
         ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
         if (bytes_read != sizeof(uint64_t)) {
-            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
-            counters[i].value = 0;
+            fprintf(stderr, "Failed to read %s: %s\n", counters[i].name, strerror(errno));
+            counters[i].value = counters[i].prev_value;  // fallback
         }
 
-        // Calculate delta
-        counters[i].delta = counters[i].value - counters[i].prev_value;
-
-//	printf("%s: %lu\n", counters[i].name, counters[i].value);
-//	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+        // Calculate delta with underflow protection
+        if (counters[i].value >= counters[i].prev_value) {
+            counters[i].delta = counters[i].value - counters[i].prev_value;
+        } else {
+            counters[i].delta = 0;
+        }
     }
 }
 
@@ -156,6 +157,7 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration + ept_walk_cycles;
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
     double avg_ept_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
+    printf("cycles: %lu \n", cycles);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
     printf("total_walk_cycles: %lu, ept_walk_cycles: %lu\n", total_walk_cycles, ept_walk_cycles);
 
