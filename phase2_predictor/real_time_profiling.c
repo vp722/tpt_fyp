@@ -18,7 +18,7 @@
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define SAMPLING_INTERVAL_MS 100 // 100ms
+#define SAMPLING_INTERVAL_MS 200 // 200ms
 #define AVG_WALK_CYCLES 40 // 40 cycles 
 #define SLIDING_WINDOW 5 // n = 5 
 
@@ -147,6 +147,8 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
     uint64_t rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
+
+    printf("cycles: %lu \n", cycles);
 
     // double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
     // double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
