@@ -189,6 +189,55 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     return 0; // disable TPT
 }
 
+// This is a psudo system call to enable TPT
+void enable_tpt() {
+    // Enable TPT here
+    printf("=========== ACTION : ENABLE TPT ===========\n");
+}
+
+// update sliding window
+void update_sliding_window(struct perf_counter counters[],
+                           double windows[][SLIDING_WINDOW],
+                           int indices[], int counts[]) {
+    for (int i = 0; i < COUNTER_COUNT; ++i) {
+        windows[i][indices[i]] = (double)counters[i].delta;
+        indices[i] = (indices[i] + 1) % SLIDING_WINDOW;
+        if (counts[i] < SLIDING_WINDOW) counts[i]++;
+    }
+}
+
+void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], double avg_deltas[]) {
+    for (int i = 0; i < COUNTER_COUNT; ++i) {
+        double sum = 0.0;
+        for (int j = 0; j < counts[i]; ++j) {
+            sum += windows[i][j];
+        }
+        avg_deltas[i] = sum / counts[i];
+    }
+}
+
+// Decision logic on averaged metrics
+bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
+    double walks_completed = avg_deltas[4] + avg_deltas[5];
+    double avg_ept_walk_per_miss  = avg_deltas[6] / walks_completed;
+    double avg_walk_cycles_per_miss = avg_deltas[2] + avg_deltas[3] + avg_deltas[6] / walks_completed;
+    double ept_cycles_per_execution_cycles = avg_deltas[6] / avg_deltas[0];
+    double rss = get_rss_in_bytes(pid);
+    double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
+
+    printf("cycles: %lf \n", avg_deltas[0]);
+    printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
+    printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
+    printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
+    printf("rss_in_gb: %lf \n", rss_in_gb);
+
+    if (rss_in_gb >= 1.0 && avg_walk_cycles_per_miss > AVG_WALK_CYCLES) {
+        return 1;  // enable TPT
+    }   
+
+    return 0; // disable TPT 
+}
+
 void run_executable(const char *program, char *const argv[]) {
     int pipefd[2];
     if (pipe(pipefd) < 0) {
@@ -225,7 +274,14 @@ void run_executable(const char *program, char *const argv[]) {
         int status;
         struct timespec last_sample_time;
         clock_gettime(CLOCK_MONOTONIC, &last_sample_time);
-        bool enabled_tpt = false;
+        // bool enabled_tpt = false;
+
+        // sliding window based sampling
+
+        double windows[COUNTER_COUNT][SLIDING_WINDOW] = {{0}};
+        int indices[COUNTER_COUNT] = {0}, 
+        counts[COUNTER_COUNT] = {0};
+        double avg_deltas[COUNTER_COUNT] = {0};
 
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
@@ -236,13 +292,20 @@ void run_executable(const char *program, char *const argv[]) {
             long elapsed_ms = (current_time.tv_sec - last_sample_time.tv_sec) * 1000 +
                             (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
 
-            if (!enabled_tpt && elapsed_ms >= SAMPLING_INTERVAL_MS) {
+            if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
                 sample_counters(counters);
+                update_sliding_window(counters, windows, indices, counts);
+                compute_sliding_averages(windows, counts, avg_deltas);
 
-                if (should_enable_tpt(counters, pid)) {
-                    printf("=========== ACTION : ENABLE TPT ===========\n");
-                    enabled_tpt = true;
-                }
+                if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
+                    enable_tpt(); 
+                } 
+
+
+                // if (should_enable_tpt(counters, pid)) {
+                //     printf("=========== ACTION : ENABLE TPT ===========\n");
+                //     // enabled_tpt = true;
+                // }
 
                 last_sample_time = current_time;
             }
