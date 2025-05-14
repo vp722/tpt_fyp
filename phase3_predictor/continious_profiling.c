@@ -177,7 +177,7 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
     double upper_bound = AVG_WALK_CYCLES * (1.0 + error_margin);
 
-    bool in_range = avg_ept_walk_cycles > lower_bound; 
+    bool in_range = avg_ept_walk_cycles > upper_bound; 
 
     printf("RSS value : %f \n ", rss_in_gb);
 
