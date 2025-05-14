@@ -1,7 +1,6 @@
 // this is a real time profiling tool - that collects metrics during the execution of the program
 // and makes a decision to enable TPT (one way) for the rest of the execution
 // this is a sampling based profiling tool extention for perf
-
 #include <linux/perf_event.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -13,12 +12,15 @@
 #include <time.h>
 #include <unistd.h>
 #include <errno.h>
-#include <unistd.h>
 #include <stdbool.h>
+#include <time.h>
+#include <syscall.h>
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define AVG_WALK_CYCLES 40 // 20 cycles
+#define SAMPLING_INTERVAL_MS 100 // 100ms
+#define AVG_WALK_CYCLES 40 // 40 cycles 
+#define SLIDING_WINDOW 5 // n = 5 
 
 struct perf_counter {
     int fd;
@@ -166,13 +168,13 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
     printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
 
-    double error_margin = 0.05;
-    double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
-    double upper_bound = AVG_WALK_CYCLES * (1.0 + error_margin);
+    // double error_margin = 0.05;
+    // double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
+    // double upper_bound = AVG_WALK_CYCLES * (1.0 + error_margin);
 
-    bool in_range = avg_ept_walk_cycles > lower_bound; // 5% margin on lower bound
+    // bool in_range = avg_ept_walk_cycles > lower_bound; // 5% margin on lower bound
 
-    if (rss_in_gb >= 1.0 && in_range) {
+    if (rss_in_gb >= 1.0 && avg_ept_walk_cycles > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
     }
 
@@ -219,23 +221,32 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[1]);
 
         int status;
-        time_t last_sample_time = time(NULL);
+        struct timespec last_sample_time;
+        clock_gettime(CLOCK_MONOTONIC, &last_sample_time);
         bool enabled_tpt = false;
 
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
-            time_t current_time = time(NULL);
-            if (!enabled_tpt && (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC)) {
+            struct timespec current_time;
+            clock_gettime(CLOCK_MONOTONIC, &current_time);
+
+            // Compute elapsed time in milliseconds
+            long elapsed_ms = (current_time.tv_sec - last_sample_time.tv_sec) * 1000 +
+                            (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
+
+            if (!enabled_tpt && elapsed_ms >= SAMPLING_INTERVAL_MS) {
                 sample_counters(counters);
 
                 if (should_enable_tpt(counters, pid)) {
                     printf("=========== ACTION : ENABLE TPT ===========\n");
                     enabled_tpt = true;
                 }
+
                 last_sample_time = current_time;
             }
 
-            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 100000000 }; // 100ms
+            // sleep for 10ms to reduce CPU usage while polling
+            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 10000000 }; // 10ms
             nanosleep(&sleep_time, NULL);
         }
 
