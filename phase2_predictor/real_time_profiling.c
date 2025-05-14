@@ -229,7 +229,7 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
 bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     double walks_completed = avg_deltas[4] + avg_deltas[5];
     double avg_ept_walk_per_miss  = avg_deltas[6] / walks_completed;
-    double avg_walk_cycles_per_miss = avg_deltas[2] + avg_deltas[3] + avg_deltas[6] / walks_completed;
+    double avg_walk_cycles_per_miss = (avg_deltas[2] + avg_deltas[3] + avg_deltas[6]) / walks_completed;
     double ept_cycles_per_execution_cycles = avg_deltas[6] / avg_deltas[0];
     double rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
