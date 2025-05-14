@@ -204,6 +204,15 @@ void update_sliding_window(struct perf_counter counters[],
         indices[i] = (indices[i] + 1) % SLIDING_WINDOW;
         if (counts[i] < SLIDING_WINDOW) counts[i]++;
     }
+
+    // print the sliding window
+    for (int i = 0; i < COUNTER_COUNT; ++i) {
+        printf("%s: ", counters[i].name);
+        for (int j = 0; j < counts[i]; ++j) {
+            printf("%lf ", windows[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], double avg_deltas[]) {
@@ -231,7 +240,7 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
     printf("rss_in_gb: %lf \n", rss_in_gb);
 
-    if (rss_in_gb >= 1.0 && avg_walk_cycles_per_miss > AVG_WALK_CYCLES) {
+    if (rss_in_gb >= 1.0 && avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
     }   
 
