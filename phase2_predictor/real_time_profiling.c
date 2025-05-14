@@ -18,7 +18,7 @@
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define AVG_WALK_CYCLES 25 // 20 cycles
+#define AVG_WALK_CYCLES 40 // 20 cycles
 
 struct perf_counter {
     int fd;

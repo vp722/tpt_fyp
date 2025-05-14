@@ -1,5 +1,5 @@
 // this is a real time profiling tool - that collects metrics during the execution of the program
-// and makes a decision to enable TPT (one way) for the rest of the execution
+// and makes a decision to enable TPT or disable TPT throught the execution of the program. 
 // this is a sampling based profiling tool extention for perf
 
 #include <linux/perf_event.h>
@@ -18,8 +18,11 @@
 
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
-#define AVG_WALK_CYCLES 25 // 25 cycles -> %5 window 
-#define LOW_WALK_CYCLES 20 // 20 cycles
+#define AVG_WALK_CYCLES 40 // 25 cycles -> %5 window 
+#define LOW_WALK_CYCLES 30 // 20 cyclesi
+#define WALK_RATIO 0.5
+#define LOWER_WALK_RATIO 0.2 
+
 
 struct perf_counter {
     int fd;
@@ -149,8 +152,11 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
     // double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
     // double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
-    // double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
+    double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
+    // double ept_walk_per_1M_cycles = ept_walk_ratio * 1,000,000; 
+    
 
+    printf("ept_walk_cycle_ratio: %f \n ", ept_walk_ratio); 
 
     // printf("ept_walk_cycles: %lu, dtlb_load_misses: %lu, dtlb_store_misses: %lu\n", ept_walk_cycles, dtlb_load_misses, dtlb_store_misses);
     // printf("cycles: %lu, instructions: %lu\n", cycles, instructions);
@@ -171,14 +177,19 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
     double upper_bound = AVG_WALK_CYCLES * (1.0 + error_margin);
 
-    bool in_range = avg_ept_walk_cycles > lower_bound; // 5% margin on lower bound
+    bool in_range = avg_ept_walk_cycles > lower_bound; 
 
-    if (rss_in_gb >= 1.0 && in_range) {
+    printf("RSS value : %f \n ", rss_in_gb);
+
+    if (in_range) {
         return 1;  // enable TPT
-    } else if (rss_in_gb >= 1.0 && avg_ept_walk_cycles < LOW_WALK_CYCLES) {
+    } else if (avg_ept_walk_cycles < LOW_WALK_CYCLES) {
         return -1; // disable TPT
+    } else if (ept_walk_ratio > WALK_RATIO){
+    	return 2;  
+    } else if (ept_walk_ratio < LOWER_WALK_RATIO) {
+    	return -2; 
     }
-
 
     // simple threshold based decision (following a simple heuristic)
     // if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
@@ -232,13 +243,18 @@ void run_executable(const char *program, char *const argv[]) {
                 sample_counters(counters);
 
                 if (should_enable_tpt(counters, pid) == 1 && !enabled_tpt) {
-                    printf("=========== ACTION : ENABLE TPT ===========\n");
+                    printf("=============== ACTION : ENABLE TPT - WALK_CYCLES ===========\n");
                     enabled_tpt = true;
                     
                 } else if (should_enable_tpt(counters, pid) == -1 && enabled_tpt) {
-                    printf("=========== ACTION : DISABLE TPT ===========\n");
+                    printf("=========== ACTION : DISABLE TPT - WALK_CYCLES ===========\n");
                     enabled_tpt = false;
-                }
+                } else if (should_enable_tpt(counters, pid) == 2) {
+			printf("================= ACTION: ENABLE TPT - WALK RATIO ================\n "); 
+		
+		} else if (should_enable_tpt(counters, pid) == -2) {
+			printf("=================== ACTION: DISABLE TPT - WALK RATIO =============\n ");
+		}
 
                 last_sample_time = current_time;
             }
