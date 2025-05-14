@@ -181,15 +181,29 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
     printf("RSS value : %f \n ", rss_in_gb);
 
+    // if (in_range) {
+    //     return 1;  // enable TPT
+    // } else if (avg_ept_walk_cycles < LOW_WALK_CYCLES) {
+    //     return -1; // disable TPT
+    // } else if (ept_walk_ratio > WALK_RATIO){
+    // 	return 2;  
+    // } else if (ept_walk_ratio < LOWER_WALK_RATIO) {
+    // 	return -2; 
+    // }
+
+    
     if (in_range) {
-        return 1;  // enable TPT
-    } else if (avg_ept_walk_cycles < LOW_WALK_CYCLES) {
-        return -1; // disable TPT
-    } else if (ept_walk_ratio > WALK_RATIO){
-    	return 2;  
-    } else if (ept_walk_ratio < LOWER_WALK_RATIO) {
-    	return -2; 
-    }
+        printf("=============== ACTION : ENABLE TPT - WALK_CYCLES ===========\n");
+    } 
+    if (avg_ept_walk_cycles < LOW_WALK_CYCLES) {
+        printf("=========== ACTION : DISABLE TPT - WALK_CYCLES ===========\n");
+    } 
+    if (ept_walk_ratio > WALK_RATIO){
+    	printf("=============== ACTION : ENABLE TPT - WALK_RATIO ===========\n");
+    } 
+    if (ept_walk_ratio < LOWER_WALK_RATIO) {
+    	printf("=========== ACTION : DISABLE TPT - WALK_RATIO ===========\n");  
+    } 
 
     // simple threshold based decision (following a simple heuristic)
     // if (rss_in_gb >= 1 && ept_walk_ratio > 0.5 && (tlb_load_miss_ratio > 0.5 || tlb_store_miss_ratio > 0.5)) {
@@ -242,19 +256,17 @@ void run_executable(const char *program, char *const argv[]) {
             if (current_time - last_sample_time >= SAMPLING_INTERVAL_SEC) {
                 sample_counters(counters);
 
-                if (should_enable_tpt(counters, pid) == 1 && !enabled_tpt) {
-                    printf("=============== ACTION : ENABLE TPT - WALK_CYCLES ===========\n");
-                    enabled_tpt = true;
+                should_enable_tpt(counters, pid);
+
+                // if (should_enable_tpt(counters, pid) == 1 && !enabled_tpt) {
+                //     printf("=============== ACTION : ENABLE TPT - WALK_CYCLES ===========\n");
+                //     enabled_tpt = true;
                     
-                } else if (should_enable_tpt(counters, pid) == -1 && enabled_tpt) {
-                    printf("=========== ACTION : DISABLE TPT - WALK_CYCLES ===========\n");
-                    enabled_tpt = false;
-                } else if (should_enable_tpt(counters, pid) == 2) {
-			printf("================= ACTION: ENABLE TPT - WALK RATIO ================\n "); 
-		
-		} else if (should_enable_tpt(counters, pid) == -2) {
-			printf("=================== ACTION: DISABLE TPT - WALK RATIO =============\n ");
-		}
+                // } 
+                // if (should_enable_tpt(counters, pid) == -1 && enabled_tpt) {
+                //     printf("=========== ACTION : DISABLE TPT - WALK_CYCLES ===========\n");
+                //     enabled_tpt = false;
+                // }
 
                 last_sample_time = current_time;
             }
