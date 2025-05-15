@@ -22,6 +22,9 @@
 #define AVG_WALK_CYCLES 40 // 40 cycles 
 #define SLIDING_WINDOW 5 // n = 5 
 
+
+
+
 struct perf_counter {
     int fd;
     struct perf_event_attr attr;
@@ -195,6 +198,8 @@ void enable_tpt() {
     printf("=========== ACTION : ENABLE TPT ===========\n");
 }
 
+
+
 // update sliding window
 void update_sliding_window(struct perf_counter counters[],
                            double windows[][SLIDING_WINDOW],
@@ -205,15 +210,59 @@ void update_sliding_window(struct perf_counter counters[],
         if (counts[i] < SLIDING_WINDOW) counts[i]++;
     }
 
-    // print the sliding window
+    // Print the sliding window for debugging
     for (int i = 0; i < COUNTER_COUNT; ++i) {
-        printf("%s: ", counters[i].name);
+        printf("Sliding window for %s: ", counters[i].name);
         for (int j = 0; j < counts[i]; ++j) {
-            printf("%lf ", windows[i][j]);
+            printf("%lf ", windows[i][(indices[i] + j) % SLIDING_WINDOW]);
         }
         printf("\n");
     }
+
+    // Print the indices and counts for debugging
+    for (int i = 0; i < COUNTER_COUNT; ++i) {
+        printf("Index for %s: %d, Count: %d\n", counters[i].name, indices[i], counts[i]);
+    }
 }
+
+void compute_weighted_sliding_averages(
+        double windows[][SLIDING_WINDOW],
+        int    indices[],    
+        int    counts[],  
+        double   weights[],   
+        double avg_deltas[] 
+) {
+    for (int i = 0; i < COUNTER_COUNT; ++i) {
+        int c = counts[i]; // empty window is 0
+        if (c == 0) {
+            avg_deltas[i] = 0.0;
+            continue;
+        }
+
+        // Find the buffer index of the *oldest* sample:
+        //  - indices[i] points at where we'd write the next new sample,
+        //  - so (indices[i] - c) mod SLIDING_WINDOW is where the oldest lives.
+        int oldest = (indices[i] + SLIDING_WINDOW - c) % SLIDING_WINDOW;
+
+        printf("oldest: %d \n", oldest);
+
+        double weighted_sum  = 0.0;
+        double weight_total  = 0.0;
+
+        // Walk from oldest→newest, applying weights[0]→weights[c-1]
+        for (int j = 0; j < c; ++j) {
+            int buf_idx = (oldest + j) % SLIDING_WINDOW;
+            double sample = windows[i][buf_idx];
+            double w      = weights[j];
+            printf("sample: %lf, weight: %f \n", sample, w);
+            weighted_sum += sample * w;
+            weight_total += w;
+        }
+
+        avg_deltas[i] = weighted_sum / weight_total;
+    }
+}
+
 
 void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], double avg_deltas[]) {
     for (int i = 0; i < COUNTER_COUNT; ++i) {
@@ -221,9 +270,11 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
         for (int j = 0; j < counts[i]; ++j) {
             sum += windows[i][j];
         }
-        avg_deltas[i] = sum / counts[i];
+        avg_deltas[i] = sum / counts[i]; // the num of samples in the sliding window or by fixed size
     }
 }
+
+
 
 // Decision logic on averaged metrics
 bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
@@ -291,6 +342,7 @@ void run_executable(const char *program, char *const argv[]) {
         int indices[COUNTER_COUNT] = {0}, 
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
+        double weights[SLIDING_WINDOW] = {5, 4, 3, 2, 1}; // weights for the sliding window
 
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
@@ -304,7 +356,8 @@ void run_executable(const char *program, char *const argv[]) {
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
                 sample_counters(counters);
                 update_sliding_window(counters, windows, indices, counts);
-                compute_sliding_averages(windows, counts, avg_deltas);
+                // compute_sliding_averages(windows, counts, avg_deltas);
+                compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                     enable_tpt(); 
