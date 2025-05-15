@@ -210,11 +210,11 @@ void update_sliding_window(struct perf_counter counters[],
         if (counts[i] < SLIDING_WINDOW) counts[i]++;
     }
 
-    // Print the sliding window for debugging
+    // print the actual circular buffer
     for (int i = 0; i < COUNTER_COUNT; ++i) {
         printf(" %s: ", counters[i].name);
         for (int j = 0; j < counts[i]; ++j) {
-            printf("%lf ", windows[i][(indices[i] + j) % SLIDING_WINDOW]);
+            printf("%lf ", windows[i][j]);
         }
         printf("\n");
     }
@@ -239,7 +239,6 @@ void compute_weighted_sliding_averages(
         //  - so (indices[i] - c) mod SLIDING_WINDOW is where the oldest lives.
         int oldest = (indices[i] + SLIDING_WINDOW - c) % SLIDING_WINDOW;
 
-        printf("oldest: %d \n", oldest);
 
         double weighted_sum  = 0.0;
         double weight_total  = 0.0;
@@ -249,6 +248,7 @@ void compute_weighted_sliding_averages(
             int buf_idx = (oldest + j) % SLIDING_WINDOW;
             double sample = windows[i][buf_idx];
             double w      = weights[j];
+            printf("buffer_index: %d sample: %lf, weight: %lf\n,", buf_idx, sample, w);
             weighted_sum += sample * w;
             weight_total += w;
         }
