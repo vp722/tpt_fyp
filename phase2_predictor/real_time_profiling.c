@@ -317,7 +317,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("perf_data.csv", "w");
+        FILE *file = fopen("32m_rnd_write.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
