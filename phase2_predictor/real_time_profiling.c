@@ -16,6 +16,8 @@
 #include <time.h>
 #include <syscall.h>
 
+#include <inttypes.h> 
+
 #define COUNTER_COUNT 7
 #define SAMPLING_INTERVAL_SEC 1
 #define SAMPLING_INTERVAL_MS 200 // 200ms
@@ -314,6 +316,17 @@ void run_executable(const char *program, char *const argv[]) {
     } else if (pid > 0) { // parent process; child pid 
         close(pipefd[0]);
 
+        // open file 
+        FILE *file = fopen("perf_data.csv", "w");
+        if (!file) {
+            perror("fopen");
+            exit(EXIT_FAILURE);
+        }
+
+        // Write header to the file
+        fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
+
+
         init_counters(counters, pid);
 
         for (int i = 0; i < COUNTER_COUNT; i++) {
@@ -348,7 +361,9 @@ void run_executable(const char *program, char *const argv[]) {
                             (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
 
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
+
                 sample_counters(counters);
+
                 update_sliding_window(counters, windows, indices, counts);
                 // compute_sliding_averages(windows, counts, avg_deltas);
                 compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
@@ -356,6 +371,16 @@ void run_executable(const char *program, char *const argv[]) {
                 if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                     enable_tpt(); 
                 } 
+
+                // write the data to the file
+                fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
+                        counters[0].delta,
+                        counters[1].delta,
+                        counters[2].delta,
+                        counters[3].delta,
+                        counters[4].delta,
+                        counters[5].delta,
+                        counters[6].delta);
 
 
                 // if (should_enable_tpt(counters, pid)) {
