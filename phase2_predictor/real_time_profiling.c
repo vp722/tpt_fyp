@@ -212,16 +212,11 @@ void update_sliding_window(struct perf_counter counters[],
 
     // Print the sliding window for debugging
     for (int i = 0; i < COUNTER_COUNT; ++i) {
-        printf("Sliding window for %s: ", counters[i].name);
+        printf(" %s: ", counters[i].name);
         for (int j = 0; j < counts[i]; ++j) {
             printf("%lf ", windows[i][(indices[i] + j) % SLIDING_WINDOW]);
         }
         printf("\n");
-    }
-
-    // Print the indices and counts for debugging
-    for (int i = 0; i < COUNTER_COUNT; ++i) {
-        printf("Index for %s: %d, Count: %d\n", counters[i].name, indices[i], counts[i]);
     }
 }
 
@@ -254,7 +249,6 @@ void compute_weighted_sliding_averages(
             int buf_idx = (oldest + j) % SLIDING_WINDOW;
             double sample = windows[i][buf_idx];
             double w      = weights[j];
-            printf("sample: %lf, weight: %f \n", sample, w);
             weighted_sum += sample * w;
             weight_total += w;
         }
