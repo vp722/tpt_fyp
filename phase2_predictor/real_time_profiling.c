@@ -211,13 +211,13 @@ void update_sliding_window(struct perf_counter counters[],
     }
 
     // print the actual circular buffer
-    for (int i = 0; i < COUNTER_COUNT; ++i) {
-        printf(" %s: ", counters[i].name);
-        for (int j = 0; j < counts[i]; ++j) {
-            printf("%lf ", windows[i][j]);
-        }
-        printf("\n");
-    }
+    // for (int i = 0; i < COUNTER_COUNT; ++i) {
+    //     printf(" %s: ", counters[i].name);
+    //     for (int j = 0; j < counts[i]; ++j) {
+    //         printf("%lf ", windows[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 }
 
 void compute_weighted_sliding_averages(
@@ -248,7 +248,7 @@ void compute_weighted_sliding_averages(
             int buf_idx = (oldest + j) % SLIDING_WINDOW;
             double sample = windows[i][buf_idx];
             double w      = weights[j];
-            printf("buffer_index: %d sample: %lf, weight: %lf\n,", buf_idx, sample, w);
+            // printf("buffer_index: %d sample: %lf, weight: %lf\n,", buf_idx, sample, w);
             weighted_sum += sample * w;
             weight_total += w;
         }
@@ -336,7 +336,7 @@ void run_executable(const char *program, char *const argv[]) {
         int indices[COUNTER_COUNT] = {0}, 
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
-        double weights[SLIDING_WINDOW] = {5, 4, 3, 2, 1}; // weights for the sliding window
+        double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
 
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
