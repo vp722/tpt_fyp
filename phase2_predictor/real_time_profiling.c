@@ -24,9 +24,6 @@
 #define AVG_WALK_CYCLES 40 // 40 cycles 
 #define SLIDING_WINDOW 5 // n = 5 
 
-
-
-
 struct perf_counter {
     int fd;
     struct perf_event_attr attr;
@@ -153,8 +150,6 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
-    printf("cycles: %lu \n", cycles);
-
     // double tlb_load_miss_ratio = dtlb_loads ? (double)dtlb_load_misses / dtlb_loads : 0.0;
     // double tlb_store_miss_ratio = dtlb_stores ? (double)dtlb_store_misses / dtlb_stores : 0.0;
     // double ept_walk_ratio = cycles ? (double)ept_walk_cycles / cycles : 0.0;
@@ -171,9 +166,6 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
     double avg_total_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
     double avg_ept_walk_cycles = (double)ept_walk_cycles / (walks_completed ? walks_completed : 1);
-    printf("ept_walk_cycles: %lu \n", ept_walk_cycles);
-    printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
-    printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
 
     // double error_margin = 0.05;
     // double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
@@ -196,8 +188,8 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
 // This is a psudo system call to enable TPT
 void enable_tpt() {
-    // Enable TPT here
-    printf("=========== ACTION : ENABLE TPT ===========\n");
+    // // Enable TPT here
+    // printf("=========== ACTION : ENABLE TPT ===========\n");
 }
 
 
@@ -281,11 +273,6 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     double rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
-    printf("cycles: %lf \n", avg_deltas[0]);
-    printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
-    printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
-    printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
-    printf("rss_in_gb: %lf \n", rss_in_gb);
 
     if (rss_in_gb >= 1.0 && avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
@@ -324,7 +311,7 @@ void run_executable(const char *program, char *const argv[]) {
         }
 
         // Write header to the file
-        fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
+        // fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
 
 
         init_counters(counters, pid);
@@ -373,14 +360,14 @@ void run_executable(const char *program, char *const argv[]) {
                 } 
 
                 // write the data to the file
-                fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
-                        counters[0].delta,
-                        counters[1].delta,
-                        counters[2].delta,
-                        counters[3].delta,
-                        counters[4].delta,
-                        counters[5].delta,
-                        counters[6].delta);
+                // fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
+                //         counters[0].delta,
+                //         counters[1].delta,
+                //         counters[2].delta,
+                //         counters[3].delta,
+                //         counters[4].delta,
+                //         counters[5].delta,
+                //         counters[6].delta);
 
 
                 // if (should_enable_tpt(counters, pid)) {
