@@ -189,7 +189,7 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 // This is a psudo system call to enable TPT
 void enable_tpt() {
     // // Enable TPT here
-    // printf("=========== ACTION : ENABLE TPT ===========\n");
+    printf("=========== ACTION : ENABLE TPT ===========\n");
 }
 
 
@@ -328,7 +328,7 @@ void run_executable(const char *program, char *const argv[]) {
         int status;
         struct timespec last_sample_time;
         clock_gettime(CLOCK_MONOTONIC, &last_sample_time);
-        // bool enabled_tpt = false;
+        bool enabled_tpt = false;
 
         // sliding window based sampling
 
@@ -347,7 +347,7 @@ void run_executable(const char *program, char *const argv[]) {
             long elapsed_ms = (current_time.tv_sec - last_sample_time.tv_sec) * 1000 +
                             (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
 
-            if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
+            if (!enabled_tpt && elapsed_ms >= SAMPLING_INTERVAL_MS) {
 
                 sample_counters(counters);
 
@@ -356,7 +356,8 @@ void run_executable(const char *program, char *const argv[]) {
                 compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
-                    enable_tpt(); 
+                    enable_tpt();
+		    enabled_tpt = true;  
                 } 
 
                 // write the data to the file
