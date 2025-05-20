@@ -13,3 +13,6 @@
 [submodule "application_benchmarks/mutilate"]
 	path = application_benchmarks/mutilate
 	url = https://github.com/leverich/mutilate.git
+[submodule "application_benchmarks/gups"]
+	path = application_benchmarks/gups
+	url = https://github.com/alexandermerritt/gups.git
