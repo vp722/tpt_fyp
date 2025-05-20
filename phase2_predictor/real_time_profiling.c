@@ -147,7 +147,7 @@ void sample_group_counters(struct perf_counter counters[], int group[], int grou
         counters[group[i]].prev_value = counters[group[i]].value;
         ssize_t bytes_read = read(counters[group[i]].fd, &counters[group[i]].value, sizeof(uint64_t));
         if (bytes_read != sizeof(uint64_t)) {
-            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[group[i]].name, strerror(errno));
+            fprintf(stderr, "In sample counters: Failed to read %s: %s\n", counters[group[i]].name, strerror(errno));
             counters[group[i]].value = 0;
         }
 
@@ -323,7 +323,6 @@ void enable_counters(struct perf_counter counters[], int group[], int group_size
 void disable_counters(struct perf_counter counters[], int group[], int group_size) {
   for (int i = 0; i < group_size; i++) {
         ioctl(counters[group[i]].fd, PERF_EVENT_IOC_DISABLE, 0);
-        close(counters[group[i]].fd);
     }
 }
 
@@ -363,8 +362,8 @@ void run_executable(const char *program, char *const argv[]) {
         init_counters(counters, pid);
 
         // define the groups 
-        int group0[FIXED_COUNTERS + OTHER_COUNTERS] = {0,1,2,3,4,-1};             // cycles, instructions, two durations + one completed
-        int group1[FIXED_COUNTERS + OTHER_COUNTERS] = {0,1,5,6,-1,-1};            // cycles, instructions, other completed + EPT
+        int group0[5] = {0,1,2,3,4};             // cycles, instructions, two durations + one completed
+        int group1[4] = {0,1,5,6};            // cycles, instructions, other completed + EPT
         int sizes[NUM_GROUPS] = {5, 4}; // group sizes
         int *groups[NUM_GROUPS] = {group0, group1};
         int current_group = 0;
@@ -436,6 +435,11 @@ void run_executable(const char *program, char *const argv[]) {
 
                 last_sample_time = current_time;
             }
+            // close fds 
+            for (int i = 0; i < COUNTER_COUNT; i++) {
+                close(counters[i].fd);
+            }
+
 
             // sleep for 10ms to reduce CPU usage while polling
             struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 10000000 }; // 10ms
