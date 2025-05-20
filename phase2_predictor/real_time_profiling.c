@@ -386,6 +386,7 @@ void run_executable(const char *program, char *const argv[]) {
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
         double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
+        int count = 0; 
 
         
 
@@ -410,11 +411,17 @@ void run_executable(const char *program, char *const argv[]) {
                 
                 // check if all groups are sampled 
                 if (current_group == NUM_GROUPS - 1) {
-		    update_sliding_window(counters, windows, indices, counts);
-		    compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
+		            update_sliding_window(counters, windows, indices, counts);
+		            compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
                     if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
-                        enable_tpt(); 
-                    } 
+                        count++;
+                        if (count >- 5) {
+                            enable_tpt(); 
+                        } 
+                        
+                    } else {
+                        count = 0;
+                    }
                 }
                 
 
