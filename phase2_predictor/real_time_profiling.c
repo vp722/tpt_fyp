@@ -19,13 +19,14 @@
 #include <inttypes.h> 
 
 #define COUNTER_COUNT 7
+#define FIXED_COUNTERS 2 // fixed counters for cycles and instructions
+#define OTHER_COUNTERS 4 // there are 4 other programmable counters 
+#define NUM_GROUPS 2 // two groups of counters
+
 #define SAMPLING_INTERVAL_SEC 1
 #define SAMPLING_INTERVAL_MS 200 // 200ms
 #define AVG_WALK_CYCLES 40 // 40 cycles 
 #define SLIDING_WINDOW 5 // n = 5 
-
-
-
 
 struct perf_counter {
     int fd;
@@ -139,6 +140,21 @@ void sample_counters(struct perf_counter counters[]) {
 //	printf("%s: %lu\n", counters[i].name, counters[i].value);
 //	ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
     }
+}
+
+void sample_group_counters(struct perf_counter counters[], int group[], int group_size) {
+    for (int i = 0; i < group_size; i++) {
+        counters[group[i]].prev_value = counters[group[i]].value;
+        ssize_t bytes_read = read(counters[group[i]].fd, &counters[group[i]].value, sizeof(uint64_t));
+        if (bytes_read != sizeof(uint64_t)) {
+            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[group[i]].name, strerror(errno));
+            counters[group[i]].value = 0;
+        }
+
+        // Calculate delta
+        counters[group[i]].delta = counters[group[i]].value - counters[group[i]].prev_value;
+    }
+    
 }
 
 int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
@@ -287,11 +303,28 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
     printf("rss_in_gb: %lf \n", rss_in_gb);
 
-    if (rss_in_gb >= 1.0 && avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
+    if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
     }   
 
     return 0; // disable TPT 
+}
+
+
+void enable_counters(struct perf_counter counters[], int group[], int group_size) {
+    for (int i = 0; i < group_size; i++) {
+        if (ioctl(counters[group[i]].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+            fprintf(stderr, "Failed to enable %s: %s\n", counters[group[i]].name, strerror(errno));
+        }
+    }
+
+}
+
+void disable_counters(struct perf_counter counters[], int group[], int group_size) {
+  for (int i = 0; i < group_size; i++) {
+        ioctl(counters[group[i]].fd, PERF_EVENT_IOC_DISABLE, 0);
+        close(counters[group[i]].fd);
+    }
 }
 
 void run_executable(const char *program, char *const argv[]) {
@@ -329,12 +362,14 @@ void run_executable(const char *program, char *const argv[]) {
 
         init_counters(counters, pid);
 
-        for (int i = 0; i < COUNTER_COUNT; i++) {
-            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
-                fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
-            }
-        }
-
+        // define the groups 
+        int group0[FIXED_COUNTERS + OTHER_COUNTERS] = {0,1,2,3,4,-1};             // cycles, instructions, two durations + one completed
+        int group1[FIXED_COUNTERS + OTHER_COUNTERS] = {0,1,5,6,-1,-1};            // cycles, instructions, other completed + EPT
+        int sizes[NUM_GROUPS] = {5, 4}; // group sizes
+        int *groups[NUM_GROUPS] = {group0, group1};
+        int current_group = 0;
+        enable_counters(counters, groups[current_group], sizes[current_group]);
+        
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
 
@@ -351,6 +386,8 @@ void run_executable(const char *program, char *const argv[]) {
         double avg_deltas[COUNTER_COUNT] = {0};
         double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
 
+        
+
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
             struct timespec current_time;
@@ -361,16 +398,25 @@ void run_executable(const char *program, char *const argv[]) {
                             (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
 
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
+                // sample the counters 
+                sample_group_counters(counters, groups[current_group], sizes[current_group]);
+                // disable the current group 
+                disable_counters(counters, groups[current_group], sizes[current_group]);
 
-                sample_counters(counters);
-
+                // switch to the other group
+                current_group = (current_group + 1) % NUM_GROUPS;
+                enable_counters(counters, groups[current_group], sizes[current_group]);
+                // increment current 
                 update_sliding_window(counters, windows, indices, counts);
-                // compute_sliding_averages(windows, counts, avg_deltas);
                 compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
-
-                if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
-                    enable_tpt(); 
-                } 
+                
+                // check if all groups are sampled 
+                if (current_group == NUM_GROUPS - 1) {
+                    if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
+                        enable_tpt(); 
+                    } 
+                }
+                
 
                 // write the data to the file
                 fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
@@ -396,15 +442,10 @@ void run_executable(const char *program, char *const argv[]) {
             nanosleep(&sleep_time, NULL);
         }
 
-        // Cleanup counters
-        for (int i = 0; i < COUNTER_COUNT; i++) {
-            ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
-            close(counters[i].fd);
-        }
-
         if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
             fprintf(stderr, "Program execution failed.\n");
         }
+
     } else {
         perror("fork");
         exit(EXIT_FAILURE);
