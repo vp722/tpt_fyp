@@ -53,6 +53,10 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.exclude_hv = 1;
     counter->attr.exclude_idle = 1;
 
+    if (strcmp(name, "cycles") == 0) {
+        counter->attr.read_format |= PERF_FORMAT_GROUP; 
+    }
+
     counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
     if (counter->fd < 0) {
         fprintf(stderr, "Error creating %s: %s\n", name, strerror(errno));
@@ -67,14 +71,14 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 void init_counters(struct perf_counter counters[], pid_t pid) {
     // Set cycles as group leader
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
-//    int group_fd = counters[0].fd;
+    int group_fd = counters[0].fd;
 
-    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
+    init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, group_fd);
 
     // init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
     // init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
-    init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
-    init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
+    init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, group_fd); 
+    init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, group_fd); 
 
     // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
     //     PERF_COUNT_HW_CACHE_DTLB | 
@@ -100,7 +104,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
     //     (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
     //     "dtlb_stores", pid, -1);
     
-   init_counter(&counters[4], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
+   init_counter(&counters[4], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, group_fd);
 }
 
 
@@ -123,6 +127,26 @@ uint64_t get_rss_in_bytes(pid_t pid) {
     // Convert pages to bytes   
     return rss_value * getpagesize();
 }
+
+void sample_group_counters(struct perf_counter counters[]) {
+    // Buffer holds: [ nr_events, value0, value1, … ]
+    uint64_t buf[1 + COUNTER_COUNT];
+    ssize_t sz = read(counters[0].fd, buf, sizeof(buf));
+    if (sz < 0) {
+        perror("group read");
+        return;
+    }
+    uint64_t nr = buf[0];
+    if (nr != COUNTER_COUNT) {
+        fprintf(stderr, "unexpected group size %lu\n", nr);
+    }
+    for (int i = 0; i < COUNTER_COUNT; i++) {
+        counters[i].prev_value = counters[i].value;
+        counters[i].value      = buf[1 + i];
+        counters[i].delta      = counters[i].value - counters[i].prev_value;
+    }
+}
+
 
 void sample_counters(struct perf_counter counters[]) {
     for (int i = 0; i < COUNTER_COUNT; i++) {
@@ -317,7 +341,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("32m_rnd_write.csv", "w");
+        FILE *file = fopen("data.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
@@ -329,11 +353,13 @@ void run_executable(const char *program, char *const argv[]) {
 
         init_counters(counters, pid);
 
-        for (int i = 0; i < COUNTER_COUNT; i++) {
-            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
-                fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
-            }
-        }
+        // for (int i = 0; i < COUNTER_COUNT; i++) {
+        //     if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+        //         fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
+        //     }
+        // }
+
+        ioctl(counters[0].fd, PERF_EVENT_IOC_ENABLE, 0);
 
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
@@ -362,7 +388,8 @@ void run_executable(const char *program, char *const argv[]) {
 
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
 
-                sample_counters(counters);
+                //sample_counters(counters);
+                sample_group_counters(counters);
 
                 update_sliding_window(counters, windows, indices, counts);
                 // compute_sliding_averages(windows, counts, avg_deltas);
@@ -378,10 +405,10 @@ void run_executable(const char *program, char *const argv[]) {
                         counters[1].delta,
                         counters[2].delta,
                         counters[3].delta,
-                        counters[4].delta,
+                        counters[4].delta);
                         //counters[5].delta,
                         //counters[6].delta
-                        );
+                        
 
 
                 // if (should_enable_tpt(counters, pid)) {
@@ -398,10 +425,12 @@ void run_executable(const char *program, char *const argv[]) {
         }
 
         // Cleanup counters
-        for (int i = 0; i < COUNTER_COUNT; i++) {
-            ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
-            close(counters[i].fd);
-        }
+        // for (int i = 0; i < COUNTER_COUNT; i++) {
+        //     ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
+        //     close(counters[i].fd);
+        // }
+        ioctl(counters[0].fd, PERF_EVENT_IOC_DISABLE, 0);
+        close(counters[0].fd);
 
         if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
             fprintf(stderr, "Program execution failed.\n");
