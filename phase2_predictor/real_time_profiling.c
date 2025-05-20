@@ -18,7 +18,7 @@
 
 #include <inttypes.h> 
 
-#define COUNTER_COUNT 7
+#define COUNTER_COUNT 5
 #define SAMPLING_INTERVAL_SEC 1
 #define SAMPLING_INTERVAL_MS 200 // 200ms
 #define AVG_WALK_CYCLES 40 // 40 cycles 
@@ -52,6 +52,7 @@ void init_counter(struct perf_counter *counter, uint32_t type,
     counter->attr.exclude_kernel = 1; 
     counter->attr.exclude_hv = 1;
     counter->attr.exclude_idle = 1;
+    counter->attr.pinned = 1;
 
     counter->fd = perf_event_open(&counter->attr, pid, -1, group_fd, 0);
     if (counter->fd < 0) {
@@ -71,10 +72,10 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
-    init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
-    init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
-    init_counter(&counters[4], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
-    init_counter(&counters[5], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
+    // init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
+    // init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
+    init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
+    init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
 
     // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
     //     PERF_COUNT_HW_CACHE_DTLB | 
@@ -100,7 +101,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
     //     (PERF_COUNT_HW_CACHE_RESULT_ACCESS << 16),
     //     "dtlb_stores", pid, -1);
     
-   init_counter(&counters[6], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
+   init_counter(&counters[4], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
 }
 
 
@@ -129,7 +130,7 @@ void sample_counters(struct perf_counter counters[]) {
         counters[i].prev_value = counters[i].value;
         ssize_t bytes_read = read(counters[i].fd, &counters[i].value, sizeof(uint64_t));
         if (bytes_read != sizeof(uint64_t)) {
-            fprintf(stderr, "In sasmple counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
+            fprintf(stderr, "In sample counters: Failed to read %s: %s\n", counters[i].name, strerror(errno));
             counters[i].value = 0;
         }
 
@@ -144,11 +145,11 @@ void sample_counters(struct perf_counter counters[]) {
 int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t cycles = counters[0].delta;
     uint64_t instructions = counters[1].delta;
-    uint64_t load_misses_walk_duration= counters[2].delta;
-    uint64_t store_misses_walk_duration = counters[3].delta;
-    uint64_t load_misses_walk_completed = counters[4].delta;
-    uint64_t store_misses_walk_completed = counters[5].delta;
-    uint64_t ept_walk_cycles = counters[6].delta;
+    // uint64_t load_misses_walk_duration= counters[2].delta;
+    // uint64_t store_misses_walk_duration = counters[3].delta;
+    uint64_t load_misses_walk_completed = counters[2].delta;
+    uint64_t store_misses_walk_completed = counters[3].delta;
+    uint64_t ept_walk_cycles = counters[4].delta;
 
     uint64_t rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
@@ -166,14 +167,14 @@ int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
 
     //  printf("ept_walk_ratio: %lf, tlb_load_miss_ratio: %lf, tlb_store_miss_ratio: %lf\n", ept_walk_ratio, tlb_load_miss_ratio, tlb_store_miss_ratio);
 
-    uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration + ept_walk_cycles;
+    // uint64_t total_walk_cycles = load_misses_walk_duration + store_misses_walk_duration + ept_walk_cycles;
 
     uint64_t walks_completed = load_misses_walk_completed + store_misses_walk_completed;
-    double avg_total_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
+    // double avg_total_walk_cycles = (double)total_walk_cycles / (walks_completed ? walks_completed : 1);
     double avg_ept_walk_cycles = (double)ept_walk_cycles / (walks_completed ? walks_completed : 1);
     printf("ept_walk_cycles: %lu \n", ept_walk_cycles);
     printf("avg_ept_walk_cycles: %lf\n", avg_ept_walk_cycles);
-    printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
+    // printf("avg_total_walk_cycles: %lf\n", avg_total_walk_cycles);
 
     // double error_margin = 0.05;
     // double lower_bound = AVG_WALK_CYCLES * (1.0 - error_margin);
@@ -276,18 +277,18 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
 bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     double walks_completed = avg_deltas[4] + avg_deltas[5];
     double avg_ept_walk_per_miss  = avg_deltas[6] / walks_completed;
-    double avg_walk_cycles_per_miss = (avg_deltas[2] + avg_deltas[3] + avg_deltas[6]) / walks_completed;
+    // double avg_walk_cycles_per_miss = (avg_deltas[2] + avg_deltas[3] + avg_deltas[6]) / walks_completed;
     double ept_cycles_per_execution_cycles = avg_deltas[6] / avg_deltas[0];
     double rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
     printf("cycles: %lf \n", avg_deltas[0]);
     printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
-    printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
+    // printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
     printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
     printf("rss_in_gb: %lf \n", rss_in_gb);
 
-    if (rss_in_gb >= 1.0 && avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
+    if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
         return 1;  // enable TPT
     }   
 
@@ -324,8 +325,8 @@ void run_executable(const char *program, char *const argv[]) {
         }
 
         // Write header to the file
-        fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
-
+        //fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
+        fprintf(file, "cycles,instructions,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
 
         init_counters(counters, pid);
 
@@ -373,14 +374,15 @@ void run_executable(const char *program, char *const argv[]) {
                 } 
 
                 // write the data to the file
-                fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
+                fprintf(file, "%lu,%lu,%lu,%lu,%lu\n",
                         counters[0].delta,
                         counters[1].delta,
                         counters[2].delta,
                         counters[3].delta,
                         counters[4].delta,
-                        counters[5].delta,
-                        counters[6].delta);
+                        //counters[5].delta,
+                        //counters[6].delta
+                        );
 
 
                 // if (should_enable_tpt(counters, pid)) {
