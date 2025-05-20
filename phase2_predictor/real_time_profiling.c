@@ -315,7 +315,9 @@ void enable_counters(struct perf_counter counters[], int group[], int group_size
     for (int i = 0; i < group_size; i++) {
         if (ioctl(counters[group[i]].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
             fprintf(stderr, "Failed to enable %s: %s\n", counters[group[i]].name, strerror(errno));
-        }
+        } else {
+	    printf("enabled counter %s \n", counters[group[i]].name); 
+	}
     }
 
 }
@@ -368,9 +370,14 @@ void run_executable(const char *program, char *const argv[]) {
         int *groups[NUM_GROUPS] = {group0, group1};
         int current_group = 0;
         enable_counters(counters, groups[current_group], sizes[current_group]);
+
+	printf("enabled counters: ");
+	printf("writing to pipe\n");
         
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
+
+	printf("written to pile \n"); 
 
         int status;
         struct timespec last_sample_time;
@@ -435,16 +442,17 @@ void run_executable(const char *program, char *const argv[]) {
 
                 last_sample_time = current_time;
             }
-            // close fds 
-            for (int i = 0; i < COUNTER_COUNT; i++) {
-                close(counters[i].fd);
-            }
 
 
             // sleep for 10ms to reduce CPU usage while polling
             struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 10000000 }; // 10ms
             nanosleep(&sleep_time, NULL);
         }
+
+	// close fds 
+	for (int i = 0; i < COUNTER_COUNT; i++) {
+	    close(counters[i].fd);
+	}
 
         if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
             fprintf(stderr, "Program execution failed.\n");
