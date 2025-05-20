@@ -152,7 +152,7 @@ void sample_group_counters(struct perf_counter counters[], int group[], int grou
         }
 
         // Calculate delta
-        counters[group[i]].delta = counters[group[i]].value - counters[group[i]].prev_value;
+        counters[group[i]].delta = counters[group[i]].value - counters[group[i]].prev_value; 
     }
     
 }
@@ -315,9 +315,7 @@ void enable_counters(struct perf_counter counters[], int group[], int group_size
     for (int i = 0; i < group_size; i++) {
         if (ioctl(counters[group[i]].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
             fprintf(stderr, "Failed to enable %s: %s\n", counters[group[i]].name, strerror(errno));
-        } else {
-	    printf("enabled counter %s \n", counters[group[i]].name); 
-	}
+        } 
     }
 
 }
@@ -371,13 +369,10 @@ void run_executable(const char *program, char *const argv[]) {
         int current_group = 0;
         enable_counters(counters, groups[current_group], sizes[current_group]);
 
-	printf("enabled counters: ");
-	printf("writing to pipe\n");
         
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
 
-	printf("written to pile \n"); 
 
         int status;
         struct timespec last_sample_time;
@@ -412,12 +407,11 @@ void run_executable(const char *program, char *const argv[]) {
                 // switch to the other group
                 current_group = (current_group + 1) % NUM_GROUPS;
                 enable_counters(counters, groups[current_group], sizes[current_group]);
-                // increment current 
-                update_sliding_window(counters, windows, indices, counts);
-                compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
                 
                 // check if all groups are sampled 
                 if (current_group == NUM_GROUPS - 1) {
+		    update_sliding_window(counters, windows, indices, counts);
+		    compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
                     if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                         enable_tpt(); 
                     } 
