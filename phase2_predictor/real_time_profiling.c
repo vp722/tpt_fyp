@@ -317,7 +317,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("32m_rnd_write.csv", "w");
+        FILE *file = fopen("data.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
@@ -334,6 +334,10 @@ void run_executable(const char *program, char *const argv[]) {
                 fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
             }
         }
+
+	for (int i = 0; i < COUNTER_COUNT; i++) {
+	    ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+	}
 
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
@@ -378,10 +382,10 @@ void run_executable(const char *program, char *const argv[]) {
                         counters[1].delta,
                         counters[2].delta,
                         counters[3].delta,
-                        counters[4].delta,
+                        counters[4].delta);
                         //counters[5].delta,
                         //counters[6].delta
-                        );
+                        //);
 
 
                 // if (should_enable_tpt(counters, pid)) {
