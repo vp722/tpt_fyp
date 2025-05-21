@@ -422,11 +422,10 @@ void run_executable(const char *program, char *const argv[]) {
                     } else {
                         count = 0;
                     }
-                }
-                
 
-                // write the data to the file
-                fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
+                    // once all collected 
+                    // write the data to the file
+                    fprintf(file, "%lu,%lu,%lu,%lu,%lu,%lu,%lu\n",
                         counters[0].delta,
                         counters[1].delta,
                         counters[2].delta,
@@ -434,6 +433,10 @@ void run_executable(const char *program, char *const argv[]) {
                         counters[4].delta,
                         counters[5].delta,
                         counters[6].delta);
+                }
+                
+
+                
 
 
                 // if (should_enable_tpt(counters, pid)) {
