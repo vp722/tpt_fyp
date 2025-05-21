@@ -25,8 +25,6 @@
 #define SLIDING_WINDOW 5 // n = 5 
 
 
-
-
 struct perf_counter {
     int fd;
     struct perf_event_attr attr;
@@ -71,8 +69,7 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
-    // init_counter(&counters[2], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
-    // init_counter(&counters[3], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
+    
     init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
     init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
 
@@ -101,6 +98,9 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
     //     "dtlb_stores", pid, -1);
     
    init_counter(&counters[4], PERF_TYPE_RAW, 0x104f, "ept_walk_cycles", pid, -1);
+
+   // init_counter(&counters[5], PERF_TYPE_RAW, 0x1008, "dtlb_load_misses_walk_duration", pid, -1);
+   // init_counter(&counters[6], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
 }
 
 
@@ -144,8 +144,8 @@ void sample_counters(struct perf_counter counters[]) {
 int should_enable_tpt(struct perf_counter counters[], pid_t pid) {
     uint64_t cycles = counters[0].delta;
     uint64_t instructions = counters[1].delta;
-    // uint64_t load_misses_walk_duration= counters[2].delta;
-    // uint64_t store_misses_walk_duration = counters[3].delta;
+    // uint64_t load_misses_walk_duration= counters[6].delta;
+    //uint64_t store_misses_walk_duration = counters[7].delta;
     uint64_t load_misses_walk_completed = counters[2].delta;
     uint64_t store_misses_walk_completed = counters[3].delta;
     uint64_t ept_walk_cycles = counters[4].delta;
@@ -287,9 +287,14 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
     printf("rss_in_gb: %lf \n", rss_in_gb);
 
-    if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
+    // if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
+    //     return 1;  // enable TPT
+    // }   
+
+    // looking at the ratio of ept_walk_cycles to execution cycles
+    if (ept_cycles_per_execution_cycles > 0.5) {
         return 1;  // enable TPT
-    }   
+    }
 
     return 0; // disable TPT 
 }
