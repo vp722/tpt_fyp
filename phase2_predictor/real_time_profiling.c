@@ -415,7 +415,7 @@ void run_executable(const char *program, char *const argv[]) {
 		            compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
                     if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                         count++;
-                        if (count >- 5) {
+                        if (count >= 5) {
                             enable_tpt(); 
                         } 
                         
