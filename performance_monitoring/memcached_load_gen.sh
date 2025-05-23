@@ -3,58 +3,63 @@
 # -----------------------------------------------------------------------------
 # run_ept_workload.sh
 #
-# Split EPT‑heavy workload into two phases:
-# 1) Load ~8 GiB dataset into Memcached
-# 2) Warm up & run peak‑QPS workload at max throughput
+# EPT-heavy workload using Facebook "ETC" distributions:
+#   fb_key   = "gev:30.7984,8.20449,0.078688"
+#   fb_value = hard-coded discrete & GPareto PDF of value sizes
+#   fb_ia    = "pareto:0.0,16.0292,0.154971"
 #
-# We use the binary protocol for both phases because it:
-#  - Reduces client‑side parsing overhead compared to the ASCII protocol
-#  - Packs keys and values more efficiently on the wire
-#  - Achieves higher throughput and lower latency for large‑scale loads
+# Usage:
+#   ./run_ept_workload.sh <server> [qps] [threads] [connections] [duration]
+#
+# Example:
+#   ./run_ept_workload.sh localhost:11211 0 1 50 120
 # -----------------------------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 
-#—— Defaults ————————————————————————————————————————————————————————————————
-SERVER=${1:-localhost:11211}
-QPS=0                # 0 = peak QPS (uncapped)
-THREADS=${2:-1}
-CONNS=${3:-50}
-DURATION=${4:-120}      # measurement time (s)
+#—— Parameters —————————————————————————————————————————————————————————————
+SERVER=${1:?"Usage: $0 <server> [qps] [threads] [connections] [duration]"}
+QPS=${2:-0}             # 0 = peak QPS (uncapped)
+THREADS=${3:-1}         # load-only and GET threads
+CONNS=${4:-50}         # connections per thread
+DURATION=${5:-120}      # measurement time (s)
 WARMUP=10               # warmup time (s)
 
-# Working‑set parameters to hit ~8 GiB
-KEYSIZE=32              # bytes per key
-VALUESIZE=4096          # bytes per value
-RECORDS=2097152         # 2,097,152 × 4,096 B ≃ 8 GiB
+# Facebook ETC distributions
+DIST_KEY="fb_key"
+DIST_VAL="fb_value"
+DIST_IA="fb_ia"
 
-# Phase 1: Load dataset
-# --binary: use Memcached binary protocol for efficient bulk loading
-echo "=== Phase 1: Preloading ~8 GiB into Memcached (${RECORDS} records) ==="
+# Working-set size: ~8 GiB total (via ETC value PDF)
+REC_COUNT=131072       # ≃8 GiB overall dataset
+
+# Phase 1: Load ~8 GiB dataset with ETC distributions
+echo "=== Phase 1: Preloading ~8 GiB with ETC distributions (${REC_COUNT} records) ==="
 "$MUTILATE" \
   -s "$SERVER" \
   --loadonly \
   --binary \
-  -K fixed:$KEYSIZE \
-  -V fixed:$VALUESIZE \
-  -r $RECORDS \
+  -K $DIST_KEY \
+  -V $DIST_VAL \
+  -r $REC_COUNT \
   --threads $THREADS \
   --connections $CONNS
 
-# Phase 2: Warmup & run peak‑QPS workload
-# --binary: maintain high throughput for GET requests as well
-echo ""
-echo "=== Phase 2: Warmup (${WARMUP}s) + Peak‑QPS run (${DURATION}s) ==="
+# Phase 2: Warmup & run GETs using ETC inter-arrival times
+echo -e "\n=== Phase 2: Warmup (${WARMUP}s) + ETC GETs at $QPS QPS for ${DURATION}s ==="
 "$MUTILATE" \
   -s "$SERVER" \
   --noload \
   --binary \
   --threads $THREADS \
   --connections $CONNS \
-  -K fixed:$KEYSIZE \
-  -V fixed:$VALUESIZE \
-  -i uniform:$RECORDS \
+  -K $DIST_KEY \
+  -V $DIST_VAL \
+  -i $DIST_IA \
   --qps $QPS \
   --warmup $WARMUP \
   --time $DURATION
+
+# This script exclusively uses Facebook ETC distributions for key sizes, value sizes,
+# and inter-arrival times to drive EPT page-walk overhead above 50% of cycles.
