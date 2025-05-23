@@ -22,7 +22,8 @@
 #define SAMPLING_INTERVAL_SEC 1
 #define SAMPLING_INTERVAL_MS 200 // 200ms
 #define AVG_WALK_CYCLES 40 // 40 cycles 
-#define SLIDING_WINDOW 5 // n = 5 
+#define SLIDING_WINDOW 10 // n = 5 
+#define RATIO 0.5 
 
 
 struct perf_counter {
@@ -292,7 +293,7 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     // }   
 
     // looking at the ratio of ept_walk_cycles to execution cycles
-    if (ept_cycles_per_execution_cycles > 0.5) {
+    if (ept_cycles_per_execution_cycles > RATIO) {
         return 1;  // enable TPT
     }
 
@@ -374,8 +375,8 @@ void run_executable(const char *program, char *const argv[]) {
                 sample_counters(counters);
 
                 update_sliding_window(counters, windows, indices, counts);
-                // compute_sliding_averages(windows, counts, avg_deltas);
-                compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
+                compute_sliding_averages(windows, counts, avg_deltas);
+                // compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                     enable_tpt(); 
