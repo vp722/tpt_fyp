@@ -29,20 +29,20 @@ WARMUP=10               # warmup time (s)
 # Facebook ETC distributions
 DIST_KEY="fb_key"
 DIST_VAL="fb_value"
-DIST_IA="fb_ia"
+DIST_IA="uniform:2097152"
 
 # Working-set size: ~8 GiB total (via ETC value PDF)
-REC_COUNT=131072       # ≃8 GiB overall dataset
+RECORDS=2097152         
 
 # Phase 1: Load ~8 GiB dataset with ETC distributions
-echo "=== Phase 1: Preloading ~8 GiB with ETC distributions (${REC_COUNT} records) ==="
+echo "=== Phase 1: Preloading ~8 GiB (${RECORDS} records) ==="
 "$MUTILATE" \
   -s "$SERVER" \
   --loadonly \
   --binary \
   -K $DIST_KEY \
   -V $DIST_VAL \
-  -r $REC_COUNT \
+  -r $RECORDS \
   --threads $THREADS \
   --connections $CONNS
 
