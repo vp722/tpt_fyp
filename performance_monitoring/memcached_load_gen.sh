@@ -1,31 +1,50 @@
-#!/bin/bash 
+#!/usr/bin/env bash
+
+# -----------------------------------------------------------------------------
+# run_ept_workload.sh
+#
+#
+# Usage:
+#   ./run_ept_workload.sh [server] [threads] [connections] [duration]
+# -----------------------------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MUTILATE="$SCRIPT_DIR/../mutilate/mutilate"
+MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 
-SERVER="localhost"
-KEYSIZE="16"
-VALUESIZE="256"
-THREADS=8                 
-CONNECTIONS=32            
-DISTRIBUTION="fb_ia"
-QPS=10000                 
-RECORDS=1000000           # Preload more records into Memcached
+#—— Defaults ————————————————————————————————————————————————————————————————
+SERVER=${1:-localhost:11211}
+QPS=0                # 0 = peak QPS (uncapped)
+THREADS=${2:-16}
+CONNS=${3:-64}
+DURATION=${4:-120}      # measurement time (s)
+WARMUP=10               # warmup time (s)
 
-echo "Step 1: Preloading $RECORDS records into Memcached..."
-"$MUTILATE" -s "$SERVER" \
-  --loadonly \
-  --keysize="$KEYSIZE" \
-  --valuesize="$VALUESIZE" \
-  --records="$RECORDS"
+# Working‐set parameters to hit ~16 GiB with 4 KiB values
+KEYSIZE=32              # bytes per key
+VALUESIZE=4096          # bytes per value
+RECORDS=4194304         # 4 194 304 × 4 096 B ≃ 16 GiB
 
-echo ""
-echo "Step 2: Running random access test with higher operations..."
-"$MUTILATE" -s "$SERVER" \
-  --noload \
-  --threads="$THREADS" \
-  --connections="$CONNECTIONS" \
-  --keysize="$KEYSIZE" \
-  --valuesize="$VALUESIZE" \
-  --iadist="$DISTRIBUTION" \
-  --qps="$QPS"   # Set QPS to increase operations
+echo "=== One‐Step EPT‐Heavy Peak QPS Workload Runner ==="
+echo "Server       : $SERVER"
+echo "QPS          : $QPS (peak)"
+echo "Threads      : $THREADS"
+echo "Connections  : $CONNS"
+echo "Warmup       : $WARMUP s"
+echo "Duration     : $DURATION s"
+echo "Key size     : $KEYSIZE B"
+echo "Value size   : $VALUESIZE B"
+echo "Records      : $RECORDS  (~16 GiB)"
+echo "-----------------------------------"
+
+# Single invocation: load, warmup, run
+"$MUTILATE" \
+  -s "$SERVER" \
+  -K fixed:$KEYSIZE \
+  -V fixed:$VALUESIZE \
+  -r $RECORDS \
+  --threads $THREADS \
+  --connections $CONNS \
+  -i uniform:$RECORDS \
+  --qps $QPS \
+  --warmup $WARMUP \
+  --time $DURATION
