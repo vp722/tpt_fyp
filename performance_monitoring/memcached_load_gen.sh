@@ -19,8 +19,8 @@ MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 #—— Defaults ————————————————————————————————————————————————————————————————
 SERVER=${1:-localhost:11211}
 QPS=0                # 0 = peak QPS (uncapped)
-THREADS=${2:-8}
-CONNS=${3:-32}
+THREADS=${2:-1}
+CONNS=${3:-50}
 DURATION=${4:-120}      # measurement time (s)
 WARMUP=10               # warmup time (s)
 
