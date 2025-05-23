@@ -22,14 +22,14 @@ MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 SERVER=${1:?"Usage: $0 <server> [qps] [threads] [connections] [duration]"}
 QPS=${2:-0}             # 0 = peak QPS (uncapped)
 THREADS=${3:-1}         # load-only and GET threads
-CONNS=${4:-50}         # connections per thread
+CONNS=${4:-32}         # connections per thread
 DURATION=${5:-120}      # measurement time (s)
 WARMUP=10               # warmup time (s)
 
 # Facebook ETC distributions
-DIST_KEY="fb_key"
-DIST_VAL="fb_value"
-DIST_IA="uniform:2097152"
+DIST_KEY="32"
+DIST_VAL="4096"
+DIST_IA="uniform"
 
 # Working-set size: ~8 GiB total (via ETC value PDF)
 RECORDS=2097152         
