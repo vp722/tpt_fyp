@@ -14,13 +14,13 @@
 # -----------------------------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MUTILATE="$SCRIPT_DIR/../mutilate/mutilate"
+MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 
 #—— Defaults ————————————————————————————————————————————————————————————————
 SERVER=${1:-localhost:11211}
 QPS=0                # 0 = peak QPS (uncapped)
-THREADS=${2:-16}
-CONNS=${3:-64}
+THREADS=${2:-8}
+CONNS=${3:-32}
 DURATION=${4:-120}      # measurement time (s)
 WARMUP=10               # warmup time (s)
 
