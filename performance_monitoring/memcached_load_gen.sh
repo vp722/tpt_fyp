@@ -20,22 +20,21 @@ MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 
 #—— Parameters —————————————————————————————————————————————————————————————
 SERVER=${1:?"Usage: $0 <server> [qps] [threads] [connections] [duration]"}
-QPS=${2:-50000}             # 0 = peak QPS (uncapped)
-THREADS=${3:-1}         # load-only and GET threads
-CONNS=${4:-32}         # connections per thread
-DURATION=${5:-30}      # measurement time (s)
-WARMUP=10               # warmup time (s)
+QPS=${2:-200000}             # 0 = peak QPS (uncapped)
+THREADS=${3:-2}         # load-only and GET threads
+CONNS=${4:-4}         # connections per thread
+DURATION=${5:-60}      # measurement time (s)
 
 # Facebook ETC distributions
-DIST_KEY="32"
-DIST_VAL="4096"
+DIST_KEY="fb_key"
+DIST_VAL="fb_value"
 DIST_IA="fb_ia"
 
 # Working-set size: ~8 GiB total (via ETC value PDF)
-RECORDS=2097152         
+RECORDS=1000000      
 
 # Phase 1: Load ~8 GiB dataset with ETC distributions
-echo "=== Phase 1: Preloading ~8 GiB (${RECORDS} records) ==="
+echo "=== Phase 1: Preloading ~1 GiB (${RECORDS} records) ==="
 "$MUTILATE" \
   -s "$SERVER" \
   --loadonly \
@@ -56,8 +55,9 @@ echo -e "\n=== Phase 2: Warmup (${WARMUP}s) + ETC GETs at $QPS QPS for ${DURATIO
   -V $DIST_VAL \
   -i $DIST_IA \
   --qps $QPS \
-  --warmup $WARMUP \
-  --time $DURATION
+  --warmup=$WARMUP \
+  --time $DURATION \
+  -u 0.25 
 
 # This script exclusively uses Facebook ETC distributions for key sizes, value sizes,
 # and inter-arrival times to drive EPT page-walk overhead above 50% of cycles.
