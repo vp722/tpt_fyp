@@ -1,0 +1,4058 @@
+cycles: 2742839.000000 
+ept_cycles_per_execution_cycles: 0.046836 
+cycles: 1461588.500000 
+ept_cycles_per_execution_cycles: 0.044075 
+cycles: 1014493.333333 
+ept_cycles_per_execution_cycles: 0.042422 
+cycles: 775884.000000 
+ept_cycles_per_execution_cycles: 0.041645 
+cycles: 632764.600000 
+ept_cycles_per_execution_cycles: 0.040889 
+cycles: 552036.500000 
+ept_cycles_per_execution_cycles: 0.040604 
+cycles: 477507.142857 
+ept_cycles_per_execution_cycles: 0.040252 
+cycles: 421585.375000 
+ept_cycles_per_execution_cycles: 0.039915 
+cycles: 378126.333333 
+ept_cycles_per_execution_cycles: 0.039621 
+cycles: 343326.800000 
+ept_cycles_per_execution_cycles: 0.039289 
+cycles: 318019.000000 
+ept_cycles_per_execution_cycles: 0.040375 
+cycles: 294092.000000 
+ept_cycles_per_execution_cycles: 0.040156 
+cycles: 273785.230769 
+ept_cycles_per_execution_cycles: 0.039826 
+cycles: 254229.142857 
+ept_cycles_per_execution_cycles: 0.039826 
+cycles: 239298.000000 
+ept_cycles_per_execution_cycles: 0.039502 
+cycles: 224662.875000 
+ept_cycles_per_execution_cycles: 0.039598 
+cycles: 214583.470588 
+ept_cycles_per_execution_cycles: 0.039493 
+cycles: 202662.166667 
+ept_cycles_per_execution_cycles: 0.039493 
+cycles: 193621.789474 
+ept_cycles_per_execution_cycles: 0.039296 
+cycles: 183940.700000 
+ept_cycles_per_execution_cycles: 0.039296 
+cycles: 177940.380952 
+ept_cycles_per_execution_cycles: 0.039132 
+cycles: 169852.181818 
+ept_cycles_per_execution_cycles: 0.039132 
+cycles: 162467.304348 
+ept_cycles_per_execution_cycles: 0.039132 
+cycles: 156956.458333 
+ept_cycles_per_execution_cycles: 0.038826 
+cycles: 150678.200000 
+ept_cycles_per_execution_cycles: 0.038826 
+cycles: 145060.576923 
+ept_cycles_per_execution_cycles: 0.038919 
+cycles: 141618.555556 
+ept_cycles_per_execution_cycles: 0.038546 
+cycles: 136560.750000 
+ept_cycles_per_execution_cycles: 0.038546 
+cycles: 131851.758621 
+ept_cycles_per_execution_cycles: 0.038546 
+cycles: 128473.033333 
+ept_cycles_per_execution_cycles: 0.038299 
+cycles: 37300.666667 
+ept_cycles_per_execution_cycles: 0.018551 
+cycles: 31289.400000 
+ept_cycles_per_execution_cycles: 0.021716 
+cycles: 29009.200000 
+ept_cycles_per_execution_cycles: 0.023830 
+cycles: 27007.333333 
+ept_cycles_per_execution_cycles: 0.025429 
+cycles: 24997.766667 
+ept_cycles_per_execution_cycles: 0.027317 
+cycles: 20283.133333 
+ept_cycles_per_execution_cycles: 0.027750 
+cycles: 19272.100000 
+ept_cycles_per_execution_cycles: 0.029113 
+cycles: 19993.200000 
+ept_cycles_per_execution_cycles: 0.028668 
+cycles: 18978.066667 
+ept_cycles_per_execution_cycles: 0.029829 
+cycles: 17973.700000 
+ept_cycles_per_execution_cycles: 0.031394 
+cycles: 16141.133333 
+ept_cycles_per_execution_cycles: 0.025104 
+cycles: 16977.300000 
+ept_cycles_per_execution_cycles: 0.031521 
+cycles: 15973.833333 
+ept_cycles_per_execution_cycles: 0.033430 
+cycles: 15973.833333 
+ept_cycles_per_execution_cycles: 0.033430 
+cycles: 14965.100000 
+ept_cycles_per_execution_cycles: 0.035589 
+cycles: 15089.366667 
+ept_cycles_per_execution_cycles: 0.037366 
+cycles: 15167.633333 
+ept_cycles_per_execution_cycles: 0.043098 
+cycles: 15167.633333 
+ept_cycles_per_execution_cycles: 0.043098 
+cycles: 14137.800000 
+ept_cycles_per_execution_cycles: 0.045075 
+cycles: 14137.800000 
+ept_cycles_per_execution_cycles: 0.045075 
+cycles: 12494.233333 
+ept_cycles_per_execution_cycles: 0.050661 
+cycles: 14405.866667 
+ept_cycles_per_execution_cycles: 0.054233 
+cycles: 14405.866667 
+ept_cycles_per_execution_cycles: 0.054233 
+cycles: 13398.966667 
+ept_cycles_per_execution_cycles: 0.058238 
+cycles: 13398.966667 
+ept_cycles_per_execution_cycles: 0.058238 
+cycles: 13506.100000 
+ept_cycles_per_execution_cycles: 0.060348 
+cycles: 13620.366667 
+ept_cycles_per_execution_cycles: 0.064802 
+cycles: 13620.366667 
+ept_cycles_per_execution_cycles: 0.064802 
+cycles: 13620.366667 
+ept_cycles_per_execution_cycles: 0.064802 
+cycles: 12604.033333 
+ept_cycles_per_execution_cycles: 0.069435 
+cycles: 12659.533333 
+ept_cycles_per_execution_cycles: 0.068915 
+cycles: 14685.666667 
+ept_cycles_per_execution_cycles: 0.072070 
+cycles: 12955.766667 
+ept_cycles_per_execution_cycles: 0.080078 
+cycles: 12955.766667 
+ept_cycles_per_execution_cycles: 0.080078 
+cycles: 12955.766667 
+ept_cycles_per_execution_cycles: 0.080078 
+cycles: 12994.233333 
+ept_cycles_per_execution_cycles: 0.080061 
+cycles: 14782.800000 
+ept_cycles_per_execution_cycles: 0.074841 
+cycles: 13057.266667 
+ept_cycles_per_execution_cycles: 0.083606 
+cycles: 13057.266667 
+ept_cycles_per_execution_cycles: 0.083606 
+cycles: 13057.266667 
+ept_cycles_per_execution_cycles: 0.083606 
+cycles: 12877.133333 
+ept_cycles_per_execution_cycles: 0.081882 
+cycles: 12788.266667 
+ept_cycles_per_execution_cycles: 0.073320 
+cycles: 12788.266667 
+ept_cycles_per_execution_cycles: 0.073320 
+cycles: 12788.266667 
+ept_cycles_per_execution_cycles: 0.073320 
+cycles: 12788.266667 
+ept_cycles_per_execution_cycles: 0.073320 
+cycles: 12631.233333 
+ept_cycles_per_execution_cycles: 0.071637 
+cycles: 12512.866667 
+ept_cycles_per_execution_cycles: 0.062493 
+cycles: 12512.866667 
+ept_cycles_per_execution_cycles: 0.062493 
+cycles: 12512.866667 
+ept_cycles_per_execution_cycles: 0.062493 
+cycles: 12512.866667 
+ept_cycles_per_execution_cycles: 0.062493 
+cycles: 12471.433333 
+ept_cycles_per_execution_cycles: 0.061821 
+cycles: 12489.900000 
+ept_cycles_per_execution_cycles: 0.065576 
+cycles: 12489.900000 
+ept_cycles_per_execution_cycles: 0.065576 
+cycles: 12489.900000 
+ept_cycles_per_execution_cycles: 0.065576 
+cycles: 12489.900000 
+ept_cycles_per_execution_cycles: 0.065576 
+cycles: 12502.933333 
+ept_cycles_per_execution_cycles: 0.066595 
+cycles: 12427.900000 
+ept_cycles_per_execution_cycles: 0.064007 
+cycles: 12427.900000 
+ept_cycles_per_execution_cycles: 0.064007 
+cycles: 12427.900000 
+ept_cycles_per_execution_cycles: 0.064007 
+cycles: 12427.900000 
+ept_cycles_per_execution_cycles: 0.064007 
+cycles: 12368.300000 
+ept_cycles_per_execution_cycles: 0.063175 
+cycles: 12212.633333 
+ept_cycles_per_execution_cycles: 0.062367 
+cycles: 12212.633333 
+ept_cycles_per_execution_cycles: 0.062367 
+cycles: 12212.633333 
+ept_cycles_per_execution_cycles: 0.062367 
+cycles: 12212.633333 
+ept_cycles_per_execution_cycles: 0.062367 
+cycles: 12228.233333 
+ept_cycles_per_execution_cycles: 0.062489 
+cycles: 12461.000000 
+ept_cycles_per_execution_cycles: 0.067632 
+cycles: 12461.000000 
+ept_cycles_per_execution_cycles: 0.067632 
+cycles: 12461.000000 
+ept_cycles_per_execution_cycles: 0.067632 
+cycles: 12461.000000 
+ept_cycles_per_execution_cycles: 0.067632 
+cycles: 12632.633333 
+ept_cycles_per_execution_cycles: 0.069788 
+cycles: 12764.466667 
+ept_cycles_per_execution_cycles: 0.079379 
+cycles: 12764.466667 
+ept_cycles_per_execution_cycles: 0.079379 
+cycles: 12764.466667 
+ept_cycles_per_execution_cycles: 0.079379 
+cycles: 12764.466667 
+ept_cycles_per_execution_cycles: 0.079379 
+cycles: 12930.400000 
+ept_cycles_per_execution_cycles: 0.081470 
+cycles: 13052.400000 
+ept_cycles_per_execution_cycles: 0.086681 
+cycles: 13052.400000 
+ept_cycles_per_execution_cycles: 0.086681 
+cycles: 13052.400000 
+ept_cycles_per_execution_cycles: 0.086681 
+cycles: 13052.400000 
+ept_cycles_per_execution_cycles: 0.086681 
+cycles: 13064.233333 
+ept_cycles_per_execution_cycles: 0.087695 
+cycles: 13042.766667 
+ept_cycles_per_execution_cycles: 0.085468 
+cycles: 13042.766667 
+ept_cycles_per_execution_cycles: 0.085468 
+cycles: 13042.766667 
+ept_cycles_per_execution_cycles: 0.085468 
+cycles: 13042.766667 
+ept_cycles_per_execution_cycles: 0.085468 
+cycles: 13009.633333 
+ept_cycles_per_execution_cycles: 0.085016 
+cycles: 13040.533333 
+ept_cycles_per_execution_cycles: 0.085781 
+cycles: 13040.533333 
+ept_cycles_per_execution_cycles: 0.085781 
+cycles: 13040.533333 
+ept_cycles_per_execution_cycles: 0.085781 
+cycles: 13040.533333 
+ept_cycles_per_execution_cycles: 0.085781 
+cycles: 13009.600000 
+ept_cycles_per_execution_cycles: 0.087420 
+cycles: 13066.000000 
+ept_cycles_per_execution_cycles: 0.086645 
+cycles: 13066.000000 
+ept_cycles_per_execution_cycles: 0.086645 
+cycles: 13066.000000 
+ept_cycles_per_execution_cycles: 0.086645 
+cycles: 13066.000000 
+ept_cycles_per_execution_cycles: 0.086645 
+cycles: 13042.900000 
+ept_cycles_per_execution_cycles: 0.086778 
+cycles: 12874.866667 
+ept_cycles_per_execution_cycles: 0.081981 
+cycles: 12874.866667 
+ept_cycles_per_execution_cycles: 0.081981 
+cycles: 12874.866667 
+ept_cycles_per_execution_cycles: 0.081981 
+cycles: 12874.866667 
+ept_cycles_per_execution_cycles: 0.081981 
+cycles: 12784.066667 
+ept_cycles_per_execution_cycles: 0.082392 
+cycles: 12800.266667 
+ept_cycles_per_execution_cycles: 0.081670 
+cycles: 12800.266667 
+ept_cycles_per_execution_cycles: 0.081670 
+cycles: 12800.266667 
+ept_cycles_per_execution_cycles: 0.081670 
+cycles: 12800.266667 
+ept_cycles_per_execution_cycles: 0.081670 
+cycles: 12713.133333 
+ept_cycles_per_execution_cycles: 0.082143 
+cycles: 12677.833333 
+ept_cycles_per_execution_cycles: 0.079054 
+cycles: 12677.833333 
+ept_cycles_per_execution_cycles: 0.079054 
+cycles: 12677.833333 
+ept_cycles_per_execution_cycles: 0.079054 
+cycles: 12677.833333 
+ept_cycles_per_execution_cycles: 0.079054 
+cycles: 12633.833333 
+ept_cycles_per_execution_cycles: 0.079287 
+cycles: 12646.500000 
+ept_cycles_per_execution_cycles: 0.078823 
+cycles: 12646.500000 
+ept_cycles_per_execution_cycles: 0.078823 
+cycles: 12646.500000 
+ept_cycles_per_execution_cycles: 0.078823 
+cycles: 12646.500000 
+ept_cycles_per_execution_cycles: 0.078823 
+cycles: 12661.000000 
+ept_cycles_per_execution_cycles: 0.078230 
+cycles: 12699.433333 
+ept_cycles_per_execution_cycles: 0.080901 
+cycles: 12699.433333 
+ept_cycles_per_execution_cycles: 0.080901 
+cycles: 12699.433333 
+ept_cycles_per_execution_cycles: 0.080901 
+cycles: 12699.433333 
+ept_cycles_per_execution_cycles: 0.080901 
+cycles: 12708.433333 
+ept_cycles_per_execution_cycles: 0.080917 
+cycles: 12754.400000 
+ept_cycles_per_execution_cycles: 0.080843 
+cycles: 12754.400000 
+ept_cycles_per_execution_cycles: 0.080843 
+cycles: 12754.400000 
+ept_cycles_per_execution_cycles: 0.080843 
+cycles: 12754.400000 
+ept_cycles_per_execution_cycles: 0.080843 
+cycles: 12695.933333 
+ept_cycles_per_execution_cycles: 0.081015 
+cycles: 12650.233333 
+ept_cycles_per_execution_cycles: 0.079798 
+cycles: 12650.233333 
+ept_cycles_per_execution_cycles: 0.079798 
+cycles: 12650.233333 
+ept_cycles_per_execution_cycles: 0.079798 
+cycles: 12650.233333 
+ept_cycles_per_execution_cycles: 0.079798 
+cycles: 12630.133333 
+ept_cycles_per_execution_cycles: 0.079622 
+cycles: 12583.600000 
+ept_cycles_per_execution_cycles: 0.080772 
+cycles: 12583.600000 
+ept_cycles_per_execution_cycles: 0.080772 
+cycles: 12583.600000 
+ept_cycles_per_execution_cycles: 0.080772 
+cycles: 12583.600000 
+ept_cycles_per_execution_cycles: 0.080772 
+cycles: 12620.033333 
+ept_cycles_per_execution_cycles: 0.079836 
+cycles: 12744.366667 
+ept_cycles_per_execution_cycles: 0.085983 
+cycles: 12744.366667 
+ept_cycles_per_execution_cycles: 0.085983 
+cycles: 12744.366667 
+ept_cycles_per_execution_cycles: 0.085983 
+cycles: 12744.366667 
+ept_cycles_per_execution_cycles: 0.085983 
+cycles: 12735.833333 
+ept_cycles_per_execution_cycles: 0.086350 
+cycles: 12688.600000 
+ept_cycles_per_execution_cycles: 0.086492 
+cycles: 12688.600000 
+ept_cycles_per_execution_cycles: 0.086492 
+cycles: 12688.600000 
+ept_cycles_per_execution_cycles: 0.086492 
+cycles: 12688.600000 
+ept_cycles_per_execution_cycles: 0.086492 
+cycles: 12643.033333 
+ept_cycles_per_execution_cycles: 0.087128 
+cycles: 12655.233333 
+ept_cycles_per_execution_cycles: 0.091024 
+cycles: 12655.233333 
+ept_cycles_per_execution_cycles: 0.091024 
+cycles: 12655.233333 
+ept_cycles_per_execution_cycles: 0.091024 
+cycles: 12655.233333 
+ept_cycles_per_execution_cycles: 0.091024 
+cycles: 12651.000000 
+ept_cycles_per_execution_cycles: 0.091094 
+cycles: 12534.733333 
+ept_cycles_per_execution_cycles: 0.090838 
+cycles: 12534.733333 
+ept_cycles_per_execution_cycles: 0.090838 
+cycles: 12534.733333 
+ept_cycles_per_execution_cycles: 0.090838 
+cycles: 12855.600000 
+ept_cycles_per_execution_cycles: 0.092673 
+cycles: 12651.200000 
+ept_cycles_per_execution_cycles: 0.089952 
+cycles: 12712.266667 
+ept_cycles_per_execution_cycles: 0.097418 
+cycles: 12712.266667 
+ept_cycles_per_execution_cycles: 0.097418 
+cycles: 12712.266667 
+ept_cycles_per_execution_cycles: 0.097418 
+cycles: 13022.166667 
+ept_cycles_per_execution_cycles: 0.099308 
+cycles: 12809.433333 
+ept_cycles_per_execution_cycles: 0.097194 
+cycles: 12794.200000 
+ept_cycles_per_execution_cycles: 0.096036 
+cycles: 12794.200000 
+ept_cycles_per_execution_cycles: 0.096036 
+cycles: 12794.200000 
+ept_cycles_per_execution_cycles: 0.096036 
+cycles: 13100.600000 
+ept_cycles_per_execution_cycles: 0.097912 
+cycles: 12846.933333 
+ept_cycles_per_execution_cycles: 0.096189 
+cycles: 12762.200000 
+ept_cycles_per_execution_cycles: 0.096684 
+cycles: 12762.200000 
+ept_cycles_per_execution_cycles: 0.096684 
+cycles: 12762.200000 
+ept_cycles_per_execution_cycles: 0.096684 
+cycles: 13070.300000 
+ept_cycles_per_execution_cycles: 0.098483 
+cycles: 12864.866667 
+ept_cycles_per_execution_cycles: 0.095557 
+cycles: 12855.200000 
+ept_cycles_per_execution_cycles: 0.094955 
+cycles: 12855.200000 
+ept_cycles_per_execution_cycles: 0.094955 
+cycles: 12855.200000 
+ept_cycles_per_execution_cycles: 0.094955 
+cycles: 13133.566667 
+ept_cycles_per_execution_cycles: 0.096940 
+cycles: 12923.600000 
+ept_cycles_per_execution_cycles: 0.094249 
+cycles: 12925.366667 
+ept_cycles_per_execution_cycles: 0.093501 
+cycles: 12925.366667 
+ept_cycles_per_execution_cycles: 0.093501 
+cycles: 12925.366667 
+ept_cycles_per_execution_cycles: 0.093501 
+cycles: 13241.400000 
+ept_cycles_per_execution_cycles: 0.094992 
+cycles: 13016.066667 
+ept_cycles_per_execution_cycles: 0.092260 
+cycles: 13027.933333 
+ept_cycles_per_execution_cycles: 0.092153 
+cycles: 13027.933333 
+ept_cycles_per_execution_cycles: 0.092153 
+cycles: 13027.933333 
+ept_cycles_per_execution_cycles: 0.092153 
+cycles: 13018.266667 
+ept_cycles_per_execution_cycles: 0.092319 
+cycles: 13018.266667 
+ept_cycles_per_execution_cycles: 0.092319 
+cycles: 13004.933333 
+ept_cycles_per_execution_cycles: 0.092111 
+cycles: 13004.933333 
+ept_cycles_per_execution_cycles: 0.092111 
+cycles: 13004.933333 
+ept_cycles_per_execution_cycles: 0.092111 
+cycles: 12995.900000 
+ept_cycles_per_execution_cycles: 0.091952 
+cycles: 12995.900000 
+ept_cycles_per_execution_cycles: 0.091952 
+cycles: 12988.266667 
+ept_cycles_per_execution_cycles: 0.092106 
+cycles: 12988.266667 
+ept_cycles_per_execution_cycles: 0.092106 
+cycles: 12988.266667 
+ept_cycles_per_execution_cycles: 0.092106 
+cycles: 12981.366667 
+ept_cycles_per_execution_cycles: 0.092253 
+cycles: 12981.366667 
+ept_cycles_per_execution_cycles: 0.092253 
+cycles: 12971.733333 
+ept_cycles_per_execution_cycles: 0.092118 
+cycles: 12971.733333 
+ept_cycles_per_execution_cycles: 0.092118 
+cycles: 12971.733333 
+ept_cycles_per_execution_cycles: 0.092118 
+cycles: 12902.066667 
+ept_cycles_per_execution_cycles: 0.089955 
+cycles: 2429311.100000 
+ept_cycles_per_execution_cycles: 0.024955 
+cycles: 11273140.666667 
+ept_cycles_per_execution_cycles: 0.032427 
+cycles: 20771128.566667 
+ept_cycles_per_execution_cycles: 0.044846 
+cycles: 31302128.633333 
+ept_cycles_per_execution_cycles: 0.055581 
+cycles: 42243689.066667 
+ept_cycles_per_execution_cycles: 0.066585 
+cycles: 56970520.700000 
+ept_cycles_per_execution_cycles: 0.079119 
+cycles: 73201418.300000 
+ept_cycles_per_execution_cycles: 0.074944 
+cycles: 87350686.600000 
+ept_cycles_per_execution_cycles: 0.073584 
+cycles: 99609059.466667 
+ept_cycles_per_execution_cycles: 0.073673 
+cycles: 113578010.966667 
+ept_cycles_per_execution_cycles: 0.073602 
+cycles: 130109486.200000 
+ept_cycles_per_execution_cycles: 0.077104 
+cycles: 144640428.666667 
+ept_cycles_per_execution_cycles: 0.080409 
+cycles: 159121089.300000 
+ept_cycles_per_execution_cycles: 0.082991 
+cycles: 175703591.600000 
+ept_cycles_per_execution_cycles: 0.084625 
+cycles: 189112842.166667 
+ept_cycles_per_execution_cycles: 0.083650 
+cycles: 205294615.433333 
+ept_cycles_per_execution_cycles: 0.084057 
+cycles: 218493584.900000 
+ept_cycles_per_execution_cycles: 0.085695 
+cycles: 232945671.800000 
+ept_cycles_per_execution_cycles: 0.087552 
+cycles: 246973940.900000 
+ept_cycles_per_execution_cycles: 0.088972 
+cycles: 260238146.366667 
+ept_cycles_per_execution_cycles: 0.089558 
+cycles: 278363829.966667 
+ept_cycles_per_execution_cycles: 0.089489 
+cycles: 289727360.066667 
+ept_cycles_per_execution_cycles: 0.090249 
+cycles: 299735358.666667 
+ept_cycles_per_execution_cycles: 0.090567 
+cycles: 309693659.033333 
+ept_cycles_per_execution_cycles: 0.090973 
+cycles: 321388613.633333 
+ept_cycles_per_execution_cycles: 0.091017 
+cycles: 336911499.000000 
+ept_cycles_per_execution_cycles: 0.091590 
+cycles: 352125955.500000 
+ept_cycles_per_execution_cycles: 0.091900 
+cycles: 368456563.833333 
+ept_cycles_per_execution_cycles: 0.092493 
+cycles: 383214703.100000 
+ept_cycles_per_execution_cycles: 0.092931 
+cycles: 395705448.533333 
+ept_cycles_per_execution_cycles: 0.093408 
+cycles: 401618345.566667 
+ept_cycles_per_execution_cycles: 0.094991 
+cycles: 406270363.133333 
+ept_cycles_per_execution_cycles: 0.098518 
+cycles: 407158391.166667 
+ept_cycles_per_execution_cycles: 0.101041 
+=========== ACTION : ENABLE TPT ===========
+cycles: 405935746.733333 
+ept_cycles_per_execution_cycles: 0.102999 
+=========== ACTION : ENABLE TPT ===========
+cycles: 397424523.266667 
+ept_cycles_per_execution_cycles: 0.103107 
+=========== ACTION : ENABLE TPT ===========
+cycles: 395856689.133333 
+ept_cycles_per_execution_cycles: 0.102147 
+=========== ACTION : ENABLE TPT ===========
+cycles: 389200654.666667 
+ept_cycles_per_execution_cycles: 0.104990 
+=========== ACTION : ENABLE TPT ===========
+cycles: 384121642.400000 
+ept_cycles_per_execution_cycles: 0.107419 
+=========== ACTION : ENABLE TPT ===========
+cycles: 381667730.200000 
+ept_cycles_per_execution_cycles: 0.109515 
+=========== ACTION : ENABLE TPT ===========
+cycles: 376574954.233333 
+ept_cycles_per_execution_cycles: 0.111821 
+=========== ACTION : ENABLE TPT ===========
+cycles: 371441718.533333 
+ept_cycles_per_execution_cycles: 0.113452 
+=========== ACTION : ENABLE TPT ===========
+cycles: 363702417.033333 
+ept_cycles_per_execution_cycles: 0.114234 
+=========== ACTION : ENABLE TPT ===========
+cycles: 351090023.200000 
+ept_cycles_per_execution_cycles: 0.114342 
+=========== ACTION : ENABLE TPT ===========
+cycles: 336304076.300000 
+ept_cycles_per_execution_cycles: 0.114920 
+=========== ACTION : ENABLE TPT ===========
+cycles: 324692683.066667 
+ept_cycles_per_execution_cycles: 0.116603 
+=========== ACTION : ENABLE TPT ===========
+cycles: 310290313.533333 
+ept_cycles_per_execution_cycles: 0.117902 
+=========== ACTION : ENABLE TPT ===========
+cycles: 298858075.900000 
+ept_cycles_per_execution_cycles: 0.118028 
+=========== ACTION : ENABLE TPT ===========
+cycles: 286178979.000000 
+ept_cycles_per_execution_cycles: 0.117974 
+=========== ACTION : ENABLE TPT ===========
+cycles: 273877350.533333 
+ept_cycles_per_execution_cycles: 0.118051 
+=========== ACTION : ENABLE TPT ===========
+cycles: 262379549.000000 
+ept_cycles_per_execution_cycles: 0.118719 
+=========== ACTION : ENABLE TPT ===========
+cycles: 246005362.166667 
+ept_cycles_per_execution_cycles: 0.120713 
+=========== ACTION : ENABLE TPT ===========
+cycles: 236630406.000000 
+ept_cycles_per_execution_cycles: 0.120956 
+=========== ACTION : ENABLE TPT ===========
+cycles: 228703767.300000 
+ept_cycles_per_execution_cycles: 0.121489 
+=========== ACTION : ENABLE TPT ===========
+cycles: 220817560.300000 
+ept_cycles_per_execution_cycles: 0.121918 
+=========== ACTION : ENABLE TPT ===========
+cycles: 211192883.066667 
+ept_cycles_per_execution_cycles: 0.123146 
+=========== ACTION : ENABLE TPT ===========
+cycles: 197723770.400000 
+ept_cycles_per_execution_cycles: 0.124239 
+=========== ACTION : ENABLE TPT ===========
+cycles: 184548095.300000 
+ept_cycles_per_execution_cycles: 0.125860 
+=========== ACTION : ENABLE TPT ===========
+cycles: 170244445.733333 
+ept_cycles_per_execution_cycles: 0.127290 
+=========== ACTION : ENABLE TPT ===========
+cycles: 157537666.600000 
+ept_cycles_per_execution_cycles: 0.128853 
+=========== ACTION : ENABLE TPT ===========
+cycles: 147096725.966667 
+ept_cycles_per_execution_cycles: 0.129915 
+=========== ACTION : ENABLE TPT ===========
+cycles: 140818281.733333 
+ept_cycles_per_execution_cycles: 0.128011 
+=========== ACTION : ENABLE TPT ===========
+cycles: 129408957.033333 
+ept_cycles_per_execution_cycles: 0.123727 
+=========== ACTION : ENABLE TPT ===========
+cycles: 121054575.700000 
+ept_cycles_per_execution_cycles: 0.119712 
+=========== ACTION : ENABLE TPT ===========
+cycles: 113811951.700000 
+ept_cycles_per_execution_cycles: 0.115765 
+=========== ACTION : ENABLE TPT ===========
+cycles: 113450591.633333 
+ept_cycles_per_execution_cycles: 0.115474 
+=========== ACTION : ENABLE TPT ===========
+cycles: 102386303.533333 
+ept_cycles_per_execution_cycles: 0.118287 
+=========== ACTION : ENABLE TPT ===========
+cycles: 94879813.900000 
+ept_cycles_per_execution_cycles: 0.114541 
+=========== ACTION : ENABLE TPT ===========
+cycles: 87840967.033333 
+ept_cycles_per_execution_cycles: 0.110293 
+=========== ACTION : ENABLE TPT ===========
+cycles: 80097142.066667 
+ept_cycles_per_execution_cycles: 0.104912 
+=========== ACTION : ENABLE TPT ===========
+cycles: 73239728.333333 
+ept_cycles_per_execution_cycles: 0.098691 
+cycles: 63647753.733333 
+ept_cycles_per_execution_cycles: 0.088961 
+cycles: 58611064.533333 
+ept_cycles_per_execution_cycles: 0.081850 
+cycles: 58469828.666667 
+ept_cycles_per_execution_cycles: 0.081529 
+cycles: 58413487.833333 
+ept_cycles_per_execution_cycles: 0.081225 
+cycles: 58531293.333333 
+ept_cycles_per_execution_cycles: 0.080878 
+cycles: 58875369.066667 
+ept_cycles_per_execution_cycles: 0.080459 
+cycles: 59367810.233333 
+ept_cycles_per_execution_cycles: 0.079342 
+cycles: 59777949.233333 
+ept_cycles_per_execution_cycles: 0.078211 
+cycles: 59830599.166667 
+ept_cycles_per_execution_cycles: 0.078520 
+cycles: 60158753.233333 
+ept_cycles_per_execution_cycles: 0.078189 
+cycles: 60518902.200000 
+ept_cycles_per_execution_cycles: 0.077903 
+cycles: 60609700.700000 
+ept_cycles_per_execution_cycles: 0.077792 
+cycles: 60612835.766667 
+ept_cycles_per_execution_cycles: 0.077782 
+cycles: 60629844.766667 
+ept_cycles_per_execution_cycles: 0.077762 
+cycles: 60666355.833333 
+ept_cycles_per_execution_cycles: 0.077694 
+cycles: 60712154.400000 
+ept_cycles_per_execution_cycles: 0.077652 
+cycles: 60730923.033333 
+ept_cycles_per_execution_cycles: 0.077597 
+cycles: 60757786.500000 
+ept_cycles_per_execution_cycles: 0.077523 
+cycles: 60755671.566667 
+ept_cycles_per_execution_cycles: 0.077486 
+cycles: 60739577.466667 
+ept_cycles_per_execution_cycles: 0.077504 
+cycles: 60740473.300000 
+ept_cycles_per_execution_cycles: 0.077498 
+cycles: 60702249.300000 
+ept_cycles_per_execution_cycles: 0.077512 
+cycles: 60701363.033333 
+ept_cycles_per_execution_cycles: 0.077518 
+cycles: 60672588.366667 
+ept_cycles_per_execution_cycles: 0.077562 
+cycles: 60650287.733333 
+ept_cycles_per_execution_cycles: 0.077589 
+cycles: 60597516.133333 
+ept_cycles_per_execution_cycles: 0.077687 
+cycles: 60578332.966667 
+ept_cycles_per_execution_cycles: 0.077792 
+cycles: 60568271.733333 
+ept_cycles_per_execution_cycles: 0.077811 
+cycles: 60534140.266667 
+ept_cycles_per_execution_cycles: 0.077881 
+cycles: 60552943.933333 
+ept_cycles_per_execution_cycles: 0.077986 
+cycles: 60784056.200000 
+ept_cycles_per_execution_cycles: 0.078018 
+cycles: 61040383.800000 
+ept_cycles_per_execution_cycles: 0.078006 
+cycles: 61330697.933333 
+ept_cycles_per_execution_cycles: 0.077947 
+cycles: 61612465.333333 
+ept_cycles_per_execution_cycles: 0.077863 
+cycles: 62812745.933333 
+ept_cycles_per_execution_cycles: 0.076913 
+cycles: 70959235.400000 
+ept_cycles_per_execution_cycles: 0.069647 
+cycles: 78346204.433333 
+ept_cycles_per_execution_cycles: 0.064320 
+cycles: 86063310.400000 
+ept_cycles_per_execution_cycles: 0.059270 
+cycles: 94980057.766667 
+ept_cycles_per_execution_cycles: 0.053922 
+cycles: 94896918.633333 
+ept_cycles_per_execution_cycles: 0.053677 
+cycles: 95025976.233333 
+ept_cycles_per_execution_cycles: 0.053262 
+cycles: 95168511.966667 
+ept_cycles_per_execution_cycles: 0.052821 
+cycles: 94947865.833333 
+ept_cycles_per_execution_cycles: 0.052659 
+cycles: 94841638.100000 
+ept_cycles_per_execution_cycles: 0.052373 
+cycles: 94934797.100000 
+ept_cycles_per_execution_cycles: 0.051950 
+cycles: 95041297.600000 
+ept_cycles_per_execution_cycles: 0.051495 
+cycles: 95179449.066667 
+ept_cycles_per_execution_cycles: 0.051046 
+cycles: 95024863.233333 
+ept_cycles_per_execution_cycles: 0.050840 
+cycles: 94704358.366667 
+ept_cycles_per_execution_cycles: 0.050761 
+cycles: 94380772.633333 
+ept_cycles_per_execution_cycles: 0.050686 
+cycles: 94346365.700000 
+ept_cycles_per_execution_cycles: 0.050305 
+cycles: 94514559.533333 
+ept_cycles_per_execution_cycles: 0.049824 
+cycles: 94688296.766667 
+ept_cycles_per_execution_cycles: 0.049388 
+cycles: 94860755.600000 
+ept_cycles_per_execution_cycles: 0.048927 
+cycles: 95033042.900000 
+ept_cycles_per_execution_cycles: 0.048468 
+cycles: 95197344.666667 
+ept_cycles_per_execution_cycles: 0.048210 
+cycles: 95260975.266667 
+ept_cycles_per_execution_cycles: 0.048310 
+cycles: 95290131.033333 
+ept_cycles_per_execution_cycles: 0.048448 
+cycles: 95309140.333333 
+ept_cycles_per_execution_cycles: 0.048521 
+cycles: 95336533.300000 
+ept_cycles_per_execution_cycles: 0.048716 
+cycles: 95344480.200000 
+ept_cycles_per_execution_cycles: 0.048870 
+cycles: 95391697.066667 
+ept_cycles_per_execution_cycles: 0.048972 
+cycles: 95433401.166667 
+ept_cycles_per_execution_cycles: 0.049091 
+cycles: 95465115.800000 
+ept_cycles_per_execution_cycles: 0.049221 
+cycles: 94413693.466667 
+ept_cycles_per_execution_cycles: 0.049716 
+cycles: 86195401.766667 
+ept_cycles_per_execution_cycles: 0.053269 
+cycles: 78611577.866667 
+ept_cycles_per_execution_cycles: 0.057699 
+cycles: 70747002.966667 
+ept_cycles_per_execution_cycles: 0.063912 
+cycles: 62122648.600000 
+ept_cycles_per_execution_cycles: 0.072515 
+cycles: 62150732.866667 
+ept_cycles_per_execution_cycles: 0.073172 
+cycles: 61947780.466667 
+ept_cycles_per_execution_cycles: 0.073991 
+cycles: 61790144.933333 
+ept_cycles_per_execution_cycles: 0.074783 
+cycles: 61967105.133333 
+ept_cycles_per_execution_cycles: 0.075047 
+cycles: 61819975.600000 
+ept_cycles_per_execution_cycles: 0.075366 
+cycles: 61394089.933333 
+ept_cycles_per_execution_cycles: 0.076129 
+cycles: 60969501.166667 
+ept_cycles_per_execution_cycles: 0.076999 
+cycles: 60530440.166667 
+ept_cycles_per_execution_cycles: 0.077871 
+cycles: 60389615.100000 
+ept_cycles_per_execution_cycles: 0.078240 
+cycles: 60410910.466667 
+ept_cycles_per_execution_cycles: 0.078320 
+cycles: 60471316.400000 
+ept_cycles_per_execution_cycles: 0.078408 
+cycles: 60221723.000000 
+ept_cycles_per_execution_cycles: 0.079089 
+cycles: 59762699.700000 
+ept_cycles_per_execution_cycles: 0.080020 
+cycles: 59320413.500000 
+ept_cycles_per_execution_cycles: 0.080912 
+cycles: 58881415.766667 
+ept_cycles_per_execution_cycles: 0.081792 
+cycles: 58438629.866667 
+ept_cycles_per_execution_cycles: 0.082675 
+cycles: 58001334.000000 
+ept_cycles_per_execution_cycles: 0.083224 
+cycles: 57641884.933333 
+ept_cycles_per_execution_cycles: 0.083114 
+cycles: 57359166.133333 
+ept_cycles_per_execution_cycles: 0.082982 
+cycles: 57090879.033333 
+ept_cycles_per_execution_cycles: 0.082927 
+cycles: 56784631.133333 
+ept_cycles_per_execution_cycles: 0.082668 
+cycles: 56516199.033333 
+ept_cycles_per_execution_cycles: 0.082554 
+cycles: 56270328.766667 
+ept_cycles_per_execution_cycles: 0.082455 
+cycles: 56500425.366667 
+ept_cycles_per_execution_cycles: 0.081379 
+cycles: 56719810.700000 
+ept_cycles_per_execution_cycles: 0.080329 
+cycles: 56947607.133333 
+ept_cycles_per_execution_cycles: 0.079223 
+cycles: 57161416.366667 
+ept_cycles_per_execution_cycles: 0.078218 
+cycles: 57370113.400000 
+ept_cycles_per_execution_cycles: 0.077191 
+cycles: 57583227.400000 
+ept_cycles_per_execution_cycles: 0.076110 
+cycles: 57767002.066667 
+ept_cycles_per_execution_cycles: 0.075032 
+cycles: 57995659.600000 
+ept_cycles_per_execution_cycles: 0.074091 
+cycles: 58103082.133333 
+ept_cycles_per_execution_cycles: 0.074549 
+cycles: 58089188.866667 
+ept_cycles_per_execution_cycles: 0.074763 
+cycles: 58099090.566667 
+ept_cycles_per_execution_cycles: 0.074834 
+cycles: 58314554.866667 
+ept_cycles_per_execution_cycles: 0.075130 
+cycles: 58591500.800000 
+ept_cycles_per_execution_cycles: 0.075475 
+cycles: 58865990.566667 
+ept_cycles_per_execution_cycles: 0.075689 
+cycles: 59150864.100000 
+ept_cycles_per_execution_cycles: 0.075670 
+cycles: 59448617.933333 
+ept_cycles_per_execution_cycles: 0.075685 
+cycles: 59747559.200000 
+ept_cycles_per_execution_cycles: 0.075715 
+cycles: 60032706.800000 
+ept_cycles_per_execution_cycles: 0.075702 
+cycles: 60342409.700000 
+ept_cycles_per_execution_cycles: 0.075649 
+cycles: 60636275.033333 
+ept_cycles_per_execution_cycles: 0.075617 
+cycles: 60920885.400000 
+ept_cycles_per_execution_cycles: 0.075567 
+cycles: 61212886.133333 
+ept_cycles_per_execution_cycles: 0.075555 
+cycles: 61489489.366667 
+ept_cycles_per_execution_cycles: 0.075595 
+cycles: 61759334.566667 
+ept_cycles_per_execution_cycles: 0.075525 
+cycles: 62041265.500000 
+ept_cycles_per_execution_cycles: 0.075474 
+cycles: 62310229.233333 
+ept_cycles_per_execution_cycles: 0.075415 
+cycles: 62565635.000000 
+ept_cycles_per_execution_cycles: 0.075429 
+cycles: 62877752.100000 
+ept_cycles_per_execution_cycles: 0.075407 
+cycles: 63135203.566667 
+ept_cycles_per_execution_cycles: 0.075445 
+cycles: 63353642.066667 
+ept_cycles_per_execution_cycles: 0.075505 
+cycles: 63107786.800000 
+ept_cycles_per_execution_cycles: 0.076348 
+cycles: 62895358.166667 
+ept_cycles_per_execution_cycles: 0.077120 
+cycles: 62639547.666667 
+ept_cycles_per_execution_cycles: 0.077960 
+cycles: 62398478.500000 
+ept_cycles_per_execution_cycles: 0.078814 
+cycles: 62139551.366667 
+ept_cycles_per_execution_cycles: 0.079711 
+cycles: 61914485.400000 
+ept_cycles_per_execution_cycles: 0.080636 
+cycles: 61691636.033333 
+ept_cycles_per_execution_cycles: 0.081551 
+cycles: 61449641.500000 
+ept_cycles_per_execution_cycles: 0.082319 
+cycles: 61359466.166667 
+ept_cycles_per_execution_cycles: 0.081911 
+cycles: 61341930.366667 
+ept_cycles_per_execution_cycles: 0.081716 
+cycles: 61339726.266667 
+ept_cycles_per_execution_cycles: 0.081646 
+cycles: 61345181.033333 
+ept_cycles_per_execution_cycles: 0.081516 
+cycles: 61330249.033333 
+ept_cycles_per_execution_cycles: 0.081261 
+cycles: 61310147.100000 
+ept_cycles_per_execution_cycles: 0.081017 
+cycles: 61308814.433333 
+ept_cycles_per_execution_cycles: 0.080992 
+cycles: 61296065.933333 
+ept_cycles_per_execution_cycles: 0.080995 
+cycles: 61290429.700000 
+ept_cycles_per_execution_cycles: 0.080990 
+cycles: 61302890.700000 
+ept_cycles_per_execution_cycles: 0.080952 
+cycles: 61259056.633333 
+ept_cycles_per_execution_cycles: 0.080966 
+cycles: 61243358.033333 
+ept_cycles_per_execution_cycles: 0.080964 
+cycles: 61256293.033333 
+ept_cycles_per_execution_cycles: 0.080960 
+cycles: 61276399.266667 
+ept_cycles_per_execution_cycles: 0.080943 
+cycles: 61262001.633333 
+ept_cycles_per_execution_cycles: 0.080922 
+cycles: 61245494.033333 
+ept_cycles_per_execution_cycles: 0.080992 
+cycles: 61236773.800000 
+ept_cycles_per_execution_cycles: 0.081063 
+cycles: 61242472.066667 
+ept_cycles_per_execution_cycles: 0.081116 
+cycles: 61265146.266667 
+ept_cycles_per_execution_cycles: 0.081091 
+cycles: 61246806.366667 
+ept_cycles_per_execution_cycles: 0.081139 
+cycles: 61253728.366667 
+ept_cycles_per_execution_cycles: 0.081107 
+cycles: 61247230.633333 
+ept_cycles_per_execution_cycles: 0.081112 
+cycles: 61242090.733333 
+ept_cycles_per_execution_cycles: 0.081089 
+cycles: 61258871.600000 
+ept_cycles_per_execution_cycles: 0.081090 
+cycles: 61210458.333333 
+ept_cycles_per_execution_cycles: 0.081033 
+cycles: 60985037.933333 
+ept_cycles_per_execution_cycles: 0.081227 
+cycles: 60776142.266667 
+ept_cycles_per_execution_cycles: 0.081336 
+cycles: 60546235.433333 
+ept_cycles_per_execution_cycles: 0.081429 
+cycles: 60287803.633333 
+ept_cycles_per_execution_cycles: 0.081540 
+cycles: 60031537.900000 
+ept_cycles_per_execution_cycles: 0.081721 
+cycles: 59746300.100000 
+ept_cycles_per_execution_cycles: 0.081886 
+cycles: 59478640.033333 
+ept_cycles_per_execution_cycles: 0.082031 
+cycles: 59212421.600000 
+ept_cycles_per_execution_cycles: 0.082190 
+cycles: 58923393.966667 
+ept_cycles_per_execution_cycles: 0.082395 
+cycles: 58650821.766667 
+ept_cycles_per_execution_cycles: 0.082551 
+cycles: 58376109.266667 
+ept_cycles_per_execution_cycles: 0.082796 
+cycles: 58078541.100000 
+ept_cycles_per_execution_cycles: 0.082955 
+cycles: 57785080.766667 
+ept_cycles_per_execution_cycles: 0.083039 
+cycles: 57493261.833333 
+ept_cycles_per_execution_cycles: 0.083113 
+cycles: 57174489.700000 
+ept_cycles_per_execution_cycles: 0.083210 
+cycles: 56889828.666667 
+ept_cycles_per_execution_cycles: 0.083281 
+cycles: 56578396.766667 
+ept_cycles_per_execution_cycles: 0.083361 
+cycles: 56269907.533333 
+ept_cycles_per_execution_cycles: 0.083464 
+cycles: 55973069.166667 
+ept_cycles_per_execution_cycles: 0.083602 
+cycles: 55727595.100000 
+ept_cycles_per_execution_cycles: 0.083697 
+cycles: 55465384.466667 
+ept_cycles_per_execution_cycles: 0.083821 
+cycles: 55182432.800000 
+ept_cycles_per_execution_cycles: 0.083898 
+cycles: 54904688.200000 
+ept_cycles_per_execution_cycles: 0.083984 
+cycles: 54611827.300000 
+ept_cycles_per_execution_cycles: 0.084106 
+cycles: 54424003.400000 
+ept_cycles_per_execution_cycles: 0.084098 
+cycles: 54466884.333333 
+ept_cycles_per_execution_cycles: 0.084075 
+cycles: 54467420.233333 
+ept_cycles_per_execution_cycles: 0.083994 
+cycles: 54476948.333333 
+ept_cycles_per_execution_cycles: 0.083978 
+cycles: 54290905.166667 
+ept_cycles_per_execution_cycles: 0.084132 
+cycles: 54455595.866667 
+ept_cycles_per_execution_cycles: 0.084079 
+cycles: 54726080.100000 
+ept_cycles_per_execution_cycles: 0.083739 
+cycles: 54743241.166667 
+ept_cycles_per_execution_cycles: 0.083531 
+cycles: 54722767.833333 
+ept_cycles_per_execution_cycles: 0.083485 
+cycles: 54707823.200000 
+ept_cycles_per_execution_cycles: 0.083444 
+cycles: 54671626.333333 
+ept_cycles_per_execution_cycles: 0.083370 
+cycles: 54645945.600000 
+ept_cycles_per_execution_cycles: 0.083275 
+cycles: 54597319.233333 
+ept_cycles_per_execution_cycles: 0.083195 
+cycles: 55037628.500000 
+ept_cycles_per_execution_cycles: 0.082088 
+cycles: 55506306.400000 
+ept_cycles_per_execution_cycles: 0.081000 
+cycles: 55984362.366667 
+ept_cycles_per_execution_cycles: 0.079935 
+cycles: 56463934.633333 
+ept_cycles_per_execution_cycles: 0.078826 
+cycles: 56944148.100000 
+ept_cycles_per_execution_cycles: 0.077810 
+cycles: 57441354.733333 
+ept_cycles_per_execution_cycles: 0.076840 
+cycles: 57929601.066667 
+ept_cycles_per_execution_cycles: 0.075914 
+cycles: 58419008.133333 
+ept_cycles_per_execution_cycles: 0.075000 
+cycles: 58901556.700000 
+ept_cycles_per_execution_cycles: 0.074107 
+cycles: 59403238.000000 
+ept_cycles_per_execution_cycles: 0.073255 
+cycles: 59678736.500000 
+ept_cycles_per_execution_cycles: 0.072755 
+cycles: 59662486.100000 
+ept_cycles_per_execution_cycles: 0.072888 
+cycles: 59630236.066667 
+ept_cycles_per_execution_cycles: 0.073083 
+cycles: 59613660.966667 
+ept_cycles_per_execution_cycles: 0.073262 
+cycles: 59606281.533333 
+ept_cycles_per_execution_cycles: 0.073500 
+cycles: 59591990.266667 
+ept_cycles_per_execution_cycles: 0.073688 
+cycles: 59582619.666667 
+ept_cycles_per_execution_cycles: 0.073868 
+cycles: 59472736.400000 
+ept_cycles_per_execution_cycles: 0.074098 
+cycles: 59153761.466667 
+ept_cycles_per_execution_cycles: 0.074343 
+cycles: 58890916.833333 
+ept_cycles_per_execution_cycles: 0.074632 
+cycles: 58596968.000000 
+ept_cycles_per_execution_cycles: 0.074893 
+cycles: 58473724.666667 
+ept_cycles_per_execution_cycles: 0.075064 
+cycles: 58080480.233333 
+ept_cycles_per_execution_cycles: 0.075337 
+cycles: 57760181.500000 
+ept_cycles_per_execution_cycles: 0.075653 
+cycles: 57683749.566667 
+ept_cycles_per_execution_cycles: 0.075972 
+cycles: 57671264.533333 
+ept_cycles_per_execution_cycles: 0.076183 
+cycles: 57684526.633333 
+ept_cycles_per_execution_cycles: 0.076345 
+cycles: 57712282.700000 
+ept_cycles_per_execution_cycles: 0.076547 
+cycles: 57717675.366667 
+ept_cycles_per_execution_cycles: 0.076751 
+cycles: 57752080.700000 
+ept_cycles_per_execution_cycles: 0.076997 
+cycles: 57290030.100000 
+ept_cycles_per_execution_cycles: 0.078155 
+cycles: 56799763.133333 
+ept_cycles_per_execution_cycles: 0.079280 
+cycles: 56309080.033333 
+ept_cycles_per_execution_cycles: 0.080476 
+cycles: 55829441.333333 
+ept_cycles_per_execution_cycles: 0.081640 
+cycles: 55351760.200000 
+ept_cycles_per_execution_cycles: 0.082834 
+cycles: 54863310.933333 
+ept_cycles_per_execution_cycles: 0.084079 
+cycles: 54378771.933333 
+ept_cycles_per_execution_cycles: 0.085204 
+cycles: 53924937.933333 
+ept_cycles_per_execution_cycles: 0.086215 
+cycles: 53467082.500000 
+ept_cycles_per_execution_cycles: 0.087259 
+cycles: 53008213.833333 
+ept_cycles_per_execution_cycles: 0.088332 
+cycles: 52726399.233333 
+ept_cycles_per_execution_cycles: 0.088894 
+cycles: 52699098.233333 
+ept_cycles_per_execution_cycles: 0.088663 
+cycles: 52683135.933333 
+ept_cycles_per_execution_cycles: 0.088337 
+cycles: 52671213.700000 
+ept_cycles_per_execution_cycles: 0.088028 
+cycles: 52914093.133333 
+ept_cycles_per_execution_cycles: 0.087075 
+cycles: 53430025.133333 
+ept_cycles_per_execution_cycles: 0.085732 
+cycles: 53940290.133333 
+ept_cycles_per_execution_cycles: 0.084384 
+cycles: 54439266.233333 
+ept_cycles_per_execution_cycles: 0.083084 
+cycles: 54480786.733333 
+ept_cycles_per_execution_cycles: 0.082878 
+cycles: 54479772.966667 
+ept_cycles_per_execution_cycles: 0.082800 
+cycles: 54520641.166667 
+ept_cycles_per_execution_cycles: 0.082528 
+cycles: 54914950.300000 
+ept_cycles_per_execution_cycles: 0.082097 
+cycles: 55292345.866667 
+ept_cycles_per_execution_cycles: 0.081786 
+cycles: 55616433.900000 
+ept_cycles_per_execution_cycles: 0.081546 
+cycles: 55947611.133333 
+ept_cycles_per_execution_cycles: 0.081426 
+cycles: 56277983.266667 
+ept_cycles_per_execution_cycles: 0.081255 
+cycles: 56595584.933333 
+ept_cycles_per_execution_cycles: 0.081222 
+cycles: 56910147.733333 
+ept_cycles_per_execution_cycles: 0.081032 
+cycles: 57217466.433333 
+ept_cycles_per_execution_cycles: 0.080847 
+cycles: 57506957.966667 
+ept_cycles_per_execution_cycles: 0.080721 
+cycles: 57818171.033333 
+ept_cycles_per_execution_cycles: 0.080619 
+cycles: 58124476.400000 
+ept_cycles_per_execution_cycles: 0.080487 
+cycles: 58423269.633333 
+ept_cycles_per_execution_cycles: 0.080550 
+cycles: 58696560.033333 
+ept_cycles_per_execution_cycles: 0.080315 
+cycles: 58989922.200000 
+ept_cycles_per_execution_cycles: 0.079947 
+cycles: 59306886.933333 
+ept_cycles_per_execution_cycles: 0.079575 
+cycles: 59626907.366667 
+ept_cycles_per_execution_cycles: 0.079358 
+cycles: 58289169.933333 
+ept_cycles_per_execution_cycles: 0.079300 
+cycles: 56524641.266667 
+ept_cycles_per_execution_cycles: 0.079213 
+cycles: 54762100.133333 
+ept_cycles_per_execution_cycles: 0.079098 
+cycles: 53022425.833333 
+ept_cycles_per_execution_cycles: 0.079054 
+cycles: 51285365.366667 
+ept_cycles_per_execution_cycles: 0.078967 
+cycles: 49545068.900000 
+ept_cycles_per_execution_cycles: 0.078910 
+cycles: 47816666.833333 
+ept_cycles_per_execution_cycles: 0.078827 
+cycles: 45839310.766667 
+ept_cycles_per_execution_cycles: 0.079397 
+cycles: 43576608.033333 
+ept_cycles_per_execution_cycles: 0.080532 
+cycles: 41316205.800000 
+ept_cycles_per_execution_cycles: 0.081804 
+cycles: 39065851.266667 
+ept_cycles_per_execution_cycles: 0.083228 
+cycles: 37261050.000000 
+ept_cycles_per_execution_cycles: 0.083219 
+cycles: 35499496.966667 
+ept_cycles_per_execution_cycles: 0.083007 
+cycles: 33706877.833333 
+ept_cycles_per_execution_cycles: 0.083048 
+cycles: 31546224.133333 
+ept_cycles_per_execution_cycles: 0.083355 
+cycles: 29411896.066667 
+ept_cycles_per_execution_cycles: 0.083543 
+cycles: 27339619.033333 
+ept_cycles_per_execution_cycles: 0.083596 
+cycles: 25264367.966667 
+ept_cycles_per_execution_cycles: 0.083453 
+cycles: 23174172.866667 
+ept_cycles_per_execution_cycles: 0.083375 
+cycles: 21086094.266667 
+ept_cycles_per_execution_cycles: 0.083022 
+cycles: 19011701.866667 
+ept_cycles_per_execution_cycles: 0.082966 
+cycles: 16956649.933333 
+ept_cycles_per_execution_cycles: 0.082866 
+cycles: 14915581.933333 
+ept_cycles_per_execution_cycles: 0.082439 
+cycles: 12844745.266667 
+ept_cycles_per_execution_cycles: 0.081878 
+cycles: 10794118.300000 
+ept_cycles_per_execution_cycles: 0.081226 
+cycles: 8746351.500000 
+ept_cycles_per_execution_cycles: 0.078729 
+cycles: 6712774.366667 
+ept_cycles_per_execution_cycles: 0.077848 
+cycles: 4674128.933333 
+ept_cycles_per_execution_cycles: 0.077895 
+cycles: 2600244.566667 
+ept_cycles_per_execution_cycles: 0.078209 
+cycles: 526282.733333 
+ept_cycles_per_execution_cycles: 0.077730 
+cycles: 81287.666667 
+ept_cycles_per_execution_cycles: 0.073745 
+cycles: 73647.900000 
+ept_cycles_per_execution_cycles: 0.078138 
+cycles: 68437.600000 
+ept_cycles_per_execution_cycles: 0.079546 
+cycles: 63833.433333 
+ept_cycles_per_execution_cycles: 0.081455 
+cycles: 59986.633333 
+ept_cycles_per_execution_cycles: 0.080321 
+cycles: 57733.133333 
+ept_cycles_per_execution_cycles: 0.079593 
+cycles: 55702.566667 
+ept_cycles_per_execution_cycles: 0.079857 
+cycles: 52723.766667 
+ept_cycles_per_execution_cycles: 0.075538 
+cycles: 49619.566667 
+ept_cycles_per_execution_cycles: 0.066933 
+cycles: 47945.933333 
+ept_cycles_per_execution_cycles: 0.066371 
+cycles: 46997.566667 
+ept_cycles_per_execution_cycles: 0.069628 
+cycles: 46225.733333 
+ept_cycles_per_execution_cycles: 0.070788 
+cycles: 45189.000000 
+ept_cycles_per_execution_cycles: 0.072144 
+cycles: 43907.166667 
+ept_cycles_per_execution_cycles: 0.073579 
+cycles: 43185.600000 
+ept_cycles_per_execution_cycles: 0.074418 
+cycles: 42577.166667 
+ept_cycles_per_execution_cycles: 0.076812 
+cycles: 42858.766667 
+ept_cycles_per_execution_cycles: 0.077042 
+cycles: 41677.133333 
+ept_cycles_per_execution_cycles: 0.078367 
+cycles: 41178.266667 
+ept_cycles_per_execution_cycles: 0.078638 
+cycles: 40571.700000 
+ept_cycles_per_execution_cycles: 0.081991 
+cycles: 41051.366667 
+ept_cycles_per_execution_cycles: 0.087041 
+cycles: 40528.933333 
+ept_cycles_per_execution_cycles: 0.084888 
+cycles: 40033.566667 
+ept_cycles_per_execution_cycles: 0.084452 
+cycles: 39676.433333 
+ept_cycles_per_execution_cycles: 0.084709 
+cycles: 38681.533333 
+ept_cycles_per_execution_cycles: 0.086875 
+cycles: 39260.100000 
+ept_cycles_per_execution_cycles: 0.083668 
+cycles: 39604.566667 
+ept_cycles_per_execution_cycles: 0.083121 
+cycles: 38549.233333 
+ept_cycles_per_execution_cycles: 0.080334 
+cycles: 37366.400000 
+ept_cycles_per_execution_cycles: 0.077595 
+cycles: 36765.266667 
+ept_cycles_per_execution_cycles: 0.076786 
+cycles: 37250.866667 
+ept_cycles_per_execution_cycles: 0.076192 
+cycles: 37080.833333 
+ept_cycles_per_execution_cycles: 0.076171 
+cycles: 36612.600000 
+ept_cycles_per_execution_cycles: 0.075889 
+cycles: 36505.400000 
+ept_cycles_per_execution_cycles: 0.076011 
+cycles: 35976.666667 
+ept_cycles_per_execution_cycles: 0.077285 
+cycles: 35425.866667 
+ept_cycles_per_execution_cycles: 0.078125 
+cycles: 36323.633333 
+ept_cycles_per_execution_cycles: 0.078598 
+cycles: 36334.100000 
+ept_cycles_per_execution_cycles: 0.078538 
+cycles: 36329.400000 
+ept_cycles_per_execution_cycles: 0.078255 
+cycles: 35714.766667 
+ept_cycles_per_execution_cycles: 0.078954 
+cycles: 34879.533333 
+ept_cycles_per_execution_cycles: 0.074936 
+cycles: 36090.300000 
+ept_cycles_per_execution_cycles: 0.078726 
+cycles: 36268.300000 
+ept_cycles_per_execution_cycles: 0.078833 
+cycles: 36148.866667 
+ept_cycles_per_execution_cycles: 0.078797 
+cycles: 35803.766667 
+ept_cycles_per_execution_cycles: 0.080245 
+cycles: 35292.266667 
+ept_cycles_per_execution_cycles: 0.078021 
+cycles: 41432.533333 
+ept_cycles_per_execution_cycles: 0.070578 
+cycles: 41599.833333 
+ept_cycles_per_execution_cycles: 0.070895 
+cycles: 46063.800000 
+ept_cycles_per_execution_cycles: 0.066842 
+cycles: 57530.566667 
+ept_cycles_per_execution_cycles: 0.056256 
+cycles: 62711.233333 
+ept_cycles_per_execution_cycles: 0.052436 
+cycles: 132028.966667 
+ept_cycles_per_execution_cycles: 0.027975 
+cycles: 169872.766667 
+ept_cycles_per_execution_cycles: 0.023570 
+cycles: 205961.933333 
+ept_cycles_per_execution_cycles: 0.020650 
+cycles: 232825.100000 
+ept_cycles_per_execution_cycles: 0.019240 
+cycles: 242824.200000 
+ept_cycles_per_execution_cycles: 0.019322 
+cycles: 243870.700000 
+ept_cycles_per_execution_cycles: 0.019413 
+cycles: 245523.766667 
+ept_cycles_per_execution_cycles: 0.019477 
+cycles: 246338.000000 
+ept_cycles_per_execution_cycles: 0.019389 
+cycles: 246898.666667 
+ept_cycles_per_execution_cycles: 0.019364 
+cycles: 248170.666667 
+ept_cycles_per_execution_cycles: 0.019928 
+cycles: 248169.300000 
+ept_cycles_per_execution_cycles: 0.020135 
+cycles: 248905.966667 
+ept_cycles_per_execution_cycles: 0.020604 
+cycles: 250293.933333 
+ept_cycles_per_execution_cycles: 0.021146 
+cycles: 250512.300000 
+ept_cycles_per_execution_cycles: 0.021240 
+cycles: 251127.166667 
+ept_cycles_per_execution_cycles: 0.021500 
+cycles: 250260.833333 
+ept_cycles_per_execution_cycles: 0.021491 
+cycles: 251551.666667 
+ept_cycles_per_execution_cycles: 0.021981 
+cycles: 251816.066667 
+ept_cycles_per_execution_cycles: 0.022155 
+cycles: 252077.966667 
+ept_cycles_per_execution_cycles: 0.022238 
+cycles: 252798.133333 
+ept_cycles_per_execution_cycles: 0.022528 
+cycles: 251914.600000 
+ept_cycles_per_execution_cycles: 0.022151 
+cycles: 252187.766667 
+ept_cycles_per_execution_cycles: 0.022269 
+cycles: 252404.900000 
+ept_cycles_per_execution_cycles: 0.022381 
+cycles: 252162.166667 
+ept_cycles_per_execution_cycles: 0.022292 
+cycles: 252623.766667 
+ept_cycles_per_execution_cycles: 0.022677 
+cycles: 246562.833333 
+ept_cycles_per_execution_cycles: 0.022529 
+cycles: 246537.233333 
+ept_cycles_per_execution_cycles: 0.022467 
+cycles: 242275.266667 
+ept_cycles_per_execution_cycles: 0.022319 
+cycles: 229829.533333 
+ept_cycles_per_execution_cycles: 0.022287 
+cycles: 224290.866667 
+ept_cycles_per_execution_cycles: 0.021364 
+cycles: 155006.400000 
+ept_cycles_per_execution_cycles: 0.028010 
+cycles: 117091.200000 
+ept_cycles_per_execution_cycles: 0.034156 
+cycles: 80937.333333 
+ept_cycles_per_execution_cycles: 0.046008 
+cycles: 54114.366667 
+ept_cycles_per_execution_cycles: 0.064267 
+cycles: 43064.900000 
+ept_cycles_per_execution_cycles: 0.073131 
+cycles: 42249.000000 
+ept_cycles_per_execution_cycles: 0.073689 
+cycles: 40496.000000 
+ept_cycles_per_execution_cycles: 0.075506 
+cycles: 39618.900000 
+ept_cycles_per_execution_cycles: 0.076805 
+cycles: 39055.433333 
+ept_cycles_per_execution_cycles: 0.077781 
+cycles: 36838.466667 
+ept_cycles_per_execution_cycles: 0.071544 
+cycles: 36803.600000 
+ept_cycles_per_execution_cycles: 0.069340 
+cycles: 36068.600000 
+ept_cycles_per_execution_cycles: 0.067029 
+cycles: 34550.533333 
+ept_cycles_per_execution_cycles: 0.064594 
+cycles: 34263.400000 
+ept_cycles_per_execution_cycles: 0.063978 
+cycles: 33745.066667 
+ept_cycles_per_execution_cycles: 0.061742 
+cycles: 33690.233333 
+ept_cycles_per_execution_cycles: 0.059874 
+cycles: 32485.966667 
+ept_cycles_per_execution_cycles: 0.057082 
+cycles: 32085.000000 
+ept_cycles_per_execution_cycles: 0.056034 
+cycles: 31794.400000 
+ept_cycles_per_execution_cycles: 0.056113 
+cycles: 31001.700000 
+ept_cycles_per_execution_cycles: 0.051146 
+cycles: 30719.700000 
+ept_cycles_per_execution_cycles: 0.047040 
+cycles: 30349.133333 
+ept_cycles_per_execution_cycles: 0.045248 
+cycles: 30052.933333 
+ept_cycles_per_execution_cycles: 0.043717 
+cycles: 30226.100000 
+ept_cycles_per_execution_cycles: 0.043569 
+cycles: 29807.900000 
+ept_cycles_per_execution_cycles: 0.039056 
+cycles: 29481.733333 
+ept_cycles_per_execution_cycles: 0.038391 
+cycles: 29542.233333 
+ept_cycles_per_execution_cycles: 0.037876 
+cycles: 29357.600000 
+ept_cycles_per_execution_cycles: 0.038407 
+cycles: 29575.933333 
+ept_cycles_per_execution_cycles: 0.038690 
+cycles: 29407.400000 
+ept_cycles_per_execution_cycles: 0.038192 
+cycles: 29208.433333 
+ept_cycles_per_execution_cycles: 0.038473 
+cycles: 29298.500000 
+ept_cycles_per_execution_cycles: 0.038831 
+cycles: 29281.033333 
+ept_cycles_per_execution_cycles: 0.038790 
+cycles: 29220.933333 
+ept_cycles_per_execution_cycles: 0.039625 
+cycles: 29458.933333 
+ept_cycles_per_execution_cycles: 0.041484 
+cycles: 29116.333333 
+ept_cycles_per_execution_cycles: 0.041751 
+cycles: 29307.000000 
+ept_cycles_per_execution_cycles: 0.041650 
+cycles: 29291.600000 
+ept_cycles_per_execution_cycles: 0.042031 
+cycles: 29322.133333 
+ept_cycles_per_execution_cycles: 0.042549 
+cycles: 29257.000000 
+ept_cycles_per_execution_cycles: 0.041622 
+cycles: 29009.166667 
+ept_cycles_per_execution_cycles: 0.040894 
+cycles: 29080.100000 
+ept_cycles_per_execution_cycles: 0.040882 
+cycles: 29202.033333 
+ept_cycles_per_execution_cycles: 0.041131 
+cycles: 29216.066667 
+ept_cycles_per_execution_cycles: 0.041100 
+cycles: 29064.800000 
+ept_cycles_per_execution_cycles: 0.039735 
+cycles: 28854.466667 
+ept_cycles_per_execution_cycles: 0.039717 
+cycles: 28918.233333 
+ept_cycles_per_execution_cycles: 0.039740 
+cycles: 29023.700000 
+ept_cycles_per_execution_cycles: 0.039797 
+cycles: 29054.933333 
+ept_cycles_per_execution_cycles: 0.039568 
+cycles: 29111.600000 
+ept_cycles_per_execution_cycles: 0.040593 
+cycles: 28888.633333 
+ept_cycles_per_execution_cycles: 0.041268 
+cycles: 29113.566667 
+ept_cycles_per_execution_cycles: 0.041247 
+cycles: 29090.033333 
+ept_cycles_per_execution_cycles: 0.041264 
+cycles: 29091.333333 
+ept_cycles_per_execution_cycles: 0.041280 
+cycles: 29186.066667 
+ept_cycles_per_execution_cycles: 0.042625 
+cycles: 29103.433333 
+ept_cycles_per_execution_cycles: 0.043036 
+cycles: 29183.233333 
+ept_cycles_per_execution_cycles: 0.043359 
+cycles: 29145.366667 
+ept_cycles_per_execution_cycles: 0.043150 
+cycles: 29121.466667 
+ept_cycles_per_execution_cycles: 0.043135 
+cycles: 29062.633333 
+ept_cycles_per_execution_cycles: 0.042876 
+cycles: 28925.066667 
+ept_cycles_per_execution_cycles: 0.043048 
+cycles: 28974.900000 
+ept_cycles_per_execution_cycles: 0.042554 
+cycles: 28993.900000 
+ept_cycles_per_execution_cycles: 0.042616 
+cycles: 28926.266667 
+ept_cycles_per_execution_cycles: 0.041833 
+cycles: 28808.333333 
+ept_cycles_per_execution_cycles: 0.040362 
+cycles: 28673.933333 
+ept_cycles_per_execution_cycles: 0.040367 
+cycles: 28716.866667 
+ept_cycles_per_execution_cycles: 0.040142 
+cycles: 29070.066667 
+ept_cycles_per_execution_cycles: 0.043150 
+cycles: 29371.966667 
+ept_cycles_per_execution_cycles: 0.045590 
+cycles: 29784.366667 
+ept_cycles_per_execution_cycles: 0.053943 
+cycles: 30084.066667 
+ept_cycles_per_execution_cycles: 0.058319 
+cycles: 30421.100000 
+ept_cycles_per_execution_cycles: 0.061478 
+cycles: 30704.566667 
+ept_cycles_per_execution_cycles: 0.062626 
+cycles: 30886.433333 
+ept_cycles_per_execution_cycles: 0.063351 
+cycles: 31342.033333 
+ept_cycles_per_execution_cycles: 0.068633 
+cycles: 31603.666667 
+ept_cycles_per_execution_cycles: 0.069565 
+cycles: 31681.666667 
+ept_cycles_per_execution_cycles: 0.069783 
+cycles: 32031.666667 
+ept_cycles_per_execution_cycles: 0.069688 
+cycles: 32102.566667 
+ept_cycles_per_execution_cycles: 0.069361 
+cycles: 32256.666667 
+ept_cycles_per_execution_cycles: 0.069925 
+cycles: 32421.500000 
+ept_cycles_per_execution_cycles: 0.069090 
+cycles: 32641.600000 
+ept_cycles_per_execution_cycles: 0.071576 
+cycles: 32956.900000 
+ept_cycles_per_execution_cycles: 0.072537 
+cycles: 33182.433333 
+ept_cycles_per_execution_cycles: 0.074711 
+cycles: 33363.133333 
+ept_cycles_per_execution_cycles: 0.079570 
+cycles: 33714.733333 
+ept_cycles_per_execution_cycles: 0.080428 
+cycles: 33778.800000 
+ept_cycles_per_execution_cycles: 0.080847 
+cycles: 34000.866667 
+ept_cycles_per_execution_cycles: 0.080726 
+cycles: 34170.166667 
+ept_cycles_per_execution_cycles: 0.080940 
+cycles: 34196.300000 
+ept_cycles_per_execution_cycles: 0.081898 
+cycles: 34485.966667 
+ept_cycles_per_execution_cycles: 0.080892 
+cycles: 34530.933333 
+ept_cycles_per_execution_cycles: 0.080626 
+cycles: 34764.166667 
+ept_cycles_per_execution_cycles: 0.080395 
+cycles: 34840.833333 
+ept_cycles_per_execution_cycles: 0.080227 
+cycles: 34981.800000 
+ept_cycles_per_execution_cycles: 0.080974 
+cycles: 35271.633333 
+ept_cycles_per_execution_cycles: 0.080257 
+cycles: 35289.466667 
+ept_cycles_per_execution_cycles: 0.079872 
+cycles: 35119.333333 
+ept_cycles_per_execution_cycles: 0.077204 
+cycles: 34816.900000 
+ept_cycles_per_execution_cycles: 0.074983 
+cycles: 34317.200000 
+ept_cycles_per_execution_cycles: 0.067351 
+cycles: 34180.700000 
+ept_cycles_per_execution_cycles: 0.063242 
+cycles: 33925.600000 
+ept_cycles_per_execution_cycles: 0.059672 
+cycles: 33804.866667 
+ept_cycles_per_execution_cycles: 0.058071 
+cycles: 33691.566667 
+ept_cycles_per_execution_cycles: 0.057043 
+cycles: 33347.066667 
+ept_cycles_per_execution_cycles: 0.052913 
+cycles: 33405.233333 
+ept_cycles_per_execution_cycles: 0.051822 
+cycles: 33327.700000 
+ept_cycles_per_execution_cycles: 0.051486 
+cycles: 33181.933333 
+ept_cycles_per_execution_cycles: 0.051395 
+cycles: 33251.933333 
+ept_cycles_per_execution_cycles: 0.051530 
+cycles: 32981.133333 
+ept_cycles_per_execution_cycles: 0.050053 
+cycles: 33063.766667 
+ept_cycles_per_execution_cycles: 0.049669 
+cycles: 32852.900000 
+ept_cycles_per_execution_cycles: 0.046744 
+cycles: 32795.833333 
+ept_cycles_per_execution_cycles: 0.045772 
+cycles: 32627.866667 
+ept_cycles_per_execution_cycles: 0.043308 
+cycles: 32302.466667 
+ept_cycles_per_execution_cycles: 0.038235 
+cycles: 32595.600000 
+ept_cycles_per_execution_cycles: 0.040019 
+cycles: 32672.933333 
+ept_cycles_per_execution_cycles: 0.040954 
+cycles: 32761.333333 
+ept_cycles_per_execution_cycles: 0.041740 
+cycles: 32742.766667 
+ept_cycles_per_execution_cycles: 0.042008 
+cycles: 32687.100000 
+ept_cycles_per_execution_cycles: 0.044871 
+cycles: 32938.933333 
+ept_cycles_per_execution_cycles: 0.046333 
+cycles: 32951.833333 
+ept_cycles_per_execution_cycles: 0.046865 
+cycles: 32962.866667 
+ept_cycles_per_execution_cycles: 0.047334 
+cycles: 32978.466667 
+ept_cycles_per_execution_cycles: 0.047611 
+cycles: 32722.833333 
+ept_cycles_per_execution_cycles: 0.048956 
+cycles: 32826.833333 
+ept_cycles_per_execution_cycles: 0.049184 
+cycles: 32888.033333 
+ept_cycles_per_execution_cycles: 0.049515 
+cycles: 32887.933333 
+ept_cycles_per_execution_cycles: 0.049828 
+cycles: 32937.700000 
+ept_cycles_per_execution_cycles: 0.049934 
+cycles: 32829.833333 
+ept_cycles_per_execution_cycles: 0.050741 
+cycles: 32944.700000 
+ept_cycles_per_execution_cycles: 0.051052 
+cycles: 32971.000000 
+ept_cycles_per_execution_cycles: 0.051151 
+cycles: 33015.166667 
+ept_cycles_per_execution_cycles: 0.051751 
+cycles: 33071.500000 
+ept_cycles_per_execution_cycles: 0.052063 
+cycles: 32943.366667 
+ept_cycles_per_execution_cycles: 0.053514 
+cycles: 33136.666667 
+ept_cycles_per_execution_cycles: 0.053547 
+cycles: 33178.100000 
+ept_cycles_per_execution_cycles: 0.053596 
+cycles: 33180.533333 
+ept_cycles_per_execution_cycles: 0.053495 
+cycles: 33281.000000 
+ept_cycles_per_execution_cycles: 0.054695 
+cycles: 33600.166667 
+ept_cycles_per_execution_cycles: 0.063334 
+cycles: 34185.200000 
+ept_cycles_per_execution_cycles: 0.068324 
+cycles: 34311.133333 
+ept_cycles_per_execution_cycles: 0.070143 
+cycles: 34394.800000 
+ept_cycles_per_execution_cycles: 0.071718 
+cycles: 34518.666667 
+ept_cycles_per_execution_cycles: 0.072669 
+cycles: 34545.733333 
+ept_cycles_per_execution_cycles: 0.075159 
+cycles: 34458.266667 
+ept_cycles_per_execution_cycles: 0.074234 
+cycles: 34436.633333 
+ept_cycles_per_execution_cycles: 0.073462 
+cycles: 34402.700000 
+ept_cycles_per_execution_cycles: 0.072986 
+cycles: 34567.133333 
+ept_cycles_per_execution_cycles: 0.073530 
+cycles: 34565.566667 
+ept_cycles_per_execution_cycles: 0.072794 
+cycles: 34530.766667 
+ept_cycles_per_execution_cycles: 0.072718 
+cycles: 34380.266667 
+ept_cycles_per_execution_cycles: 0.072664 
+cycles: 34255.033333 
+ept_cycles_per_execution_cycles: 0.072914 
+cycles: 34181.566667 
+ept_cycles_per_execution_cycles: 0.073037 
+cycles: 34242.533333 
+ept_cycles_per_execution_cycles: 0.073313 
+cycles: 34140.800000 
+ept_cycles_per_execution_cycles: 0.073546 
+cycles: 34012.400000 
+ept_cycles_per_execution_cycles: 0.073484 
+cycles: 33955.900000 
+ept_cycles_per_execution_cycles: 0.073719 
+cycles: 34026.700000 
+ept_cycles_per_execution_cycles: 0.075926 
+cycles: 34101.200000 
+ept_cycles_per_execution_cycles: 0.079161 
+cycles: 34022.466667 
+ept_cycles_per_execution_cycles: 0.080615 
+cycles: 33909.300000 
+ept_cycles_per_execution_cycles: 0.081498 
+cycles: 33797.300000 
+ept_cycles_per_execution_cycles: 0.081558 
+cycles: 34016.900000 
+ept_cycles_per_execution_cycles: 0.084156 
+cycles: 34049.733333 
+ept_cycles_per_execution_cycles: 0.087134 
+cycles: 33851.400000 
+ept_cycles_per_execution_cycles: 0.088674 
+cycles: 33861.600000 
+ept_cycles_per_execution_cycles: 0.091453 
+cycles: 33867.233333 
+ept_cycles_per_execution_cycles: 0.093427 
+cycles: 33733.066667 
+ept_cycles_per_execution_cycles: 0.093786 
+cycles: 33316.133333 
+ept_cycles_per_execution_cycles: 0.089791 
+cycles: 32907.766667 
+ept_cycles_per_execution_cycles: 0.086139 
+cycles: 32694.400000 
+ept_cycles_per_execution_cycles: 0.084756 
+cycles: 32706.066667 
+ept_cycles_per_execution_cycles: 0.086588 
+cycles: 32808.833333 
+ept_cycles_per_execution_cycles: 0.089421 
+cycles: 32914.833333 
+ept_cycles_per_execution_cycles: 0.091748 
+cycles: 32498.966667 
+ept_cycles_per_execution_cycles: 0.092259 
+cycles: 32519.933333 
+ept_cycles_per_execution_cycles: 0.092613 
+cycles: 32424.666667 
+ept_cycles_per_execution_cycles: 0.092987 
+cycles: 32151.666667 
+ept_cycles_per_execution_cycles: 0.092403 
+cycles: 32162.233333 
+ept_cycles_per_execution_cycles: 0.092367 
+cycles: 31898.733333 
+ept_cycles_per_execution_cycles: 0.093333 
+cycles: 32038.933333 
+ept_cycles_per_execution_cycles: 0.093468 
+cycles: 32403.133333 
+ept_cycles_per_execution_cycles: 0.096136 
+cycles: 32459.700000 
+ept_cycles_per_execution_cycles: 0.097098 
+cycles: 32693.266667 
+ept_cycles_per_execution_cycles: 0.101342 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32681.800000 
+ept_cycles_per_execution_cycles: 0.103524 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32889.733333 
+ept_cycles_per_execution_cycles: 0.104576 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32895.000000 
+ept_cycles_per_execution_cycles: 0.104505 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32765.666667 
+ept_cycles_per_execution_cycles: 0.102743 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33107.500000 
+ept_cycles_per_execution_cycles: 0.105518 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33078.366667 
+ept_cycles_per_execution_cycles: 0.105811 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33224.333333 
+ept_cycles_per_execution_cycles: 0.105957 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33229.200000 
+ept_cycles_per_execution_cycles: 0.106045 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32935.833333 
+ept_cycles_per_execution_cycles: 0.104360 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33346.933333 
+ept_cycles_per_execution_cycles: 0.106980 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33376.700000 
+ept_cycles_per_execution_cycles: 0.108157 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33406.566667 
+ept_cycles_per_execution_cycles: 0.106896 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33365.333333 
+ept_cycles_per_execution_cycles: 0.106199 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33288.233333 
+ept_cycles_per_execution_cycles: 0.105995 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33790.066667 
+ept_cycles_per_execution_cycles: 0.108640 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33632.633333 
+ept_cycles_per_execution_cycles: 0.109979 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33774.266667 
+ept_cycles_per_execution_cycles: 0.110563 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33596.666667 
+ept_cycles_per_execution_cycles: 0.107835 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33357.400000 
+ept_cycles_per_execution_cycles: 0.104674 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33446.900000 
+ept_cycles_per_execution_cycles: 0.104947 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33455.766667 
+ept_cycles_per_execution_cycles: 0.104735 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33550.133333 
+ept_cycles_per_execution_cycles: 0.104446 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33788.633333 
+ept_cycles_per_execution_cycles: 0.105880 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33880.433333 
+ept_cycles_per_execution_cycles: 0.107140 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33898.800000 
+ept_cycles_per_execution_cycles: 0.108525 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33886.900000 
+ept_cycles_per_execution_cycles: 0.108391 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33894.766667 
+ept_cycles_per_execution_cycles: 0.108730 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33675.100000 
+ept_cycles_per_execution_cycles: 0.105798 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33636.266667 
+ept_cycles_per_execution_cycles: 0.104537 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33279.233333 
+ept_cycles_per_execution_cycles: 0.098791 
+cycles: 33147.233333 
+ept_cycles_per_execution_cycles: 0.096959 
+cycles: 33020.300000 
+ept_cycles_per_execution_cycles: 0.095803 
+cycles: 33106.433333 
+ept_cycles_per_execution_cycles: 0.095309 
+cycles: 33042.633333 
+ept_cycles_per_execution_cycles: 0.094732 
+cycles: 32577.800000 
+ept_cycles_per_execution_cycles: 0.087449 
+cycles: 32593.066667 
+ept_cycles_per_execution_cycles: 0.089529 
+cycles: 32704.066667 
+ept_cycles_per_execution_cycles: 0.091112 
+cycles: 32862.033333 
+ept_cycles_per_execution_cycles: 0.092074 
+cycles: 32853.433333 
+ept_cycles_per_execution_cycles: 0.092091 
+cycles: 32381.533333 
+ept_cycles_per_execution_cycles: 0.088149 
+cycles: 32259.766667 
+ept_cycles_per_execution_cycles: 0.086563 
+cycles: 32231.700000 
+ept_cycles_per_execution_cycles: 0.085479 
+cycles: 32342.566667 
+ept_cycles_per_execution_cycles: 0.084150 
+cycles: 32200.866667 
+ept_cycles_per_execution_cycles: 0.083691 
+cycles: 31868.866667 
+ept_cycles_per_execution_cycles: 0.076568 
+cycles: 31689.066667 
+ept_cycles_per_execution_cycles: 0.074727 
+cycles: 31633.000000 
+ept_cycles_per_execution_cycles: 0.073279 
+cycles: 31694.400000 
+ept_cycles_per_execution_cycles: 0.072710 
+cycles: 31697.433333 
+ept_cycles_per_execution_cycles: 0.074600 
+cycles: 31612.766667 
+ept_cycles_per_execution_cycles: 0.072335 
+cycles: 31623.000000 
+ept_cycles_per_execution_cycles: 0.072103 
+cycles: 31501.166667 
+ept_cycles_per_execution_cycles: 0.072211 
+cycles: 31333.066667 
+ept_cycles_per_execution_cycles: 0.070178 
+cycles: 31130.433333 
+ept_cycles_per_execution_cycles: 0.068470 
+cycles: 31134.133333 
+ept_cycles_per_execution_cycles: 0.064483 
+cycles: 31058.000000 
+ept_cycles_per_execution_cycles: 0.062923 
+cycles: 31030.900000 
+ept_cycles_per_execution_cycles: 0.061924 
+cycles: 30872.133333 
+ept_cycles_per_execution_cycles: 0.062091 
+cycles: 30864.933333 
+ept_cycles_per_execution_cycles: 0.062080 
+cycles: 31050.100000 
+ept_cycles_per_execution_cycles: 0.061297 
+cycles: 31128.500000 
+ept_cycles_per_execution_cycles: 0.061049 
+cycles: 31193.300000 
+ept_cycles_per_execution_cycles: 0.062959 
+cycles: 31445.900000 
+ept_cycles_per_execution_cycles: 0.065120 
+cycles: 31668.933333 
+ept_cycles_per_execution_cycles: 0.067981 
+cycles: 31950.833333 
+ept_cycles_per_execution_cycles: 0.073079 
+cycles: 31797.333333 
+ept_cycles_per_execution_cycles: 0.070793 
+cycles: 31884.333333 
+ept_cycles_per_execution_cycles: 0.072292 
+cycles: 32054.866667 
+ept_cycles_per_execution_cycles: 0.072768 
+cycles: 32178.466667 
+ept_cycles_per_execution_cycles: 0.074544 
+cycles: 32309.333333 
+ept_cycles_per_execution_cycles: 0.075468 
+cycles: 32190.866667 
+ept_cycles_per_execution_cycles: 0.076104 
+cycles: 32218.166667 
+ept_cycles_per_execution_cycles: 0.078335 
+cycles: 32367.033333 
+ept_cycles_per_execution_cycles: 0.080190 
+cycles: 32637.133333 
+ept_cycles_per_execution_cycles: 0.081880 
+cycles: 32589.500000 
+ept_cycles_per_execution_cycles: 0.087025 
+cycles: 32698.666667 
+ept_cycles_per_execution_cycles: 0.088348 
+cycles: 32808.533333 
+ept_cycles_per_execution_cycles: 0.091243 
+cycles: 33054.400000 
+ept_cycles_per_execution_cycles: 0.092892 
+cycles: 33020.300000 
+ept_cycles_per_execution_cycles: 0.092454 
+cycles: 33027.500000 
+ept_cycles_per_execution_cycles: 0.093679 
+cycles: 32973.700000 
+ept_cycles_per_execution_cycles: 0.093839 
+cycles: 33094.966667 
+ept_cycles_per_execution_cycles: 0.095104 
+cycles: 33555.700000 
+ept_cycles_per_execution_cycles: 0.098254 
+cycles: 33755.766667 
+ept_cycles_per_execution_cycles: 0.102953 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34280.866667 
+ept_cycles_per_execution_cycles: 0.111213 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34858.933333 
+ept_cycles_per_execution_cycles: 0.121157 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35524.033333 
+ept_cycles_per_execution_cycles: 0.128824 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36411.166667 
+ept_cycles_per_execution_cycles: 0.136098 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36482.200000 
+ept_cycles_per_execution_cycles: 0.140320 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36943.766667 
+ept_cycles_per_execution_cycles: 0.148316 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37545.066667 
+ept_cycles_per_execution_cycles: 0.157006 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38136.400000 
+ept_cycles_per_execution_cycles: 0.162645 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38674.100000 
+ept_cycles_per_execution_cycles: 0.168124 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38615.700000 
+ept_cycles_per_execution_cycles: 0.170199 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38893.400000 
+ept_cycles_per_execution_cycles: 0.173521 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39504.033333 
+ept_cycles_per_execution_cycles: 0.179513 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39708.533333 
+ept_cycles_per_execution_cycles: 0.182203 
+=========== ACTION : ENABLE TPT ===========
+cycles: 40448.433333 
+ept_cycles_per_execution_cycles: 0.186887 
+=========== ACTION : ENABLE TPT ===========
+cycles: 40441.800000 
+ept_cycles_per_execution_cycles: 0.188894 
+=========== ACTION : ENABLE TPT ===========
+cycles: 40867.166667 
+ept_cycles_per_execution_cycles: 0.191298 
+=========== ACTION : ENABLE TPT ===========
+cycles: 41529.266667 
+ept_cycles_per_execution_cycles: 0.197002 
+=========== ACTION : ENABLE TPT ===========
+cycles: 41865.566667 
+ept_cycles_per_execution_cycles: 0.200301 
+=========== ACTION : ENABLE TPT ===========
+cycles: 42577.566667 
+ept_cycles_per_execution_cycles: 0.204798 
+=========== ACTION : ENABLE TPT ===========
+cycles: 42495.933333 
+ept_cycles_per_execution_cycles: 0.207050 
+=========== ACTION : ENABLE TPT ===========
+cycles: 43030.366667 
+ept_cycles_per_execution_cycles: 0.208779 
+=========== ACTION : ENABLE TPT ===========
+cycles: 43579.300000 
+ept_cycles_per_execution_cycles: 0.214772 
+=========== ACTION : ENABLE TPT ===========
+cycles: 43941.366667 
+ept_cycles_per_execution_cycles: 0.217852 
+=========== ACTION : ENABLE TPT ===========
+cycles: 44485.233333 
+ept_cycles_per_execution_cycles: 0.222142 
+=========== ACTION : ENABLE TPT ===========
+cycles: 44780.066667 
+ept_cycles_per_execution_cycles: 0.223888 
+=========== ACTION : ENABLE TPT ===========
+cycles: 43612.200000 
+ept_cycles_per_execution_cycles: 0.228345 
+=========== ACTION : ENABLE TPT ===========
+cycles: 45674.733333 
+ept_cycles_per_execution_cycles: 0.230864 
+=========== ACTION : ENABLE TPT ===========
+cycles: 45972.266667 
+ept_cycles_per_execution_cycles: 0.233942 
+=========== ACTION : ENABLE TPT ===========
+cycles: 46216.800000 
+ept_cycles_per_execution_cycles: 0.237188 
+=========== ACTION : ENABLE TPT ===========
+cycles: 46381.800000 
+ept_cycles_per_execution_cycles: 0.237392 
+=========== ACTION : ENABLE TPT ===========
+cycles: 44795.966667 
+ept_cycles_per_execution_cycles: 0.240222 
+=========== ACTION : ENABLE TPT ===========
+cycles: 7915441.866667 
+ept_cycles_per_execution_cycles: 0.019230 
+cycles: 15114360.500000 
+ept_cycles_per_execution_cycles: 0.015156 
+cycles: 22357435.300000 
+ept_cycles_per_execution_cycles: 0.011851 
+cycles: 30767490.566667 
+ept_cycles_per_execution_cycles: 0.009112 
+cycles: 32852111.500000 
+ept_cycles_per_execution_cycles: 0.008632 
+cycles: 32854700.266667 
+ept_cycles_per_execution_cycles: 0.008624 
+cycles: 32854101.500000 
+ept_cycles_per_execution_cycles: 0.008613 
+cycles: 32853471.033333 
+ept_cycles_per_execution_cycles: 0.008602 
+cycles: 32853280.800000 
+ept_cycles_per_execution_cycles: 0.008597 
+cycles: 32851680.200000 
+ept_cycles_per_execution_cycles: 0.008587 
+cycles: 32852246.000000 
+ept_cycles_per_execution_cycles: 0.008576 
+cycles: 32851845.166667 
+ept_cycles_per_execution_cycles: 0.008568 
+cycles: 32851044.400000 
+ept_cycles_per_execution_cycles: 0.008556 
+cycles: 32850884.033333 
+ept_cycles_per_execution_cycles: 0.008551 
+cycles: 32849112.100000 
+ept_cycles_per_execution_cycles: 0.008540 
+cycles: 32849892.866667 
+ept_cycles_per_execution_cycles: 0.008533 
+cycles: 32849598.533333 
+ept_cycles_per_execution_cycles: 0.008526 
+cycles: 32848886.933333 
+ept_cycles_per_execution_cycles: 0.008515 
+cycles: 32848757.366667 
+ept_cycles_per_execution_cycles: 0.008510 
+cycles: 32846959.066667 
+ept_cycles_per_execution_cycles: 0.008499 
+cycles: 32847423.233333 
+ept_cycles_per_execution_cycles: 0.008489 
+cycles: 32847125.133333 
+ept_cycles_per_execution_cycles: 0.008480 
+cycles: 32846588.400000 
+ept_cycles_per_execution_cycles: 0.008469 
+cycles: 32846201.333333 
+ept_cycles_per_execution_cycles: 0.008464 
+cycles: 32846069.966667 
+ept_cycles_per_execution_cycles: 0.008459 
+cycles: 32845062.933333 
+ept_cycles_per_execution_cycles: 0.008442 
+cycles: 32844728.633333 
+ept_cycles_per_execution_cycles: 0.008433 
+cycles: 32844208.733333 
+ept_cycles_per_execution_cycles: 0.008423 
+cycles: 32843898.033333 
+ept_cycles_per_execution_cycles: 0.008417 
+cycles: 32843794.866667 
+ept_cycles_per_execution_cycles: 0.008414 
+cycles: 24973508.300000 
+ept_cycles_per_execution_cycles: 0.005388 
+cycles: 17774256.666667 
+ept_cycles_per_execution_cycles: 0.003230 
+cycles: 10530607.500000 
+ept_cycles_per_execution_cycles: 0.002012 
+cycles: 2120441.000000 
+ept_cycles_per_execution_cycles: 0.002664 
+cycles: 34102.233333 
+ept_cycles_per_execution_cycles: 0.059168 
+cycles: 31805.533333 
+ept_cycles_per_execution_cycles: 0.060209 
+cycles: 31999.833333 
+ept_cycles_per_execution_cycles: 0.060003 
+cycles: 31938.066667 
+ept_cycles_per_execution_cycles: 0.060346 
+cycles: 31940.466667 
+ept_cycles_per_execution_cycles: 0.060145 
+cycles: 31997.766667 
+ept_cycles_per_execution_cycles: 0.060763 
+cycles: 31749.266667 
+ept_cycles_per_execution_cycles: 0.060568 
+cycles: 32081.633333 
+ept_cycles_per_execution_cycles: 0.061952 
+cycles: 32187.833333 
+ept_cycles_per_execution_cycles: 0.063142 
+cycles: 32075.033333 
+ept_cycles_per_execution_cycles: 0.063712 
+cycles: 32314.000000 
+ept_cycles_per_execution_cycles: 0.064596 
+cycles: 31968.966667 
+ept_cycles_per_execution_cycles: 0.064599 
+cycles: 32122.266667 
+ept_cycles_per_execution_cycles: 0.063873 
+cycles: 32413.300000 
+ept_cycles_per_execution_cycles: 0.068008 
+cycles: 32319.433333 
+ept_cycles_per_execution_cycles: 0.069069 
+cycles: 32683.266667 
+ept_cycles_per_execution_cycles: 0.069068 
+cycles: 32846.000000 
+ept_cycles_per_execution_cycles: 0.076146 
+cycles: 33004.100000 
+ept_cycles_per_execution_cycles: 0.077844 
+cycles: 33071.766667 
+ept_cycles_per_execution_cycles: 0.080848 
+cycles: 32810.900000 
+ept_cycles_per_execution_cycles: 0.081452 
+cycles: 33014.066667 
+ept_cycles_per_execution_cycles: 0.081757 
+cycles: 33203.066667 
+ept_cycles_per_execution_cycles: 0.087379 
+cycles: 33336.433333 
+ept_cycles_per_execution_cycles: 0.088662 
+cycles: 33377.733333 
+ept_cycles_per_execution_cycles: 0.091098 
+cycles: 33142.433333 
+ept_cycles_per_execution_cycles: 0.091516 
+cycles: 33362.666667 
+ept_cycles_per_execution_cycles: 0.091413 
+cycles: 33505.400000 
+ept_cycles_per_execution_cycles: 0.096515 
+cycles: 33488.733333 
+ept_cycles_per_execution_cycles: 0.097425 
+cycles: 33579.066667 
+ept_cycles_per_execution_cycles: 0.100125 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33329.200000 
+ept_cycles_per_execution_cycles: 0.100895 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33585.433333 
+ept_cycles_per_execution_cycles: 0.101590 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33652.766667 
+ept_cycles_per_execution_cycles: 0.106516 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33848.733333 
+ept_cycles_per_execution_cycles: 0.107840 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34098.366667 
+ept_cycles_per_execution_cycles: 0.111414 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33896.500000 
+ept_cycles_per_execution_cycles: 0.112205 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34129.600000 
+ept_cycles_per_execution_cycles: 0.112651 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34242.733333 
+ept_cycles_per_execution_cycles: 0.118922 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34470.333333 
+ept_cycles_per_execution_cycles: 0.119289 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34559.466667 
+ept_cycles_per_execution_cycles: 0.121251 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34439.066667 
+ept_cycles_per_execution_cycles: 0.121649 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34773.433333 
+ept_cycles_per_execution_cycles: 0.120860 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35005.633333 
+ept_cycles_per_execution_cycles: 0.123060 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35747.300000 
+ept_cycles_per_execution_cycles: 0.129051 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35663.100000 
+ept_cycles_per_execution_cycles: 0.131680 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35931.766667 
+ept_cycles_per_execution_cycles: 0.134315 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36407.733333 
+ept_cycles_per_execution_cycles: 0.139030 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36569.533333 
+ept_cycles_per_execution_cycles: 0.141107 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37359.900000 
+ept_cycles_per_execution_cycles: 0.148909 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37282.233333 
+ept_cycles_per_execution_cycles: 0.150294 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37391.966667 
+ept_cycles_per_execution_cycles: 0.150056 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37473.433333 
+ept_cycles_per_execution_cycles: 0.150029 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37235.266667 
+ept_cycles_per_execution_cycles: 0.150624 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37319.800000 
+ept_cycles_per_execution_cycles: 0.150716 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37135.900000 
+ept_cycles_per_execution_cycles: 0.151548 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37185.066667 
+ept_cycles_per_execution_cycles: 0.151440 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37240.400000 
+ept_cycles_per_execution_cycles: 0.151271 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37152.500000 
+ept_cycles_per_execution_cycles: 0.151190 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37243.733333 
+ept_cycles_per_execution_cycles: 0.149983 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36980.733333 
+ept_cycles_per_execution_cycles: 0.149954 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37025.933333 
+ept_cycles_per_execution_cycles: 0.149800 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37124.500000 
+ept_cycles_per_execution_cycles: 0.149299 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37113.300000 
+ept_cycles_per_execution_cycles: 0.149674 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37002.833333 
+ept_cycles_per_execution_cycles: 0.149345 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36727.733333 
+ept_cycles_per_execution_cycles: 0.149663 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36740.900000 
+ept_cycles_per_execution_cycles: 0.149784 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36828.633333 
+ept_cycles_per_execution_cycles: 0.150023 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36632.133333 
+ept_cycles_per_execution_cycles: 0.150452 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36510.200000 
+ept_cycles_per_execution_cycles: 0.150043 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36147.266667 
+ept_cycles_per_execution_cycles: 0.150898 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36154.633333 
+ept_cycles_per_execution_cycles: 0.150751 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36004.333333 
+ept_cycles_per_execution_cycles: 0.151040 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35531.400000 
+ept_cycles_per_execution_cycles: 0.151630 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34889.666667 
+ept_cycles_per_execution_cycles: 0.146871 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34656.766667 
+ept_cycles_per_execution_cycles: 0.143272 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34364.500000 
+ept_cycles_per_execution_cycles: 0.140012 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33914.300000 
+ept_cycles_per_execution_cycles: 0.135123 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33394.866667 
+ept_cycles_per_execution_cycles: 0.131651 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32779.400000 
+ept_cycles_per_execution_cycles: 0.121747 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32751.233333 
+ept_cycles_per_execution_cycles: 0.119871 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32749.266667 
+ept_cycles_per_execution_cycles: 0.119785 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32799.700000 
+ept_cycles_per_execution_cycles: 0.119830 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32776.133333 
+ept_cycles_per_execution_cycles: 0.121381 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32725.800000 
+ept_cycles_per_execution_cycles: 0.121449 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32822.966667 
+ept_cycles_per_execution_cycles: 0.121317 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33045.800000 
+ept_cycles_per_execution_cycles: 0.121434 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33077.166667 
+ept_cycles_per_execution_cycles: 0.121543 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32913.166667 
+ept_cycles_per_execution_cycles: 0.121942 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32703.900000 
+ept_cycles_per_execution_cycles: 0.123358 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32956.700000 
+ept_cycles_per_execution_cycles: 0.122775 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33148.166667 
+ept_cycles_per_execution_cycles: 0.123298 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33289.033333 
+ept_cycles_per_execution_cycles: 0.124187 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33173.233333 
+ept_cycles_per_execution_cycles: 0.124727 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33128.600000 
+ept_cycles_per_execution_cycles: 0.125383 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33347.033333 
+ept_cycles_per_execution_cycles: 0.124272 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33538.066667 
+ept_cycles_per_execution_cycles: 0.123801 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33655.300000 
+ept_cycles_per_execution_cycles: 0.123652 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33817.566667 
+ept_cycles_per_execution_cycles: 0.123633 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33868.200000 
+ept_cycles_per_execution_cycles: 0.125618 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34108.566667 
+ept_cycles_per_execution_cycles: 0.125074 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34420.866667 
+ept_cycles_per_execution_cycles: 0.125313 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34424.466667 
+ept_cycles_per_execution_cycles: 0.125487 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34432.533333 
+ept_cycles_per_execution_cycles: 0.125304 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34261.933333 
+ept_cycles_per_execution_cycles: 0.125646 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34210.266667 
+ept_cycles_per_execution_cycles: 0.125204 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34399.500000 
+ept_cycles_per_execution_cycles: 0.125220 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34409.833333 
+ept_cycles_per_execution_cycles: 0.125480 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34274.166667 
+ept_cycles_per_execution_cycles: 0.125976 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34032.066667 
+ept_cycles_per_execution_cycles: 0.126170 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33988.033333 
+ept_cycles_per_execution_cycles: 0.125663 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34275.966667 
+ept_cycles_per_execution_cycles: 0.125882 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34178.966667 
+ept_cycles_per_execution_cycles: 0.126055 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34033.233333 
+ept_cycles_per_execution_cycles: 0.125641 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34242.200000 
+ept_cycles_per_execution_cycles: 0.125357 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34334.033333 
+ept_cycles_per_execution_cycles: 0.124481 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34446.966667 
+ept_cycles_per_execution_cycles: 0.124853 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34443.333333 
+ept_cycles_per_execution_cycles: 0.124587 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34416.633333 
+ept_cycles_per_execution_cycles: 0.124564 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34940.566667 
+ept_cycles_per_execution_cycles: 0.125824 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34810.766667 
+ept_cycles_per_execution_cycles: 0.124683 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34938.566667 
+ept_cycles_per_execution_cycles: 0.123757 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34776.666667 
+ept_cycles_per_execution_cycles: 0.122736 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34561.966667 
+ept_cycles_per_execution_cycles: 0.120702 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34503.866667 
+ept_cycles_per_execution_cycles: 0.119350 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34222.100000 
+ept_cycles_per_execution_cycles: 0.116906 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34255.366667 
+ept_cycles_per_execution_cycles: 0.116271 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34050.266667 
+ept_cycles_per_execution_cycles: 0.114839 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33636.100000 
+ept_cycles_per_execution_cycles: 0.110118 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33760.300000 
+ept_cycles_per_execution_cycles: 0.108253 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33608.800000 
+ept_cycles_per_execution_cycles: 0.107598 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33567.166667 
+ept_cycles_per_execution_cycles: 0.107157 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33462.700000 
+ept_cycles_per_execution_cycles: 0.106806 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33139.233333 
+ept_cycles_per_execution_cycles: 0.104991 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33286.566667 
+ept_cycles_per_execution_cycles: 0.104387 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33203.200000 
+ept_cycles_per_execution_cycles: 0.102500 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33190.966667 
+ept_cycles_per_execution_cycles: 0.101334 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33162.533333 
+ept_cycles_per_execution_cycles: 0.100352 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32915.233333 
+ept_cycles_per_execution_cycles: 0.095983 
+cycles: 33077.633333 
+ept_cycles_per_execution_cycles: 0.094913 
+cycles: 33301.866667 
+ept_cycles_per_execution_cycles: 0.096527 
+cycles: 33822.600000 
+ept_cycles_per_execution_cycles: 0.100301 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34223.666667 
+ept_cycles_per_execution_cycles: 0.103718 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34144.866667 
+ept_cycles_per_execution_cycles: 0.104097 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34656.366667 
+ept_cycles_per_execution_cycles: 0.110561 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34868.500000 
+ept_cycles_per_execution_cycles: 0.113544 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35214.000000 
+ept_cycles_per_execution_cycles: 0.117150 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35484.533333 
+ept_cycles_per_execution_cycles: 0.119745 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35266.866667 
+ept_cycles_per_execution_cycles: 0.119546 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35396.500000 
+ept_cycles_per_execution_cycles: 0.122399 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35733.866667 
+ept_cycles_per_execution_cycles: 0.126205 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36088.666667 
+ept_cycles_per_execution_cycles: 0.130630 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36114.533333 
+ept_cycles_per_execution_cycles: 0.131808 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36045.266667 
+ept_cycles_per_execution_cycles: 0.133465 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36354.433333 
+ept_cycles_per_execution_cycles: 0.134483 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36405.200000 
+ept_cycles_per_execution_cycles: 0.135581 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36430.966667 
+ept_cycles_per_execution_cycles: 0.135518 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36434.033333 
+ept_cycles_per_execution_cycles: 0.136157 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36598.833333 
+ept_cycles_per_execution_cycles: 0.140690 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36384.866667 
+ept_cycles_per_execution_cycles: 0.141598 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36465.200000 
+ept_cycles_per_execution_cycles: 0.141453 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36570.066667 
+ept_cycles_per_execution_cycles: 0.142644 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36666.533333 
+ept_cycles_per_execution_cycles: 0.142588 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36694.033333 
+ept_cycles_per_execution_cycles: 0.143204 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36748.200000 
+ept_cycles_per_execution_cycles: 0.143506 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36864.233333 
+ept_cycles_per_execution_cycles: 0.145603 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37412.800000 
+ept_cycles_per_execution_cycles: 0.150352 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37410.166667 
+ept_cycles_per_execution_cycles: 0.151648 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37438.100000 
+ept_cycles_per_execution_cycles: 0.153793 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37886.133333 
+ept_cycles_per_execution_cycles: 0.158540 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37977.500000 
+ept_cycles_per_execution_cycles: 0.159585 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37532.266667 
+ept_cycles_per_execution_cycles: 0.157746 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37223.033333 
+ept_cycles_per_execution_cycles: 0.155535 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37033.300000 
+ept_cycles_per_execution_cycles: 0.153742 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36408.866667 
+ept_cycles_per_execution_cycles: 0.147674 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36215.600000 
+ept_cycles_per_execution_cycles: 0.145090 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35778.600000 
+ept_cycles_per_execution_cycles: 0.141256 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35695.400000 
+ept_cycles_per_execution_cycles: 0.138191 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36099.033333 
+ept_cycles_per_execution_cycles: 0.137314 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35714.033333 
+ept_cycles_per_execution_cycles: 0.134489 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35528.466667 
+ept_cycles_per_execution_cycles: 0.132115 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35117.066667 
+ept_cycles_per_execution_cycles: 0.127928 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34955.466667 
+ept_cycles_per_execution_cycles: 0.127449 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35133.633333 
+ept_cycles_per_execution_cycles: 0.127241 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34901.333333 
+ept_cycles_per_execution_cycles: 0.127098 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35086.200000 
+ept_cycles_per_execution_cycles: 0.128334 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35182.800000 
+ept_cycles_per_execution_cycles: 0.129433 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34955.200000 
+ept_cycles_per_execution_cycles: 0.130000 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35257.400000 
+ept_cycles_per_execution_cycles: 0.128415 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35114.000000 
+ept_cycles_per_execution_cycles: 0.127871 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35159.400000 
+ept_cycles_per_execution_cycles: 0.128773 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35155.633333 
+ept_cycles_per_execution_cycles: 0.127821 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34881.400000 
+ept_cycles_per_execution_cycles: 0.128441 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35334.266667 
+ept_cycles_per_execution_cycles: 0.129233 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35320.300000 
+ept_cycles_per_execution_cycles: 0.130020 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35474.700000 
+ept_cycles_per_execution_cycles: 0.130357 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34968.533333 
+ept_cycles_per_execution_cycles: 0.125776 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34837.333333 
+ept_cycles_per_execution_cycles: 0.126909 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35217.766667 
+ept_cycles_per_execution_cycles: 0.127284 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34681.600000 
+ept_cycles_per_execution_cycles: 0.122871 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34484.533333 
+ept_cycles_per_execution_cycles: 0.121039 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34441.333333 
+ept_cycles_per_execution_cycles: 0.119653 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34180.000000 
+ept_cycles_per_execution_cycles: 0.119282 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34591.933333 
+ept_cycles_per_execution_cycles: 0.119815 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34475.933333 
+ept_cycles_per_execution_cycles: 0.122121 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34562.133333 
+ept_cycles_per_execution_cycles: 0.122275 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34552.333333 
+ept_cycles_per_execution_cycles: 0.122290 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34092.233333 
+ept_cycles_per_execution_cycles: 0.123408 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33820.400000 
+ept_cycles_per_execution_cycles: 0.123847 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33722.033333 
+ept_cycles_per_execution_cycles: 0.122735 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33686.566667 
+ept_cycles_per_execution_cycles: 0.122587 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33812.833333 
+ept_cycles_per_execution_cycles: 0.122591 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33758.666667 
+ept_cycles_per_execution_cycles: 0.122592 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33773.000000 
+ept_cycles_per_execution_cycles: 0.121907 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33741.533333 
+ept_cycles_per_execution_cycles: 0.121825 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33749.866667 
+ept_cycles_per_execution_cycles: 0.122009 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33746.033333 
+ept_cycles_per_execution_cycles: 0.121204 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33855.200000 
+ept_cycles_per_execution_cycles: 0.122009 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33564.066667 
+ept_cycles_per_execution_cycles: 0.122746 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33712.266667 
+ept_cycles_per_execution_cycles: 0.124661 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33734.566667 
+ept_cycles_per_execution_cycles: 0.124730 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33716.833333 
+ept_cycles_per_execution_cycles: 0.124079 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33647.900000 
+ept_cycles_per_execution_cycles: 0.124176 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33557.800000 
+ept_cycles_per_execution_cycles: 0.123937 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33511.333333 
+ept_cycles_per_execution_cycles: 0.123748 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33494.200000 
+ept_cycles_per_execution_cycles: 0.123369 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33625.800000 
+ept_cycles_per_execution_cycles: 0.123299 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33410.000000 
+ept_cycles_per_execution_cycles: 0.122123 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33345.433333 
+ept_cycles_per_execution_cycles: 0.122865 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33288.600000 
+ept_cycles_per_execution_cycles: 0.124634 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33126.166667 
+ept_cycles_per_execution_cycles: 0.123264 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33553.166667 
+ept_cycles_per_execution_cycles: 0.123991 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33626.366667 
+ept_cycles_per_execution_cycles: 0.124322 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33571.100000 
+ept_cycles_per_execution_cycles: 0.125362 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33521.100000 
+ept_cycles_per_execution_cycles: 0.125229 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33284.566667 
+ept_cycles_per_execution_cycles: 0.123929 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33601.133333 
+ept_cycles_per_execution_cycles: 0.123933 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33692.700000 
+ept_cycles_per_execution_cycles: 0.125650 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33663.566667 
+ept_cycles_per_execution_cycles: 0.124839 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33580.966667 
+ept_cycles_per_execution_cycles: 0.124003 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33459.800000 
+ept_cycles_per_execution_cycles: 0.122688 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34029.033333 
+ept_cycles_per_execution_cycles: 0.121635 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34356.066667 
+ept_cycles_per_execution_cycles: 0.126118 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34569.366667 
+ept_cycles_per_execution_cycles: 0.127677 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34539.333333 
+ept_cycles_per_execution_cycles: 0.128133 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34412.100000 
+ept_cycles_per_execution_cycles: 0.125952 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34542.666667 
+ept_cycles_per_execution_cycles: 0.125802 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34218.633333 
+ept_cycles_per_execution_cycles: 0.124832 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34264.533333 
+ept_cycles_per_execution_cycles: 0.119828 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33960.566667 
+ept_cycles_per_execution_cycles: 0.116488 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33924.533333 
+ept_cycles_per_execution_cycles: 0.114490 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34258.466667 
+ept_cycles_per_execution_cycles: 0.116021 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34121.400000 
+ept_cycles_per_execution_cycles: 0.116254 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34108.766667 
+ept_cycles_per_execution_cycles: 0.115597 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33921.233333 
+ept_cycles_per_execution_cycles: 0.114947 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33884.466667 
+ept_cycles_per_execution_cycles: 0.112817 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33912.366667 
+ept_cycles_per_execution_cycles: 0.112194 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33766.633333 
+ept_cycles_per_execution_cycles: 0.111807 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33736.300000 
+ept_cycles_per_execution_cycles: 0.107512 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33571.000000 
+ept_cycles_per_execution_cycles: 0.104940 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33457.233333 
+ept_cycles_per_execution_cycles: 0.103018 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33357.333333 
+ept_cycles_per_execution_cycles: 0.100939 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33002.200000 
+ept_cycles_per_execution_cycles: 0.100228 
+=========== ACTION : ENABLE TPT ===========
+cycles: 31530.400000 
+ept_cycles_per_execution_cycles: 0.096415 
+cycles: 32733.866667 
+ept_cycles_per_execution_cycles: 0.091466 
+cycles: 32596.933333 
+ept_cycles_per_execution_cycles: 0.090053 
+cycles: 32437.666667 
+ept_cycles_per_execution_cycles: 0.088466 
+cycles: 32224.300000 
+ept_cycles_per_execution_cycles: 0.085807 
+cycles: 31055.333333 
+ept_cycles_per_execution_cycles: 0.083070 
+cycles: 32220.700000 
+ept_cycles_per_execution_cycles: 0.080582 
+cycles: 32225.433333 
+ept_cycles_per_execution_cycles: 0.080055 
+cycles: 32061.666667 
+ept_cycles_per_execution_cycles: 0.080975 
+cycles: 31629.800000 
+ept_cycles_per_execution_cycles: 0.075944 
+cycles: 30151.466667 
+ept_cycles_per_execution_cycles: 0.071094 
+cycles: 31426.666667 
+ept_cycles_per_execution_cycles: 0.072741 
+cycles: 31479.633333 
+ept_cycles_per_execution_cycles: 0.073350 
+cycles: 31531.200000 
+ept_cycles_per_execution_cycles: 0.072620 
+cycles: 31729.433333 
+ept_cycles_per_execution_cycles: 0.073841 
+cycles: 30527.000000 
+ept_cycles_per_execution_cycles: 0.076097 
+cycles: 31765.800000 
+ept_cycles_per_execution_cycles: 0.078426 
+cycles: 31752.033333 
+ept_cycles_per_execution_cycles: 0.079162 
+cycles: 31664.333333 
+ept_cycles_per_execution_cycles: 0.078023 
+cycles: 31779.866667 
+ept_cycles_per_execution_cycles: 0.077779 
+cycles: 31480.933333 
+ept_cycles_per_execution_cycles: 0.081232 
+cycles: 31836.266667 
+ept_cycles_per_execution_cycles: 0.079817 
+cycles: 31823.700000 
+ept_cycles_per_execution_cycles: 0.078935 
+cycles: 31879.733333 
+ept_cycles_per_execution_cycles: 0.078692 
+cycles: 31972.466667 
+ept_cycles_per_execution_cycles: 0.078667 
+cycles: 31477.900000 
+ept_cycles_per_execution_cycles: 0.079113 
+cycles: 31688.100000 
+ept_cycles_per_execution_cycles: 0.078642 
+cycles: 31963.433333 
+ept_cycles_per_execution_cycles: 0.078700 
+cycles: 31881.566667 
+ept_cycles_per_execution_cycles: 0.079232 
+cycles: 32084.733333 
+ept_cycles_per_execution_cycles: 0.079724 
+cycles: 32922.233333 
+ept_cycles_per_execution_cycles: 0.080704 
+cycles: 31860.800000 
+ept_cycles_per_execution_cycles: 0.081782 
+cycles: 32257.566667 
+ept_cycles_per_execution_cycles: 0.082556 
+cycles: 32434.966667 
+ept_cycles_per_execution_cycles: 0.082525 
+cycles: 32318.933333 
+ept_cycles_per_execution_cycles: 0.082735 
+cycles: 33145.100000 
+ept_cycles_per_execution_cycles: 0.082714 
+cycles: 32082.033333 
+ept_cycles_per_execution_cycles: 0.083190 
+cycles: 32275.800000 
+ept_cycles_per_execution_cycles: 0.081834 
+cycles: 32018.200000 
+ept_cycles_per_execution_cycles: 0.080639 
+cycles: 31771.533333 
+ept_cycles_per_execution_cycles: 0.079955 
+cycles: 32741.400000 
+ept_cycles_per_execution_cycles: 0.079813 
+cycles: 31474.666667 
+ept_cycles_per_execution_cycles: 0.075938 
+cycles: 31835.500000 
+ept_cycles_per_execution_cycles: 0.074287 
+cycles: 31728.933333 
+ept_cycles_per_execution_cycles: 0.073769 
+cycles: 31371.433333 
+ept_cycles_per_execution_cycles: 0.072270 
+cycles: 32160.800000 
+ept_cycles_per_execution_cycles: 0.069951 
+cycles: 31044.733333 
+ept_cycles_per_execution_cycles: 0.067004 
+cycles: 31293.300000 
+ept_cycles_per_execution_cycles: 0.065657 
+cycles: 31137.933333 
+ept_cycles_per_execution_cycles: 0.064315 
+cycles: 30849.666667 
+ept_cycles_per_execution_cycles: 0.063682 
+cycles: 30997.200000 
+ept_cycles_per_execution_cycles: 0.058490 
+cycles: 30765.700000 
+ept_cycles_per_execution_cycles: 0.058268 
+cycles: 30945.133333 
+ept_cycles_per_execution_cycles: 0.057842 
+cycles: 30760.433333 
+ept_cycles_per_execution_cycles: 0.057932 
+cycles: 30658.300000 
+ept_cycles_per_execution_cycles: 0.057802 
+cycles: 30924.300000 
+ept_cycles_per_execution_cycles: 0.057251 
+cycles: 30837.333333 
+ept_cycles_per_execution_cycles: 0.056887 
+cycles: 31055.400000 
+ept_cycles_per_execution_cycles: 0.057222 
+cycles: 30821.633333 
+ept_cycles_per_execution_cycles: 0.057382 
+cycles: 30622.900000 
+ept_cycles_per_execution_cycles: 0.056631 
+cycles: 30974.666667 
+ept_cycles_per_execution_cycles: 0.055952 
+cycles: 30986.700000 
+ept_cycles_per_execution_cycles: 0.057745 
+cycles: 31134.500000 
+ept_cycles_per_execution_cycles: 0.058727 
+cycles: 30864.766667 
+ept_cycles_per_execution_cycles: 0.060048 
+cycles: 30894.833333 
+ept_cycles_per_execution_cycles: 0.060297 
+cycles: 31178.900000 
+ept_cycles_per_execution_cycles: 0.062941 
+cycles: 31004.533333 
+ept_cycles_per_execution_cycles: 0.063092 
+cycles: 31074.333333 
+ept_cycles_per_execution_cycles: 0.062430 
+cycles: 30901.100000 
+ept_cycles_per_execution_cycles: 0.063670 
+cycles: 30938.133333 
+ept_cycles_per_execution_cycles: 0.064102 
+cycles: 31104.333333 
+ept_cycles_per_execution_cycles: 0.067353 
+cycles: 31018.966667 
+ept_cycles_per_execution_cycles: 0.067570 
+cycles: 31035.866667 
+ept_cycles_per_execution_cycles: 0.068317 
+cycles: 30926.100000 
+ept_cycles_per_execution_cycles: 0.069580 
+cycles: 31005.800000 
+ept_cycles_per_execution_cycles: 0.069256 
+cycles: 31313.533333 
+ept_cycles_per_execution_cycles: 0.072061 
+cycles: 31342.100000 
+ept_cycles_per_execution_cycles: 0.074522 
+cycles: 31478.500000 
+ept_cycles_per_execution_cycles: 0.075792 
+cycles: 31550.900000 
+ept_cycles_per_execution_cycles: 0.077786 
+cycles: 31696.466667 
+ept_cycles_per_execution_cycles: 0.078500 
+cycles: 31801.700000 
+ept_cycles_per_execution_cycles: 0.081422 
+cycles: 31709.166667 
+ept_cycles_per_execution_cycles: 0.081567 
+cycles: 31870.866667 
+ept_cycles_per_execution_cycles: 0.084254 
+cycles: 31962.266667 
+ept_cycles_per_execution_cycles: 0.085417 
+cycles: 31960.066667 
+ept_cycles_per_execution_cycles: 0.085680 
+cycles: 32133.633333 
+ept_cycles_per_execution_cycles: 0.089195 
+cycles: 32153.800000 
+ept_cycles_per_execution_cycles: 0.091384 
+cycles: 32187.133333 
+ept_cycles_per_execution_cycles: 0.093193 
+cycles: 32194.466667 
+ept_cycles_per_execution_cycles: 0.094400 
+cycles: 32417.700000 
+ept_cycles_per_execution_cycles: 0.095516 
+cycles: 32674.966667 
+ept_cycles_per_execution_cycles: 0.100073 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32421.033333 
+ept_cycles_per_execution_cycles: 0.098530 
+cycles: 32349.033333 
+ept_cycles_per_execution_cycles: 0.098163 
+cycles: 32436.100000 
+ept_cycles_per_execution_cycles: 0.097440 
+cycles: 32530.333333 
+ept_cycles_per_execution_cycles: 0.097139 
+cycles: 32537.166667 
+ept_cycles_per_execution_cycles: 0.094765 
+cycles: 32452.433333 
+ept_cycles_per_execution_cycles: 0.094955 
+cycles: 32384.633333 
+ept_cycles_per_execution_cycles: 0.095351 
+cycles: 32438.933333 
+ept_cycles_per_execution_cycles: 0.094592 
+cycles: 32584.433333 
+ept_cycles_per_execution_cycles: 0.094876 
+cycles: 32691.800000 
+ept_cycles_per_execution_cycles: 0.094872 
+cycles: 32648.700000 
+ept_cycles_per_execution_cycles: 0.094943 
+cycles: 32461.566667 
+ept_cycles_per_execution_cycles: 0.095517 
+cycles: 32511.166667 
+ept_cycles_per_execution_cycles: 0.095276 
+cycles: 32611.766667 
+ept_cycles_per_execution_cycles: 0.095207 
+cycles: 32465.800000 
+ept_cycles_per_execution_cycles: 0.094138 
+cycles: 32302.566667 
+ept_cycles_per_execution_cycles: 0.092179 
+cycles: 31941.366667 
+ept_cycles_per_execution_cycles: 0.091204 
+cycles: 31933.000000 
+ept_cycles_per_execution_cycles: 0.089785 
+cycles: 32072.100000 
+ept_cycles_per_execution_cycles: 0.090120 
+cycles: 31883.966667 
+ept_cycles_per_execution_cycles: 0.089697 
+cycles: 31877.033333 
+ept_cycles_per_execution_cycles: 0.089456 
+cycles: 31576.200000 
+ept_cycles_per_execution_cycles: 0.087869 
+cycles: 31739.533333 
+ept_cycles_per_execution_cycles: 0.086850 
+cycles: 31864.766667 
+ept_cycles_per_execution_cycles: 0.086593 
+cycles: 31728.266667 
+ept_cycles_per_execution_cycles: 0.084449 
+cycles: 31587.900000 
+ept_cycles_per_execution_cycles: 0.082407 
+cycles: 31299.200000 
+ept_cycles_per_execution_cycles: 0.080592 
+cycles: 31471.233333 
+ept_cycles_per_execution_cycles: 0.079615 
+cycles: 31406.833333 
+ept_cycles_per_execution_cycles: 0.079564 
+cycles: 31207.066667 
+ept_cycles_per_execution_cycles: 0.078325 
+cycles: 31379.933333 
+ept_cycles_per_execution_cycles: 0.080550 
+cycles: 31273.466667 
+ept_cycles_per_execution_cycles: 0.081361 
+cycles: 31421.666667 
+ept_cycles_per_execution_cycles: 0.081960 
+cycles: 31386.100000 
+ept_cycles_per_execution_cycles: 0.082594 
+cycles: 31381.300000 
+ept_cycles_per_execution_cycles: 0.085257 
+cycles: 31377.333333 
+ept_cycles_per_execution_cycles: 0.085357 
+cycles: 31310.333333 
+ept_cycles_per_execution_cycles: 0.085820 
+cycles: 31191.300000 
+ept_cycles_per_execution_cycles: 0.084462 
+cycles: 31409.600000 
+ept_cycles_per_execution_cycles: 0.086111 
+cycles: 31348.400000 
+ept_cycles_per_execution_cycles: 0.086088 
+cycles: 31409.900000 
+ept_cycles_per_execution_cycles: 0.086196 
+cycles: 31312.800000 
+ept_cycles_per_execution_cycles: 0.086047 
+cycles: 31355.866667 
+ept_cycles_per_execution_cycles: 0.085942 
+cycles: 31458.833333 
+ept_cycles_per_execution_cycles: 0.085935 
+cycles: 31550.933333 
+ept_cycles_per_execution_cycles: 0.085843 
+cycles: 31487.433333 
+ept_cycles_per_execution_cycles: 0.085788 
+cycles: 31591.000000 
+ept_cycles_per_execution_cycles: 0.084867 
+cycles: 31379.033333 
+ept_cycles_per_execution_cycles: 0.083425 
+cycles: 31590.100000 
+ept_cycles_per_execution_cycles: 0.084280 
+cycles: 31702.500000 
+ept_cycles_per_execution_cycles: 0.084424 
+cycles: 31597.966667 
+ept_cycles_per_execution_cycles: 0.084770 
+cycles: 31675.133333 
+ept_cycles_per_execution_cycles: 0.084465 
+cycles: 31430.633333 
+ept_cycles_per_execution_cycles: 0.084327 
+cycles: 31495.000000 
+ept_cycles_per_execution_cycles: 0.083876 
+cycles: 31461.500000 
+ept_cycles_per_execution_cycles: 0.082730 
+cycles: 31461.300000 
+ept_cycles_per_execution_cycles: 0.082891 
+cycles: 31575.933333 
+ept_cycles_per_execution_cycles: 0.082941 
+cycles: 31354.733333 
+ept_cycles_per_execution_cycles: 0.082075 
+cycles: 31570.366667 
+ept_cycles_per_execution_cycles: 0.083213 
+cycles: 31577.400000 
+ept_cycles_per_execution_cycles: 0.083134 
+cycles: 31360.000000 
+ept_cycles_per_execution_cycles: 0.080914 
+cycles: 31414.900000 
+ept_cycles_per_execution_cycles: 0.079877 
+cycles: 31293.466667 
+ept_cycles_per_execution_cycles: 0.079368 
+cycles: 31384.233333 
+ept_cycles_per_execution_cycles: 0.078750 
+cycles: 31322.700000 
+ept_cycles_per_execution_cycles: 0.076446 
+cycles: 31298.800000 
+ept_cycles_per_execution_cycles: 0.076812 
+cycles: 31387.100000 
+ept_cycles_per_execution_cycles: 0.077345 
+cycles: 31390.333333 
+ept_cycles_per_execution_cycles: 0.077456 
+cycles: 31393.533333 
+ept_cycles_per_execution_cycles: 0.076829 
+cycles: 31389.600000 
+ept_cycles_per_execution_cycles: 0.076698 
+cycles: 31260.833333 
+ept_cycles_per_execution_cycles: 0.076562 
+cycles: 31362.833333 
+ept_cycles_per_execution_cycles: 0.076466 
+cycles: 31298.366667 
+ept_cycles_per_execution_cycles: 0.076290 
+cycles: 31357.466667 
+ept_cycles_per_execution_cycles: 0.076519 
+cycles: 31260.800000 
+ept_cycles_per_execution_cycles: 0.077173 
+cycles: 31132.500000 
+ept_cycles_per_execution_cycles: 0.077291 
+cycles: 31291.266667 
+ept_cycles_per_execution_cycles: 0.077861 
+cycles: 31356.466667 
+ept_cycles_per_execution_cycles: 0.078255 
+cycles: 31428.500000 
+ept_cycles_per_execution_cycles: 0.078854 
+cycles: 31423.400000 
+ept_cycles_per_execution_cycles: 0.078995 
+cycles: 31317.233333 
+ept_cycles_per_execution_cycles: 0.078886 
+cycles: 31590.500000 
+ept_cycles_per_execution_cycles: 0.079285 
+cycles: 31724.366667 
+ept_cycles_per_execution_cycles: 0.079310 
+cycles: 31825.066667 
+ept_cycles_per_execution_cycles: 0.079690 
+cycles: 31841.900000 
+ept_cycles_per_execution_cycles: 0.080633 
+cycles: 31660.933333 
+ept_cycles_per_execution_cycles: 0.080390 
+cycles: 31838.866667 
+ept_cycles_per_execution_cycles: 0.080376 
+cycles: 31863.700000 
+ept_cycles_per_execution_cycles: 0.079734 
+cycles: 31891.933333 
+ept_cycles_per_execution_cycles: 0.079967 
+cycles: 31895.633333 
+ept_cycles_per_execution_cycles: 0.079896 
+cycles: 31706.866667 
+ept_cycles_per_execution_cycles: 0.079952 
+cycles: 31805.133333 
+ept_cycles_per_execution_cycles: 0.079467 
+cycles: 31729.866667 
+ept_cycles_per_execution_cycles: 0.079078 
+cycles: 31818.166667 
+ept_cycles_per_execution_cycles: 0.078723 
+cycles: 31852.166667 
+ept_cycles_per_execution_cycles: 0.079373 
+cycles: 31717.400000 
+ept_cycles_per_execution_cycles: 0.079459 
+cycles: 31821.500000 
+ept_cycles_per_execution_cycles: 0.078998 
+cycles: 31821.200000 
+ept_cycles_per_execution_cycles: 0.079146 
+cycles: 31884.766667 
+ept_cycles_per_execution_cycles: 0.079402 
+cycles: 31857.433333 
+ept_cycles_per_execution_cycles: 0.079560 
+cycles: 31877.633333 
+ept_cycles_per_execution_cycles: 0.081864 
+cycles: 32169.533333 
+ept_cycles_per_execution_cycles: 0.083285 
+cycles: 32282.933333 
+ept_cycles_per_execution_cycles: 0.083799 
+cycles: 32332.833333 
+ept_cycles_per_execution_cycles: 0.084188 
+cycles: 32446.600000 
+ept_cycles_per_execution_cycles: 0.085893 
+cycles: 32439.433333 
+ept_cycles_per_execution_cycles: 0.085802 
+cycles: 32419.433333 
+ept_cycles_per_execution_cycles: 0.085449 
+cycles: 32384.666667 
+ept_cycles_per_execution_cycles: 0.085252 
+cycles: 32294.833333 
+ept_cycles_per_execution_cycles: 0.084911 
+cycles: 32319.933333 
+ept_cycles_per_execution_cycles: 0.084835 
+cycles: 32310.100000 
+ept_cycles_per_execution_cycles: 0.085015 
+cycles: 32256.833333 
+ept_cycles_per_execution_cycles: 0.084904 
+cycles: 32178.866667 
+ept_cycles_per_execution_cycles: 0.085003 
+cycles: 32102.633333 
+ept_cycles_per_execution_cycles: 0.084833 
+cycles: 32071.233333 
+ept_cycles_per_execution_cycles: 0.084273 
+cycles: 32025.333333 
+ept_cycles_per_execution_cycles: 0.084372 
+cycles: 31971.566667 
+ept_cycles_per_execution_cycles: 0.083950 
+cycles: 31948.666667 
+ept_cycles_per_execution_cycles: 0.083731 
+cycles: 31901.266667 
+ept_cycles_per_execution_cycles: 0.083484 
+cycles: 31943.366667 
+ept_cycles_per_execution_cycles: 0.083829 
+cycles: 31948.266667 
+ept_cycles_per_execution_cycles: 0.083637 
+cycles: 31987.200000 
+ept_cycles_per_execution_cycles: 0.084150 
+cycles: 32045.800000 
+ept_cycles_per_execution_cycles: 0.084061 
+cycles: 31954.433333 
+ept_cycles_per_execution_cycles: 0.084255 
+cycles: 31982.100000 
+ept_cycles_per_execution_cycles: 0.083593 
+cycles: 31949.666667 
+ept_cycles_per_execution_cycles: 0.083416 
+cycles: 31990.800000 
+ept_cycles_per_execution_cycles: 0.083379 
+cycles: 32017.233333 
+ept_cycles_per_execution_cycles: 0.083123 
+cycles: 32103.700000 
+ept_cycles_per_execution_cycles: 0.083010 
+cycles: 32414.266667 
+ept_cycles_per_execution_cycles: 0.084907 
+cycles: 32442.733333 
+ept_cycles_per_execution_cycles: 0.084740 
+cycles: 32320.466667 
+ept_cycles_per_execution_cycles: 0.084802 
+cycles: 32418.700000 
+ept_cycles_per_execution_cycles: 0.084807 
+cycles: 32431.433333 
+ept_cycles_per_execution_cycles: 0.085008 
+cycles: 32554.533333 
+ept_cycles_per_execution_cycles: 0.088403 
+cycles: 32637.166667 
+ept_cycles_per_execution_cycles: 0.090312 
+cycles: 32581.900000 
+ept_cycles_per_execution_cycles: 0.092245 
+cycles: 32759.200000 
+ept_cycles_per_execution_cycles: 0.093012 
+cycles: 32632.866667 
+ept_cycles_per_execution_cycles: 0.091174 
+cycles: 32653.733333 
+ept_cycles_per_execution_cycles: 0.092664 
+cycles: 32748.200000 
+ept_cycles_per_execution_cycles: 0.094522 
+cycles: 32677.700000 
+ept_cycles_per_execution_cycles: 0.095732 
+cycles: 32815.166667 
+ept_cycles_per_execution_cycles: 0.095987 
+cycles: 32955.000000 
+ept_cycles_per_execution_cycles: 0.096764 
+cycles: 33353.266667 
+ept_cycles_per_execution_cycles: 0.101916 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33482.100000 
+ept_cycles_per_execution_cycles: 0.103820 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33512.566667 
+ept_cycles_per_execution_cycles: 0.106296 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33721.100000 
+ept_cycles_per_execution_cycles: 0.107494 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33691.000000 
+ept_cycles_per_execution_cycles: 0.105947 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33855.166667 
+ept_cycles_per_execution_cycles: 0.107629 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33929.833333 
+ept_cycles_per_execution_cycles: 0.109288 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33774.400000 
+ept_cycles_per_execution_cycles: 0.110381 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33862.700000 
+ept_cycles_per_execution_cycles: 0.110922 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33887.533333 
+ept_cycles_per_execution_cycles: 0.111648 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34057.166667 
+ept_cycles_per_execution_cycles: 0.116990 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34157.133333 
+ept_cycles_per_execution_cycles: 0.118601 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34024.266667 
+ept_cycles_per_execution_cycles: 0.120740 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34337.500000 
+ept_cycles_per_execution_cycles: 0.121279 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34150.133333 
+ept_cycles_per_execution_cycles: 0.121067 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33902.900000 
+ept_cycles_per_execution_cycles: 0.119967 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33811.533333 
+ept_cycles_per_execution_cycles: 0.119849 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33555.866667 
+ept_cycles_per_execution_cycles: 0.119962 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33620.366667 
+ept_cycles_per_execution_cycles: 0.119763 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33692.833333 
+ept_cycles_per_execution_cycles: 0.120940 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33697.700000 
+ept_cycles_per_execution_cycles: 0.119888 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33574.500000 
+ept_cycles_per_execution_cycles: 0.119762 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33585.000000 
+ept_cycles_per_execution_cycles: 0.120031 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33566.066667 
+ept_cycles_per_execution_cycles: 0.120219 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33872.733333 
+ept_cycles_per_execution_cycles: 0.121453 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34204.033333 
+ept_cycles_per_execution_cycles: 0.122155 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34006.733333 
+ept_cycles_per_execution_cycles: 0.120406 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34021.933333 
+ept_cycles_per_execution_cycles: 0.119056 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34072.733333 
+ept_cycles_per_execution_cycles: 0.118205 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34097.233333 
+ept_cycles_per_execution_cycles: 0.117472 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33815.600000 
+ept_cycles_per_execution_cycles: 0.112254 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33609.166667 
+ept_cycles_per_execution_cycles: 0.110862 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33564.266667 
+ept_cycles_per_execution_cycles: 0.108075 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33525.433333 
+ept_cycles_per_execution_cycles: 0.106231 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33679.200000 
+ept_cycles_per_execution_cycles: 0.106378 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33386.333333 
+ept_cycles_per_execution_cycles: 0.105039 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33325.966667 
+ept_cycles_per_execution_cycles: 0.103624 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33423.066667 
+ept_cycles_per_execution_cycles: 0.102484 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33524.966667 
+ept_cycles_per_execution_cycles: 0.101883 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33701.233333 
+ept_cycles_per_execution_cycles: 0.100894 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33536.633333 
+ept_cycles_per_execution_cycles: 0.096562 
+cycles: 33490.300000 
+ept_cycles_per_execution_cycles: 0.094900 
+cycles: 33715.000000 
+ept_cycles_per_execution_cycles: 0.093605 
+cycles: 33586.600000 
+ept_cycles_per_execution_cycles: 0.092667 
+cycles: 33638.600000 
+ept_cycles_per_execution_cycles: 0.092163 
+cycles: 33680.666667 
+ept_cycles_per_execution_cycles: 0.092254 
+cycles: 33604.266667 
+ept_cycles_per_execution_cycles: 0.090669 
+cycles: 33962.366667 
+ept_cycles_per_execution_cycles: 0.090193 
+cycles: 34112.700000 
+ept_cycles_per_execution_cycles: 0.089654 
+cycles: 34394.333333 
+ept_cycles_per_execution_cycles: 0.088631 
+cycles: 34374.933333 
+ept_cycles_per_execution_cycles: 0.086122 
+cycles: 34500.066667 
+ept_cycles_per_execution_cycles: 0.084883 
+cycles: 34465.466667 
+ept_cycles_per_execution_cycles: 0.082827 
+cycles: 34385.233333 
+ept_cycles_per_execution_cycles: 0.082421 
+cycles: 34387.400000 
+ept_cycles_per_execution_cycles: 0.081234 
+cycles: 34091.933333 
+ept_cycles_per_execution_cycles: 0.079468 
+cycles: 34203.433333 
+ept_cycles_per_execution_cycles: 0.079721 
+cycles: 34023.100000 
+ept_cycles_per_execution_cycles: 0.079931 
+cycles: 33981.666667 
+ept_cycles_per_execution_cycles: 0.080733 
+cycles: 34155.233333 
+ept_cycles_per_execution_cycles: 0.081083 
+cycles: 34170.833333 
+ept_cycles_per_execution_cycles: 0.082209 
+cycles: 34192.566667 
+ept_cycles_per_execution_cycles: 0.082108 
+cycles: 34218.966667 
+ept_cycles_per_execution_cycles: 0.082927 
+cycles: 34235.500000 
+ept_cycles_per_execution_cycles: 0.084603 
+cycles: 34412.800000 
+ept_cycles_per_execution_cycles: 0.085329 
+cycles: 34465.100000 
+ept_cycles_per_execution_cycles: 0.085452 
+cycles: 34511.800000 
+ept_cycles_per_execution_cycles: 0.085941 
+cycles: 34958.266667 
+ept_cycles_per_execution_cycles: 0.090351 
+cycles: 35055.400000 
+ept_cycles_per_execution_cycles: 0.093451 
+cycles: 35233.566667 
+ept_cycles_per_execution_cycles: 0.094773 
+cycles: 34181.566667 
+ept_cycles_per_execution_cycles: 0.094277 
+cycles: 35086.533333 
+ept_cycles_per_execution_cycles: 0.096948 
+cycles: 34791.766667 
+ept_cycles_per_execution_cycles: 0.096854 
+cycles: 34758.100000 
+ept_cycles_per_execution_cycles: 0.096710 
+cycles: 35254.966667 
+ept_cycles_per_execution_cycles: 0.098690 
+cycles: 34463.733333 
+ept_cycles_per_execution_cycles: 0.099530 
+cycles: 35873.733333 
+ept_cycles_per_execution_cycles: 0.106209 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36458.700000 
+ept_cycles_per_execution_cycles: 0.114720 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36349.566667 
+ept_cycles_per_execution_cycles: 0.116978 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36197.433333 
+ept_cycles_per_execution_cycles: 0.117268 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35040.766667 
+ept_cycles_per_execution_cycles: 0.116872 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35904.033333 
+ept_cycles_per_execution_cycles: 0.118286 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35902.866667 
+ept_cycles_per_execution_cycles: 0.120895 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36009.833333 
+ept_cycles_per_execution_cycles: 0.121331 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35983.233333 
+ept_cycles_per_execution_cycles: 0.121257 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34828.233333 
+ept_cycles_per_execution_cycles: 0.118634 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35682.666667 
+ept_cycles_per_execution_cycles: 0.119522 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35535.000000 
+ept_cycles_per_execution_cycles: 0.118745 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35381.800000 
+ept_cycles_per_execution_cycles: 0.117619 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35197.100000 
+ept_cycles_per_execution_cycles: 0.116983 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34084.066667 
+ept_cycles_per_execution_cycles: 0.117038 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35010.166667 
+ept_cycles_per_execution_cycles: 0.115760 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34710.966667 
+ept_cycles_per_execution_cycles: 0.115603 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34525.766667 
+ept_cycles_per_execution_cycles: 0.115042 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34354.600000 
+ept_cycles_per_execution_cycles: 0.112602 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33221.366667 
+ept_cycles_per_execution_cycles: 0.109229 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33996.400000 
+ept_cycles_per_execution_cycles: 0.106911 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33257.666667 
+ept_cycles_per_execution_cycles: 0.101575 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32848.066667 
+ept_cycles_per_execution_cycles: 0.097826 
+cycles: 32782.733333 
+ept_cycles_per_execution_cycles: 0.095731 
+cycles: 32780.866667 
+ept_cycles_per_execution_cycles: 0.095414 
+cycles: 32087.766667 
+ept_cycles_per_execution_cycles: 0.092229 
+cycles: 32729.666667 
+ept_cycles_per_execution_cycles: 0.092773 
+cycles: 32581.700000 
+ept_cycles_per_execution_cycles: 0.094032 
+cycles: 32192.366667 
+ept_cycles_per_execution_cycles: 0.091324 
+cycles: 32695.766667 
+ept_cycles_per_execution_cycles: 0.088721 
+cycles: 30856.000000 
+ept_cycles_per_execution_cycles: 0.081757 
+cycles: 30679.333333 
+ept_cycles_per_execution_cycles: 0.072624 
+cycles: 30367.166667 
+ept_cycles_per_execution_cycles: 0.070683 
+cycles: 30343.666667 
+ept_cycles_per_execution_cycles: 0.070600 
+cycles: 31357.066667 
+ept_cycles_per_execution_cycles: 0.075962 
+cycles: 29986.133333 
+ept_cycles_per_execution_cycles: 0.074567 
+cycles: 30898.166667 
+ept_cycles_per_execution_cycles: 0.075588 
+cycles: 31208.633333 
+ept_cycles_per_execution_cycles: 0.079850 
+cycles: 31610.166667 
+ept_cycles_per_execution_cycles: 0.084343 
+cycles: 32852.966667 
+ept_cycles_per_execution_cycles: 0.089595 
+cycles: 31570.766667 
+ept_cycles_per_execution_cycles: 0.089312 
+cycles: 32359.033333 
+ept_cycles_per_execution_cycles: 0.092671 
+cycles: 32448.000000 
+ept_cycles_per_execution_cycles: 0.094261 
+cycles: 32553.600000 
+ept_cycles_per_execution_cycles: 0.095843 
+cycles: 33498.266667 
+ept_cycles_per_execution_cycles: 0.097738 
+cycles: 32216.200000 
+ept_cycles_per_execution_cycles: 0.099868 
+cycles: 32835.700000 
+ept_cycles_per_execution_cycles: 0.101490 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32990.800000 
+ept_cycles_per_execution_cycles: 0.102639 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32958.866667 
+ept_cycles_per_execution_cycles: 0.104592 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33934.100000 
+ept_cycles_per_execution_cycles: 0.106162 
+=========== ACTION : ENABLE TPT ===========
+cycles: 32754.233333 
+ept_cycles_per_execution_cycles: 0.111205 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33704.333333 
+ept_cycles_per_execution_cycles: 0.117796 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34426.000000 
+ept_cycles_per_execution_cycles: 0.123445 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34485.133333 
+ept_cycles_per_execution_cycles: 0.125546 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35496.933333 
+ept_cycles_per_execution_cycles: 0.126818 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34807.566667 
+ept_cycles_per_execution_cycles: 0.129176 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34499.333333 
+ept_cycles_per_execution_cycles: 0.127686 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34742.733333 
+ept_cycles_per_execution_cycles: 0.126679 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34692.300000 
+ept_cycles_per_execution_cycles: 0.125096 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34583.700000 
+ept_cycles_per_execution_cycles: 0.122550 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34587.200000 
+ept_cycles_per_execution_cycles: 0.122546 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34530.933333 
+ept_cycles_per_execution_cycles: 0.122478 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34998.666667 
+ept_cycles_per_execution_cycles: 0.122355 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35033.100000 
+ept_cycles_per_execution_cycles: 0.122216 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34953.066667 
+ept_cycles_per_execution_cycles: 0.119411 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34956.666667 
+ept_cycles_per_execution_cycles: 0.119121 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34314.666667 
+ept_cycles_per_execution_cycles: 0.117248 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34299.133333 
+ept_cycles_per_execution_cycles: 0.113618 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33864.066667 
+ept_cycles_per_execution_cycles: 0.110068 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33571.066667 
+ept_cycles_per_execution_cycles: 0.106559 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33677.766667 
+ept_cycles_per_execution_cycles: 0.106249 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33172.900000 
+ept_cycles_per_execution_cycles: 0.102419 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33467.733333 
+ept_cycles_per_execution_cycles: 0.102368 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34076.933333 
+ept_cycles_per_execution_cycles: 0.107661 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33293.700000 
+ept_cycles_per_execution_cycles: 0.109687 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34752.300000 
+ept_cycles_per_execution_cycles: 0.114790 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34999.533333 
+ept_cycles_per_execution_cycles: 0.119245 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35772.233333 
+ept_cycles_per_execution_cycles: 0.123962 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36009.200000 
+ept_cycles_per_execution_cycles: 0.124999 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35083.433333 
+ept_cycles_per_execution_cycles: 0.124610 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36224.466667 
+ept_cycles_per_execution_cycles: 0.124182 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35739.400000 
+ept_cycles_per_execution_cycles: 0.118433 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35361.833333 
+ept_cycles_per_execution_cycles: 0.113968 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35273.066667 
+ept_cycles_per_execution_cycles: 0.113304 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34151.966667 
+ept_cycles_per_execution_cycles: 0.111832 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35156.500000 
+ept_cycles_per_execution_cycles: 0.110826 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35003.433333 
+ept_cycles_per_execution_cycles: 0.111458 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35259.700000 
+ept_cycles_per_execution_cycles: 0.111226 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35219.466667 
+ept_cycles_per_execution_cycles: 0.111890 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34150.233333 
+ept_cycles_per_execution_cycles: 0.113816 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35684.266667 
+ept_cycles_per_execution_cycles: 0.112040 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35062.166667 
+ept_cycles_per_execution_cycles: 0.109981 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35050.333333 
+ept_cycles_per_execution_cycles: 0.108202 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34810.900000 
+ept_cycles_per_execution_cycles: 0.107625 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33643.200000 
+ept_cycles_per_execution_cycles: 0.106874 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35128.600000 
+ept_cycles_per_execution_cycles: 0.106079 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35015.333333 
+ept_cycles_per_execution_cycles: 0.105138 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35200.633333 
+ept_cycles_per_execution_cycles: 0.103642 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35144.433333 
+ept_cycles_per_execution_cycles: 0.103550 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33900.300000 
+ept_cycles_per_execution_cycles: 0.102760 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35134.866667 
+ept_cycles_per_execution_cycles: 0.102398 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35121.033333 
+ept_cycles_per_execution_cycles: 0.103345 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35172.633333 
+ept_cycles_per_execution_cycles: 0.102118 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34496.533333 
+ept_cycles_per_execution_cycles: 0.098499 
+cycles: 34402.966667 
+ept_cycles_per_execution_cycles: 0.099891 
+cycles: 34813.066667 
+ept_cycles_per_execution_cycles: 0.104189 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34387.800000 
+ept_cycles_per_execution_cycles: 0.102500 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34741.833333 
+ept_cycles_per_execution_cycles: 0.106673 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34956.233333 
+ept_cycles_per_execution_cycles: 0.111833 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35088.300000 
+ept_cycles_per_execution_cycles: 0.115784 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35849.000000 
+ept_cycles_per_execution_cycles: 0.120817 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35852.400000 
+ept_cycles_per_execution_cycles: 0.124656 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36836.800000 
+ept_cycles_per_execution_cycles: 0.133225 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37015.866667 
+ept_cycles_per_execution_cycles: 0.138189 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37419.633333 
+ept_cycles_per_execution_cycles: 0.142511 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38284.966667 
+ept_cycles_per_execution_cycles: 0.148765 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38310.766667 
+ept_cycles_per_execution_cycles: 0.151441 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38271.700000 
+ept_cycles_per_execution_cycles: 0.152889 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38274.133333 
+ept_cycles_per_execution_cycles: 0.153677 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38532.366667 
+ept_cycles_per_execution_cycles: 0.153663 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38433.000000 
+ept_cycles_per_execution_cycles: 0.156259 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38430.166667 
+ept_cycles_per_execution_cycles: 0.156534 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38387.266667 
+ept_cycles_per_execution_cycles: 0.157691 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38596.833333 
+ept_cycles_per_execution_cycles: 0.157724 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38808.200000 
+ept_cycles_per_execution_cycles: 0.157630 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38930.800000 
+ept_cycles_per_execution_cycles: 0.159408 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38897.233333 
+ept_cycles_per_execution_cycles: 0.160921 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38751.800000 
+ept_cycles_per_execution_cycles: 0.162807 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38989.400000 
+ept_cycles_per_execution_cycles: 0.162302 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39367.633333 
+ept_cycles_per_execution_cycles: 0.163496 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39565.166667 
+ept_cycles_per_execution_cycles: 0.166528 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39531.366667 
+ept_cycles_per_execution_cycles: 0.167801 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39427.100000 
+ept_cycles_per_execution_cycles: 0.169308 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39564.933333 
+ept_cycles_per_execution_cycles: 0.167409 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39460.166667 
+ept_cycles_per_execution_cycles: 0.164229 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39212.800000 
+ept_cycles_per_execution_cycles: 0.158986 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38863.500000 
+ept_cycles_per_execution_cycles: 0.154955 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37966.933333 
+ept_cycles_per_execution_cycles: 0.147092 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37464.800000 
+ept_cycles_per_execution_cycles: 0.141215 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37385.066667 
+ept_cycles_per_execution_cycles: 0.137187 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37154.100000 
+ept_cycles_per_execution_cycles: 0.132716 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36987.200000 
+ept_cycles_per_execution_cycles: 0.130542 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36061.733333 
+ept_cycles_per_execution_cycles: 0.122239 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35830.933333 
+ept_cycles_per_execution_cycles: 0.116976 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35602.133333 
+ept_cycles_per_execution_cycles: 0.112705 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35550.866667 
+ept_cycles_per_execution_cycles: 0.111720 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35456.733333 
+ept_cycles_per_execution_cycles: 0.110534 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35966.666667 
+ept_cycles_per_execution_cycles: 0.114568 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36129.666667 
+ept_cycles_per_execution_cycles: 0.115951 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36185.933333 
+ept_cycles_per_execution_cycles: 0.116223 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36608.500000 
+ept_cycles_per_execution_cycles: 0.120593 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36838.100000 
+ept_cycles_per_execution_cycles: 0.122592 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37279.366667 
+ept_cycles_per_execution_cycles: 0.124429 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37451.233333 
+ept_cycles_per_execution_cycles: 0.125283 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37671.200000 
+ept_cycles_per_execution_cycles: 0.125613 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38328.333333 
+ept_cycles_per_execution_cycles: 0.130081 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38032.900000 
+ept_cycles_per_execution_cycles: 0.128673 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38417.500000 
+ept_cycles_per_execution_cycles: 0.133083 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38432.033333 
+ept_cycles_per_execution_cycles: 0.135312 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38353.866667 
+ept_cycles_per_execution_cycles: 0.134344 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38345.433333 
+ept_cycles_per_execution_cycles: 0.133299 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38385.533333 
+ept_cycles_per_execution_cycles: 0.132883 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38896.600000 
+ept_cycles_per_execution_cycles: 0.133132 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38722.900000 
+ept_cycles_per_execution_cycles: 0.133539 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38776.566667 
+ept_cycles_per_execution_cycles: 0.133500 
+=========== ACTION : ENABLE TPT ===========
+cycles: 39008.766667 
+ept_cycles_per_execution_cycles: 0.132333 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38849.066667 
+ept_cycles_per_execution_cycles: 0.133253 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38980.100000 
+ept_cycles_per_execution_cycles: 0.132958 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38928.166667 
+ept_cycles_per_execution_cycles: 0.132431 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38870.033333 
+ept_cycles_per_execution_cycles: 0.132420 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38676.700000 
+ept_cycles_per_execution_cycles: 0.133848 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38204.700000 
+ept_cycles_per_execution_cycles: 0.132485 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38303.333333 
+ept_cycles_per_execution_cycles: 0.131590 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38200.733333 
+ept_cycles_per_execution_cycles: 0.131569 
+=========== ACTION : ENABLE TPT ===========
+cycles: 38201.366667 
+ept_cycles_per_execution_cycles: 0.131969 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37990.633333 
+ept_cycles_per_execution_cycles: 0.130973 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37608.100000 
+ept_cycles_per_execution_cycles: 0.129617 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37330.900000 
+ept_cycles_per_execution_cycles: 0.126808 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37123.466667 
+ept_cycles_per_execution_cycles: 0.125807 
+=========== ACTION : ENABLE TPT ===========
+cycles: 37071.233333 
+ept_cycles_per_execution_cycles: 0.125302 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36618.033333 
+ept_cycles_per_execution_cycles: 0.121407 
+=========== ACTION : ENABLE TPT ===========
+cycles: 36018.600000 
+ept_cycles_per_execution_cycles: 0.119196 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35565.633333 
+ept_cycles_per_execution_cycles: 0.116253 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35299.466667 
+ept_cycles_per_execution_cycles: 0.115011 
+=========== ACTION : ENABLE TPT ===========
+cycles: 35049.733333 
+ept_cycles_per_execution_cycles: 0.114321 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34337.000000 
+ept_cycles_per_execution_cycles: 0.108502 
+=========== ACTION : ENABLE TPT ===========
+cycles: 34217.933333 
+ept_cycles_per_execution_cycles: 0.108719 
+=========== ACTION : ENABLE TPT ===========
+cycles: 33838
