@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-PROFILER="../../phase2_profiler/p2" 
+PROFILER="$SCRIPT_DIR/../phase2_profiler/p2" 
+
 
 # if running then stop memcached
 if systemctl is-active --quiet memcached; then
