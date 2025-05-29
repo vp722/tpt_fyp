@@ -24,6 +24,7 @@ QPS=${2:-600000}             # 0 = peak QPS (uncapped)
 THREADS=${3:-2}         # load-only and GET threads
 CONNS=${4:-16}         # connections per thread
 DURATION=${5:-60}      # measurement time (s)
+WARMUP=${6:-10}     # warmup time (s)
 
 # Facebook ETC distributions
 DIST_KEY="fb_key"
@@ -33,16 +34,6 @@ DIST_IA="fb_ia"
 # Working-set size: ~8 GiB total (via ETC value PDF)
 RECORDS=4000000      
 
-# Phase 1: Load ~8 GiB dataset with ETC distributions
-echo "=== Phase 1: Preloading ~1 GiB (${RECORDS} records) ==="
-"$MUTILATE" \
-  -s "$SERVER" \
-  --loadonly \
-  -K $DIST_KEY \
-  -V $DIST_VAL \
-  -r $RECORDS \
-  --threads $THREADS \
-  --connections $CONNS
 
 # Phase 2: Warmup & run GETs using ETC inter-arrival times
 echo -e "\n=== Phase 2: Warmup (${WARMUP}s) + ETC GETs at $QPS QPS for ${DURATION}s ==="
