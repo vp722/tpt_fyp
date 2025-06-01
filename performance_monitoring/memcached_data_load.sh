@@ -5,7 +5,7 @@ MUTILATE="$SCRIPT_DIR/../../application_benchmarks/mutilate/mutilate"
 
 
 
-—— Parameters —————————————————————————————————————————————————————————————
+#—— Parameters —————————————————————————————————————————————————————————————
 SERVER=${1:?"Usage: $0 <server> [qps] [threads] [connections] [duration]"}
 QPS=${2:-600000}             # 0 = peak QPS (uncapped)
 THREADS=${3:-2}         # load-only and GET threads

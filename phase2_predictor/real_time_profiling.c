@@ -20,10 +20,10 @@
 
 #define COUNTER_COUNT 5
 #define SAMPLING_INTERVAL_SEC 1
-#define SAMPLING_INTERVAL_MS 200 // 200ms
+#define SAMPLING_INTERVAL_MS 100 // 200ms
 #define AVG_WALK_CYCLES 40 // 40 cycles 
-#define SLIDING_WINDOW 10 // n = 5 
-#define RATIO 0.5 
+#define SLIDING_WINDOW 20 // n = 5 
+#define RATIO 0.1
 
 
 struct perf_counter {
@@ -283,10 +283,10 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
 
     printf("cycles: %lf \n", avg_deltas[0]);
-    printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
+    // printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
     // printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
     printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
-    printf("rss_in_gb: %lf \n", rss_in_gb);
+    // printf("rss_in_gb: %lf \n", rss_in_gb);
 
     // if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
     //     return 1;  // enable TPT
@@ -323,7 +323,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("data.csv", "w");
+        FILE *file = fopen("sysbench_16G_rnd_read.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
@@ -402,8 +402,8 @@ void run_executable(const char *program, char *const argv[]) {
                 last_sample_time = current_time;
             }
 
-            // sleep for 10ms to reduce CPU usage while polling
-            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 10000000 }; // 10ms
+            // sleep for 1ms to reduce CPU usage while polling
+            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 1000000 }; // 10ms
             nanosleep(&sleep_time, NULL);
         }
 
