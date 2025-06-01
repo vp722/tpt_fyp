@@ -372,7 +372,14 @@ void run_executable(const char *program, char *const argv[]) {
 
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
 
+                struct timespec t1, t2;
+                clock_gettime(CLOCK_MONOTONIC, &t1);
+
+                
                 sample_counters(counters);
+
+                clock_gettime(CLOCK_MONOTONIC, &t2);
+                long overhead_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec - t1.tv_nsec);
 
                 update_sliding_window(counters, windows, indices, counts);
                 compute_sliding_averages(windows, counts, avg_deltas);
@@ -403,7 +410,7 @@ void run_executable(const char *program, char *const argv[]) {
             }
 
             // sleep for 10ms to reduce CPU usage while polling
-            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 10000000 }; // 10ms
+            struct timespec sleep_time = { .tv_sec = 0, .tv_nsec = 1000000 }; // 10ms
             nanosleep(&sleep_time, NULL);
         }
 
