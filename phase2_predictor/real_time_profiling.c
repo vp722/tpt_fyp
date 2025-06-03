@@ -297,7 +297,7 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
     double window_time_sec = SLIDING_WINDOW * (SAMPLING_INTERVAL_MS / 1000.0);
 
-    double mar = memory_accesses / SAMPLING_INTERVAL_MS; // memory accesses per second
+    double mar = memory_accesses / (SAMPLING_INTERVAL_MS / 1000.0); // memory accesses per second
 
     // idle time ratio 
 
