@@ -25,6 +25,15 @@
 #define SLIDING_WINDOW 20 // n = 5 
 #define RATIO 0.1
 
+const double CPU_FREQ_HZ = 2.19999e9;  // 2.2 GHz
+
+// idle time ratio computation 
+double total_idle_time_sec = 0.0;
+double total_elapsed_time_sec = 0.0;
+#define INTERVAL_SEC ((double)SAMPLING_INTERVAL_MS / 1000.0)
+#define IDLE_THRESHOLD_FRACTION 0.1  // Active < 10% of interval = idle
+
+
 
 struct perf_counter {
     int fd;
@@ -71,20 +80,20 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
     
-    init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
-    init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
+    // init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
+    // init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
 
-    // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
-    //     PERF_COUNT_HW_CACHE_DTLB | 
-    //     (PERF_COUNT_HW_CACHE_OP_READ << 8) |
-    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-    //     "dtlb_load_misses", pid, -1);
+    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
+        PERF_COUNT_HW_CACHE_DTLB | 
+        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+        "dtlb_load_misses", pid, -1);
     
-    // init_counter(&counters[3], PERF_TYPE_HW_CACHE,
-    //     PERF_COUNT_HW_CACHE_DTLB |
-    //     (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
-    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-    //     "dtlb_store_misses", pid, -1);
+    init_counter(&counters[3], PERF_TYPE_HW_CACHE,
+        PERF_COUNT_HW_CACHE_DTLB |
+        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+        "dtlb_store_misses", pid, -1);
     
     // init_counter(&counters[4], PERF_TYPE_HW_CACHE,
     //     PERF_COUNT_HW_CACHE_DTLB |
@@ -274,19 +283,40 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
 
 
 // Decision logic on averaged metrics
-bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
-    double walks_completed = avg_deltas[2] + avg_deltas[3];
-    double avg_ept_walk_per_miss  = avg_deltas[4] / walks_completed;
+bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts[]) {
+    int samples = counts[0]; 
+
+    extern double total_idle_time_sec, total_elapsed_time_sec;
+    double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
+
+    // double walks_completed = avg_deltas[2] + avg_deltas[3];
+    double memory_accesses = avg_deltas[2] + avg_deltas[3]; // load and store misses
+    // double avg_ept_walk_per_miss  = avg_deltas[4] / walks_completed;
     // double avg_walk_cycles_per_miss = (avg_deltas[2] + avg_deltas[3] + avg_deltas[6]) / walks_completed;
     double ept_cycles_per_execution_cycles = avg_deltas[4] / avg_deltas[0];
     double rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
+    double window_time_sec = SLIDING_WINDOW * (SAMPLING_INTERVAL_MS / 1000.0);
 
-    printf("cycles: %lf \n", avg_deltas[0]);
+    double window_time_s = samples * (SAMPLING_INTERVAL_MS / 1000.0);
+    double mar = memory_accesses / window_time_s; // memory accesses per second
+
+    
     // printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
     // printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
-    printf("ept_cycles_per_execution_cycles: %lf \n", ept_cycles_per_execution_cycles);
-    // printf("rss_in_gb: %lf \n", rss_in_gb);
+    
+
+    printf("\n========== METRICS ==========\n");
+    printf("Samples                        : %d\n", samples);
+    printf("Avg CPU Cycles (per interval) : %.2lf\n", avg_deltas[0]);
+    printf("EPT Cycles / Exec Cycles      : %.4lf\n", ept_cycles_per_execution_cycles);
+    printf("Memory Accesses (load+store)  : %.0lf\n", memory_accesses);
+    printf("Memory Access Rate (MAR)      : %.2lf accesses/sec\n", mar);
+    printf("Sliding Window Duration       : %.2lf sec\n", window_time_s);
+    printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
+    printf("Global Idle Time Ratio        : %.2lf%%\n", idle_ratio * 100);
+    printf("================================\n\n");
+
 
     // if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
     //     return 1;  // enable TPT
@@ -299,6 +329,22 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid) {
 
     return 0; // disable TPT 
 }
+
+void update_global_idle_ratio(uint64_t cycles) {
+    double active_time_sec = (double)cycles / CPU_FREQ_HZ;
+    bool is_idle = active_time_sec < (IDLE_THRESHOLD_FRACTION * INTERVAL_SEC);
+
+    total_elapsed_time_sec += INTERVAL_SEC;
+    if (is_idle) {
+        total_idle_time_sec += INTERVAL_SEC;
+    }
+
+    double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
+    printf("Global Idle Time Ratio: %.2lf%%\n", idle_ratio * 100);
+}
+
+
+
 
 void run_executable(const char *program, char *const argv[]) {
     int pipefd[2];
@@ -331,7 +377,7 @@ void run_executable(const char *program, char *const argv[]) {
 
         // Write header to the file
         //fprintf(file, "cycles,instructions,dtlb_load_misses_walk_duration,dtlb_store_misses_walk_duration,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
-        fprintf(file, "cycles,instructions,dtlb_load_misses.walk_completed,dtlb_store_misses.walk_completed,ept_walk_cycles\n");
+        fprintf(file, "cycles,instructions,load_misses,store_misses,ept_walk_cycles\n");
 
         init_counters(counters, pid);
 
@@ -341,9 +387,9 @@ void run_executable(const char *program, char *const argv[]) {
             }
         }
 
-	for (int i = 0; i < COUNTER_COUNT; i++) {
-	    ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
-	}
+        for (int i = 0; i < COUNTER_COUNT; i++) {
+            ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+        }
 
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
@@ -360,8 +406,9 @@ void run_executable(const char *program, char *const argv[]) {
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
         double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
-	uint64_t total_sampling_ns = 0;
-	int num_samples = 0;
+	    uint64_t total_sampling_ns = 0;
+	    int num_samples = 0;
+
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
             struct timespec current_time;
@@ -378,22 +425,26 @@ void run_executable(const char *program, char *const argv[]) {
 
                 
                 sample_counters(counters);
-		clock_gettime(CLOCK_MONOTONIC, &t2);
-		long sampling_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec -t1.tv_nsec);
+
+                update_global_idle_ratio(counters[0].delta);  // counters[0] = CPU cycles
+
+
+		        clock_gettime(CLOCK_MONOTONIC, &t2);
+		        long sampling_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec -t1.tv_nsec);
 
                 
-		update_sliding_window(counters, windows, indices, counts);
+		        update_sliding_window(counters, windows, indices, counts);
                 compute_sliding_averages(windows, counts, avg_deltas);
                 // compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
-                if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
+                if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
                     enable_tpt(); 
                 }
                 
-		total_sampling_ns += sampling_ns;
-	    	num_samples++;	
+		        total_sampling_ns += sampling_ns;
+	    	    num_samples++;	
 			
-		// write the data to the file
+		        // write the data to the file
                 fprintf(file, "%lu,%lu,%lu,%lu,%lu\n",
                         counters[0].delta,
                         counters[1].delta,
