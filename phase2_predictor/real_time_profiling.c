@@ -360,7 +360,8 @@ void run_executable(const char *program, char *const argv[]) {
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
         double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
-
+	uint64_t total_sampling_ns = 0;
+	int num_samples = 0;
         // while the child process is running
         while (waitpid(pid, &status, WNOHANG) == 0) {
             struct timespec current_time;
@@ -377,19 +378,22 @@ void run_executable(const char *program, char *const argv[]) {
 
                 
                 sample_counters(counters);
+		clock_gettime(CLOCK_MONOTONIC, &t2);
+		long sampling_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec -t1.tv_nsec);
 
-                clock_gettime(CLOCK_MONOTONIC, &t2);
-                long overhead_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec - t1.tv_nsec);
-
-                update_sliding_window(counters, windows, indices, counts);
+                
+		update_sliding_window(counters, windows, indices, counts);
                 compute_sliding_averages(windows, counts, avg_deltas);
                 // compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 if (should_enable_tpt_sliding_window(avg_deltas, pid) == 1) {
                     enable_tpt(); 
-                } 
-
-                // write the data to the file
+                }
+                
+		total_sampling_ns += sampling_ns;
+	    	num_samples++;	
+			
+		// write the data to the file
                 fprintf(file, "%lu,%lu,%lu,%lu,%lu\n",
                         counters[0].delta,
                         counters[1].delta,
@@ -418,6 +422,13 @@ void run_executable(const char *program, char *const argv[]) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
             close(counters[i].fd);
         }
+
+	if (num_samples > 0) {
+	    double avg_sampling_ns = (double)total_sampling_ns / num_samples;
+	    double sampling_overhead_pct = (avg_sampling_ns / (SAMPLING_INTERVAL_MS * 1e6)) * 100.0;
+	    printf("Average sampling overhead: %.3f ms per sample\n", avg_sampling_ns / 1e6);
+	    printf("Average sampling overhead: %.2f%% of the %dms interval\n", sampling_overhead_pct, SAMPLING_INTERVAL_MS);
+	}
 
         if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
             fprintf(stderr, "Program execution failed.\n");
