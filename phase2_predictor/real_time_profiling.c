@@ -284,7 +284,6 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
 
 // Decision logic on averaged metrics
 bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts[]) {
-    int samples = counts[0]; 
 
     // extern double total_idle_time_sec, total_elapsed_time_sec;
     // double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
@@ -298,15 +297,14 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
     double window_time_sec = SLIDING_WINDOW * (SAMPLING_INTERVAL_MS / 1000.0);
 
-    double window_time_s = samples * (SAMPLING_INTERVAL_MS / 1000.0);
-    double mar = memory_accesses / window_time_s; // memory accesses per second
+    double mar = memory_accesses / SAMPLING_INTERVAL_MS; // memory accesses per second
 
     // idle time ratio 
 
     double active_time = (double)avg_deltas[0] / CPU_FREQ_HZ; // active time in seconds
 
 
-    double idle_time_ratio = 1 - (active_time / window_time_s);
+    
 
     
     // printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
@@ -314,14 +312,12 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     
 
     printf("\n========== METRICS ==========\n");
-    printf("Samples                        : %d\n", samples);
     printf("Avg CPU Cycles (per interval) : %.2lf\n", avg_deltas[0]);
     printf("EPT Cycles / Exec Cycles      : %.4lf\n", ept_cycles_per_execution_cycles);
     printf("Memory Accesses (load+store)  : %.0lf\n", memory_accesses);
     printf("Memory Access Rate (MAR)      : %.2lf accesses/sec\n", mar);
-    printf("Sliding Window Duration       : %.2lf sec\n", window_time_s);
     printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
-    printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
+    // printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
     printf("================================\n\n");
 
 
