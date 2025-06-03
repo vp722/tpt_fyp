@@ -79,21 +79,23 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
 
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
-    
+    init_counter(&counters[2], PERF_TYPE_RAW, 0x81D0, "mem_uops_retired.all_loads", pid, -1);
+    init_counter(&counters[3], PERF_TYPE_RAW, 0x82D0, "mem_uops_retired.all_stores", pid, -1);
+
     // init_counter(&counters[2], PERF_TYPE_RAW, 0x0e08, "dtlb_load_misses.walk_completed", pid, -1); 
     // init_counter(&counters[3], PERF_TYPE_RAW, 0x0e49, "dtlb_store_misses.walk_completed", pid, -1); 
 
-    init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
-        PERF_COUNT_HW_CACHE_DTLB | 
-        (PERF_COUNT_HW_CACHE_OP_READ << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_load_misses", pid, -1);
+    // init_counter(&counters[2], PERF_TYPE_HW_CACHE, 
+    //     PERF_COUNT_HW_CACHE_DTLB | 
+    //     (PERF_COUNT_HW_CACHE_OP_READ << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+    //     "dtlb_load_misses", pid, -1);
     
-    init_counter(&counters[3], PERF_TYPE_HW_CACHE,
-        PERF_COUNT_HW_CACHE_DTLB |
-        (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
-        (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
-        "dtlb_store_misses", pid, -1);
+    // init_counter(&counters[3], PERF_TYPE_HW_CACHE,
+    //     PERF_COUNT_HW_CACHE_DTLB |
+    //     (PERF_COUNT_HW_CACHE_OP_WRITE << 8) |
+    //     (PERF_COUNT_HW_CACHE_RESULT_MISS << 16),
+    //     "dtlb_store_misses", pid, -1);
     
     // init_counter(&counters[4], PERF_TYPE_HW_CACHE,
     //     PERF_COUNT_HW_CACHE_DTLB |
