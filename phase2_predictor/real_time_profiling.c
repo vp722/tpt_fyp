@@ -295,9 +295,8 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     double ept_cycles_per_execution_cycles = avg_deltas[4] / avg_deltas[0];
     double rss = get_rss_in_bytes(pid);
     double rss_in_gb = (double)rss / (1024 * 1024 * 1024); // Convert bytes to GB
-    double window_time_sec = SLIDING_WINDOW * (SAMPLING_INTERVAL_MS / 1000.0);
-
-    double mar = memory_accesses / (SAMPLING_INTERVAL_MS / 1000.0); // memory accesses per second
+    
+    double mar = memory_accesses / SAMPLING_INTERVAL_MS; // memory accesses per second
 
     // idle time ratio 
 
@@ -315,7 +314,7 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     printf("Avg CPU Cycles (per interval) : %.2lf\n", avg_deltas[0]);
     printf("EPT Cycles / Exec Cycles      : %.4lf\n", ept_cycles_per_execution_cycles);
     printf("Memory Accesses (load+store)  : %.0lf\n", memory_accesses);
-    printf("Memory Access Rate (MAR)      : %.2lf accesses/sec\n", mar);
+    printf("Memory Access Rate (MAR)      : %.2lf accesses/sample_interval(100ms)\n", mar);
     printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
     // printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
     printf("================================\n\n");
