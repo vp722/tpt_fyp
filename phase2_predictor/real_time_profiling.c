@@ -286,8 +286,8 @@ void compute_sliding_averages(double windows[][SLIDING_WINDOW], int counts[], do
 bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts[]) {
     int samples = counts[0]; 
 
-    extern double total_idle_time_sec, total_elapsed_time_sec;
-    double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
+    // extern double total_idle_time_sec, total_elapsed_time_sec;
+    // double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
 
     // double walks_completed = avg_deltas[2] + avg_deltas[3];
     double memory_accesses = avg_deltas[2] + avg_deltas[3]; // load and store misses
@@ -300,6 +300,13 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
 
     double window_time_s = samples * (SAMPLING_INTERVAL_MS / 1000.0);
     double mar = memory_accesses / window_time_s; // memory accesses per second
+
+    // idle time ratio 
+
+    double active_time = (double)avg_deltas[0] / CPU_FREQ_HZ; // active time in seconds
+
+
+    double idle_time_ratio = 1 - (active_time / window_time_s);
 
     
     // printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
@@ -314,7 +321,7 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     printf("Memory Access Rate (MAR)      : %.2lf accesses/sec\n", mar);
     printf("Sliding Window Duration       : %.2lf sec\n", window_time_s);
     printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
-    printf("Global Idle Time Ratio        : %.2lf%%\n", idle_ratio * 100);
+    printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
     printf("================================\n\n");
 
 
@@ -340,7 +347,6 @@ void update_global_idle_ratio(uint64_t cycles) {
     }
 
     double idle_ratio = total_idle_time_sec / total_elapsed_time_sec;
-    printf("Global Idle Time Ratio: %.2lf%%\n", idle_ratio * 100);
 }
 
 
@@ -426,7 +432,7 @@ void run_executable(const char *program, char *const argv[]) {
                 
                 sample_counters(counters);
 
-                update_global_idle_ratio(counters[0].delta);  // counters[0] = CPU cycles
+                // update_global_idle_ratio(counters[0].delta);  // counters[0] = CPU cycles
 
 
 		        clock_gettime(CLOCK_MONOTONIC, &t2);
