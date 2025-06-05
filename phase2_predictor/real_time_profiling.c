@@ -24,6 +24,7 @@
 #define AVG_WALK_CYCLES 40 // 40 cycles 
 #define SLIDING_WINDOW 20 // n = 5 
 #define RATIO 0.1
+#define MAR_THRESHOLD 10000 // Memory Access Rate threshold (accesses per 100ms)
 
 const double CPU_FREQ_HZ = 2.19999e9;  // 2.2 GHz
 
@@ -324,7 +325,12 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
 
     // if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
     //     return 1;  // enable TPT
-    // }   
+    // }  
+    
+    if (mar < MAR_THRESHOLD) {
+        printf("MAR is too low, disabling TPT.\n");
+        return 0; // disable TPT
+    }
 
     // looking at the ratio of ept_walk_cycles to execution cycles
     if (ept_cycles_per_execution_cycles > RATIO) {
