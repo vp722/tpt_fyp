@@ -1,6 +1,10 @@
 // this is a real time profiling tool - that collects metrics during the execution of the program
 // and makes a decision to enable TPT (one way) for the rest of the execution
 // this is a sampling based profiling tool extention for perf
+
+// improvement:
+// 1. decision made after N moving window samples stability 
+// we have now prioritiesed only using the weighed average moving window (WMA)
 #include <linux/perf_event.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -13,27 +17,27 @@
 #include <unistd.h>
 #include <errno.h>
 #include <stdbool.h>
-#include <time.h>
 #include <syscall.h>
 
 #include <inttypes.h> 
 
+#define print 1 
+
 #define COUNTER_COUNT 5
 #define SAMPLING_INTERVAL_SEC 1
 #define SAMPLING_INTERVAL_MS 100 // 200ms
-#define AVG_WALK_CYCLES 40 // 40 cycles 
-#define SLIDING_WINDOW 20 // n = 5 
+#define AVG_WALK_CYCLES 40 // 40 cycles // not used anymore but kept for reference
+#define SLIDING_WINDOW 20 // n = 20 
 #define RATIO 0.1
 #define MAR_THRESHOLD 10000 // Memory Access Rate threshold (accesses per 100ms)
 
 const double CPU_FREQ_HZ = 2.19999e9;  // 2.2 GHz
 
-// idle time ratio computation 
+// idle time ratio computation -> not used anymore in metric / used earlier 
 double total_idle_time_sec = 0.0;
 double total_elapsed_time_sec = 0.0;
 #define INTERVAL_SEC ((double)SAMPLING_INTERVAL_MS / 1000.0)
 #define IDLE_THRESHOLD_FRACTION 0.1  // Active < 10% of interval = idle
-
 
 
 struct perf_counter {
@@ -74,9 +78,9 @@ void init_counter(struct perf_counter *counter, uint32_t type,
 }
 
 void init_counters(struct perf_counter counters[], pid_t pid) {
-    // Set cycles as group leader
+
     init_counter(&counters[0], PERF_TYPE_HARDWARE, PERF_COUNT_HW_CPU_CYCLES, "cycles", pid, -1);
-//    int group_fd = counters[0].fd;
+//    int group_fd = counters[0].fd; // setting leader 
 
     init_counter(&counters[1], PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS, "instructions", pid, -1);
 
@@ -116,6 +120,10 @@ void init_counters(struct perf_counter counters[], pid_t pid) {
    // init_counter(&counters[6], PERF_TYPE_RAW, 0x1049,"dtlb_store_misses_walk_duration", pid, -1);
 }
 
+
+// function to get the WSS given a pid 
+// this could be used to reduce the sampling if it is not above a threshold 
+// discussed as impromvement in the report 
 
 uint64_t get_rss_in_bytes(pid_t pid) {
     char filename[256];
@@ -312,21 +320,22 @@ bool should_enable_tpt_sliding_window(double avg_deltas[], pid_t pid, int counts
     // printf("avg_ept_walk_per_miss: %lf \n", avg_ept_walk_per_miss);
     // printf("avg_walk_cycles_per_miss: %lf \n", avg_walk_cycles_per_miss);
     
+    if (print) {
 
-    printf("\n========== METRICS ==========\n");
-    printf("Avg CPU Cycles (per interval) : %.2lf\n", avg_deltas[0]);
-    printf("EPT Cycles / Exec Cycles      : %.4lf\n", ept_cycles_per_execution_cycles);
-    printf("Memory Accesses (load+store)  : %.0lf\n", memory_accesses);
-    printf("Memory Access Rate (MAR)      : %.2lf accesses/sample_interval(100ms)\n", mar);
-    printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
-    // printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
-    printf("================================\n\n");
-
-
+        printf("\n========== METRICS ==========\n");
+        printf("Avg CPU Cycles (per interval) : %.2lf\n", avg_deltas[0]);
+        printf("EPT Cycles / Exec Cycles      : %.4lf\n", ept_cycles_per_execution_cycles);
+        printf("Memory Accesses (load+store)  : %.0lf\n", memory_accesses);
+        printf("Memory Access Rate (MAR)      : %.2lf accesses/sample_interval(100ms)\n", mar);
+        printf("RSS (Resident Set Size)       : %.2lf GB\n", rss_in_gb);
+        // printf("Window Idle Time Ratio        : %.2lf%%\n", idle_time_ratio * 100);
+        printf("================================\n\n");
+    } 
+    
     // if (avg_ept_walk_per_miss > AVG_WALK_CYCLES) {
     //     return 1;  // enable TPT
     // }  
-    
+    // the final policy
     if (mar < MAR_THRESHOLD) {
         printf("MAR is too low, disabling TPT.\n");
         return 0; // disable TPT
@@ -414,7 +423,8 @@ void run_executable(const char *program, char *const argv[]) {
         int indices[COUNTER_COUNT] = {0}, 
         counts[COUNTER_COUNT] = {0};
         double avg_deltas[COUNTER_COUNT] = {0};
-        double weights[SLIDING_WINDOW] = {1,2,3,4,5}; // weights for the sliding window
+        // asign linear weights to the sliding window
+        double weights[SLIDING_WINDOW] = {1,2,3,4,5, 6, 7, 8, 9, 10, 11,12, 13,14,15,16,17,18,19,10}; // weights for the sliding window
 	    uint64_t total_sampling_ns = 0;
 	    int num_samples = 0;
 
@@ -428,7 +438,7 @@ void run_executable(const char *program, char *const argv[]) {
                             (current_time.tv_nsec - last_sample_time.tv_nsec) / 1000000;
 
             if (elapsed_ms >= SAMPLING_INTERVAL_MS) {
-
+                // code for sampling overhead
                 struct timespec t1, t2;
                 clock_gettime(CLOCK_MONOTONIC, &t1);
 
@@ -437,14 +447,17 @@ void run_executable(const char *program, char *const argv[]) {
 
                 // update_global_idle_ratio(counters[0].delta);  // counters[0] = CPU cycles
 
-
+                // code for sampling overhead 
 		        clock_gettime(CLOCK_MONOTONIC, &t2);
 		        long sampling_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec -t1.tv_nsec);
 
                 
 		        update_sliding_window(counters, windows, indices, counts);
-                compute_sliding_averages(windows, counts, avg_deltas);
-                // compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
+                // SMA implementation 
+                // compute_sliding_averages(windows, counts, avg_deltas);
+
+                // WMA implementation 
+                compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
                     enable_tpt(); 
@@ -464,7 +477,7 @@ void run_executable(const char *program, char *const argv[]) {
                         //counters[6].delta
                         //);
 
-
+                // this code segement was for continued moititoring over the interval period 
                 // if (should_enable_tpt(counters, pid)) {
                 //     printf("=========== ACTION : ENABLE TPT ===========\n");
                 //     // enabled_tpt = true;
@@ -482,13 +495,14 @@ void run_executable(const char *program, char *const argv[]) {
             ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
             close(counters[i].fd);
         }
-
-	if (num_samples > 0) {
-	    double avg_sampling_ns = (double)total_sampling_ns / num_samples;
-	    double sampling_overhead_pct = (avg_sampling_ns / (SAMPLING_INTERVAL_MS * 1e6)) * 100.0;
-	    printf("Average sampling overhead: %.3f ms per sample\n", avg_sampling_ns / 1e6);
-	    printf("Average sampling overhead: %.2f%% of the %dms interval\n", sampling_overhead_pct, SAMPLING_INTERVAL_MS);
-	}
+    
+        
+        if (print && num_samples > 0) {
+            double avg_sampling_ns = (double)total_sampling_ns / num_samples;
+            double sampling_overhead_pct = (avg_sampling_ns / (SAMPLING_INTERVAL_MS * 1e6)) * 100.0;
+            printf("Average sampling overhead: %.3f ms per sample\n", avg_sampling_ns / 1e6);
+            printf("Average sampling overhead: %.2f%% of the %dms interval\n", sampling_overhead_pct, SAMPLING_INTERVAL_MS);
+        }
 
         if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
             fprintf(stderr, "Program execution failed.\n");
