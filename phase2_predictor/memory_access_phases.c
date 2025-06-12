@@ -7,7 +7,7 @@
 #define BUFFER_SIZE (4ULL * 1024 * 1024 * 1024) // 4 GiB
 #define ACCESS_GRANULARITY sizeof(uint64_t)
 #define SLEEP_MICROSECONDS (30 * 1000000)      // 60 seconds
-#define NUM_CYCLES 3
+#define NUM_CYCLES 2
 
 // Function to measure time in seconds
 double get_time_in_seconds() {
@@ -45,7 +45,11 @@ int main() {
     double start = get_time_in_seconds();
 
     for (int cycle = 1; cycle <= NUM_CYCLES; cycle++) {
-        printf("\n--- Cycle %d ---\n", cycle);
+
+        printf("Cycle %d - Entering idle phase (sleep for 30 seconds)...\n", cycle);
+        usleep(SLEEP_MICROSECONDS);
+
+        printf("Cycle %d - Idle phase completed. Starting workload...\n", cycle);
 
         double workload_start = get_time_in_seconds();
         random_access_full(buffer, num_elements); // Access entire buffer randomly
@@ -53,9 +57,11 @@ int main() {
 
         printf("Cycle %d - Workload time: %.2f seconds\n", cycle, workload_end - workload_start);
 
-        printf("Cycle %d - Entering idle phase (sleep for 60 seconds)...\n", cycle);
-        usleep(SLEEP_MICROSECONDS);
+        
     }
+
+    printf("Cycle %d - Entering idle phase (sleep for 30 seconds)...\n", cycle);
+    usleep(SLEEP_MICROSECONDS);
 
     double end = get_time_in_seconds();
     printf("\nAll cycles completed.\n");
