@@ -1,18 +1,13 @@
-// This is a simple C program that simulates 
-// workload-idle cycles with random memory accesses.
-// Similar to memcached work flow but the idle phase is much simpler
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <sys/time.h>
-#include <unistd.h>  // For usleep()
+#include <unistd.h>
 
-#define BUFFER_SIZE (4ULL * 1024 * 1024 * 1024) // 4 GiB buffer
-#define NUM_ACCESSES (10000000ULL)              // Number of memory accesses per cycle
-#define ACCESS_GRANULARITY sizeof(uint64_t)    // 64-bit (8 bytes)
-#define SLEEP_MICROSECONDS (60 * 1000000)      // 60 seconds sleep (idle phase)
-#define NUM_CYCLES 3                           // Number of workload-idle cycles
+#define BUFFER_SIZE (4ULL * 1024 * 1024 * 1024) // 4 GiB
+#define ACCESS_GRANULARITY sizeof(uint64_t)
+#define SLEEP_MICROSECONDS (30 * 1000000)      // 60 seconds
+#define NUM_CYCLES 3
 
 // Function to measure time in seconds
 double get_time_in_seconds() {
@@ -21,13 +16,14 @@ double get_time_in_seconds() {
     return (t.tv_sec + t.tv_usec / 1000000.0);
 }
 
-// Function to perform random memory accesses
-void random_access(uint64_t *buffer, size_t size) {
-    for (size_t i = 0; i < NUM_ACCESSES; i++) {
-        size_t index = (((uint64_t)random() << 32) | random()) % size;
-        uint64_t value = buffer[index];
-        (void)value; // Prevent compiler optimization
+// Function to perform random memory accesses across the full buffer
+void random_access_full(uint64_t *buffer, size_t num_elements) {
+    uint64_t sum = 0;
+    for (size_t i = 0; i < num_elements; i++) {
+        size_t index = (((uint64_t)random() << 32) | random()) % num_elements;
+        sum += buffer[index];
     }
+    (void)sum; // Prevent compiler optimization
 }
 
 int main() {
@@ -38,7 +34,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    size_t num_elements = BUFFER_SIZE / sizeof(uint64_t);
+    size_t num_elements = BUFFER_SIZE / ACCESS_GRANULARITY;
 
     // Initialize buffer
     for (size_t i = 0; i < num_elements; i++) {
@@ -52,7 +48,7 @@ int main() {
         printf("\n--- Cycle %d ---\n", cycle);
 
         double workload_start = get_time_in_seconds();
-        random_access(buffer, num_elements);
+        random_access_full(buffer, num_elements); // Access entire buffer randomly
         double workload_end = get_time_in_seconds();
 
         printf("Cycle %d - Workload time: %.2f seconds\n", cycle, workload_end - workload_start);
