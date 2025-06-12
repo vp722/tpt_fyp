@@ -531,9 +531,9 @@ void run_executable(const char *program, char *const argv[]) {
                 // WMA implementation 
                 compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
-                // if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
-                //     enable_tpt(); 
-                // }
+                if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
+                    enable_tpt(); 
+                }
                 
 		        total_sampling_ns += sampling_ns;
 	    	    num_samples++;	
@@ -573,9 +573,6 @@ void run_executable(const char *program, char *const argv[]) {
         // for (int i = 0; i < COUNTER_COUNT; i++) {
 	    // close(counters[i].fd);
 	    // }
-
-
-    
         
         if (print && num_samples > 0) {
             double avg_sampling_ns = (double)total_sampling_ns / num_samples;
