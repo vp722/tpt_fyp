@@ -1,7 +1,6 @@
-// this is a simple C program that simulates 
+// This is a simple C program that simulates 
 // workload-idle cycles with random memory accesses.
-// similar to memached work flow but the idle phase is much simpler
-
+// Similar to memcached work flow but the idle phase is much simpler
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,10 +8,10 @@
 #include <sys/time.h>
 #include <unistd.h>  // For usleep()
 
-#define BUFFER_SIZE (2ULL * 1024 * 1024 * 1024) // 2 GiB
-#define NUM_ACCESSES (1000000ULL)              // Number of memory accesses per cycle
+#define BUFFER_SIZE (4ULL * 1024 * 1024 * 1024) // 4 GiB buffer
+#define NUM_ACCESSES (10000000ULL)              // Number of memory accesses per cycle
 #define ACCESS_GRANULARITY sizeof(uint64_t)    // 64-bit (8 bytes)
-#define SLEEP_MICROSECONDS 1000000             // 1 second sleep (idle phase)
+#define SLEEP_MICROSECONDS (60 * 1000000)      // 60 seconds sleep (idle phase)
 #define NUM_CYCLES 3                           // Number of workload-idle cycles
 
 // Function to measure time in seconds
@@ -58,7 +57,7 @@ int main() {
 
         printf("Cycle %d - Workload time: %.2f seconds\n", cycle, workload_end - workload_start);
 
-        printf("Cycle %d - Entering idle phase (sleep)...\n", cycle);
+        printf("Cycle %d - Entering idle phase (sleep for 60 seconds)...\n", cycle);
         usleep(SLEEP_MICROSECONDS);
     }
 
