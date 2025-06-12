@@ -60,7 +60,7 @@ int main() {
         
     }
 
-    printf("Cycle %d - Entering idle phase (sleep for 30 seconds)...\n");
+    printf("Entering idle phase (sleep for 30 seconds)...\n");
     usleep(SLEEP_MICROSECONDS);
 
     double end = get_time_in_seconds();
