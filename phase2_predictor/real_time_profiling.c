@@ -427,7 +427,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("sysbench_16G_seq_read.csv", "w");
+        FILE *file = fopen("perf_data.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
