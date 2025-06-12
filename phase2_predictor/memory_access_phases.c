@@ -36,6 +36,9 @@ int main() {
 
     size_t num_elements = BUFFER_SIZE / ACCESS_GRANULARITY;
 
+    printf("Entering idle phase (sleep for 30 seconds)...\n");
+    usleep(SLEEP_MICROSECONDS);
+
     // Initialize buffer
     for (size_t i = 0; i < num_elements; i++) {
         buffer[i] = i;
