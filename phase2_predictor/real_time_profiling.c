@@ -439,24 +439,26 @@ void run_executable(const char *program, char *const argv[]) {
 
         init_counters(counters, pid);
 
+
+        // ******** define the grouping information  ****
         // define the groups 
         int group0[5] = {0,1,2,3,4}; 
         // int group1[4] = {0,1,5,6};            
         int sizes[NUM_GROUPS] = {5}; // group sizes
         int *groups[NUM_GROUPS] = {group0};
         int current_group = 0;
-        enable_counters(counters, groups[current_group], sizes[current_group]);
-
+        // enable_counters(counters, groups[current_group], sizes[current_group]);
+        // ******** define the grouping information  ****
         
-        // for (int i = 0; i < COUNTER_COUNT; i++) {
-        //     if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
-        //         fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
-        //     }
-        // }
+        for (int i = 0; i < COUNTER_COUNT; i++) {
+            if (ioctl(counters[i].fd, PERF_EVENT_IOC_ENABLE, 0) < 0) {
+                fprintf(stderr, "Failed to enable %s: %s\n", counters[i].name, strerror(errno));
+            }
+        }
 
-        // for (int i = 0; i < COUNTER_COUNT; i++) {
-        //     ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
-        // }
+        for (int i = 0; i < COUNTER_COUNT; i++) {
+            ioctl(counters[i].fd, PERF_EVENT_IOC_RESET, 0);
+        }
 
         write(pipefd[1], "G", 1);
         close(pipefd[1]);
@@ -492,15 +494,15 @@ void run_executable(const char *program, char *const argv[]) {
                 clock_gettime(CLOCK_MONOTONIC, &t1);
 
                 
-                // sample_counters(counters) 
+                sample_counters(counters);
 
                 // ************ group sampling ************
-                sample_group_counters(counters, groups[current_group], sizes[current_group]);
+                // sample_group_counters(counters, groups[current_group], sizes[current_group]);
                 // disable the current group 
-                disable_counters(counters, groups[current_group], sizes[current_group]);
+                // disable_counters(counters, groups[current_group], sizes[current_group]);
                 // switch to the other group
-                current_group = (current_group + 1) % NUM_GROUPS;
-                enable_counters(counters, groups[current_group], sizes[current_group]);
+                // current_group = (current_group + 1) % NUM_GROUPS;
+                // enable_counters(counters, groups[current_group], sizes[current_group]);
 
                 // ************ end of group sampling ************
                 // update_global_idle_ratio(counters[0].delta);  // counters[0] = CPU cycles
@@ -510,23 +512,24 @@ void run_executable(const char *program, char *const argv[]) {
 		        long sampling_ns = (t2.tv_sec - t1.tv_sec) * 1e9 + (t2.tv_nsec -t1.tv_nsec);
 
                 // ***** group based sampling *****
-                if (current_group == NUM_GROUPS - 1) {
+                // if (current_group == NUM_GROUPS - 1) {
 
-                    update_sliding_window(counters, windows, indices, counts);
-                    compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
-                    if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
-                        enable_tpt(); 
-                    }
-                }
+                //     update_sliding_window(counters, windows, indices, counts);
+                //     compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
+                //     if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
+                //         enable_tpt(); 
+                //     }
+                // }
 
                 // ***** group based sampling *****
 
-		        // update_sliding_window(counters, windows, indices, counts);
+                // update sliding window 
+		        update_sliding_window(counters, windows, indices, counts);
                 // // SMA implementation 
                 // // compute_sliding_averages(windows, counts, avg_deltas);
 
-                // // WMA implementation 
-                // compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
+                // WMA implementation 
+                compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
                 // if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
                 //     enable_tpt(); 
@@ -561,14 +564,15 @@ void run_executable(const char *program, char *const argv[]) {
 
         // since using grouping 
         // Cleanup counters
-        // for (int i = 0; i < COUNTER_COUNT; i++) {
-        //     ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
-        //     close(counters[i].fd);
-        // }
-
         for (int i = 0; i < COUNTER_COUNT; i++) {
-	    close(counters[i].fd);
-	    }
+            ioctl(counters[i].fd, PERF_EVENT_IOC_DISABLE, 0);
+            close(counters[i].fd);
+        }
+
+        // close fd for grouping 
+        // for (int i = 0; i < COUNTER_COUNT; i++) {
+	    // close(counters[i].fd);
+	    // }
 
 
     
