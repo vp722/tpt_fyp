@@ -21,7 +21,7 @@
 
 #include <inttypes.h> 
 
-#define print 0 
+#define print 1 
 
 #define COUNTER_COUNT 5
 #define SAMPLING_INTERVAL_SEC 1
@@ -427,7 +427,7 @@ void run_executable(const char *program, char *const argv[]) {
         close(pipefd[0]);
 
         // open file 
-        FILE *file = fopen("bfs.csv", "w");
+        FILE *file = fopen("perf_raw_data.csv", "w");
         if (!file) {
             perror("fopen");
             exit(EXIT_FAILURE);
