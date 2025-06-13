@@ -466,7 +466,7 @@ void run_executable(const char *program, char *const argv[]) {
         int status;
         struct timespec last_sample_time;
         clock_gettime(CLOCK_MONOTONIC, &last_sample_time);
-        // bool enabled_tpt = false;
+        bool enabled_tpt = false;
 
         // sliding window based sampling
 
@@ -531,8 +531,9 @@ void run_executable(const char *program, char *const argv[]) {
                 // WMA implementation 
                 compute_weighted_sliding_averages(windows, indices, counts, weights, avg_deltas);
 
-                if (should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
+                if (!enabled_tpt && should_enable_tpt_sliding_window(avg_deltas, pid, counts) == 1) {
                     enable_tpt(); 
+                    enabled_tpt = true;
                 }
                 
 		        total_sampling_ns += sampling_ns;
